@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASIC_URL = 'http://ikata.semoga.online/api/'
+const BASIC_URL = 'https://ikata.semoga.online/api/'
 
 const fetch = (url, method, paramBody, paramHeader) => {
   const options = {

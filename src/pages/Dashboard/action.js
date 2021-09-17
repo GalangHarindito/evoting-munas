@@ -3,7 +3,7 @@ import axios from 'axios';
 import { getToken } from '../../utils/storage';
 import { toast } from 'react-toastify';
 
-const BASIC_URL = 'http://ikata.semoga.online/api/'
+const BASIC_URL = 'https://ikata.semoga.online/api/'
 
 export function getProfile() {
   
