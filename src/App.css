@@ -1,0 +1,158 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  font-size: 0.875rem;
+  padding: 0;
+  color: #2A2A2A;
+}
+
+#root.pagebase {
+  display: grid;
+  grid-template-areas: 'aside header' 'aside main';
+  grid-template-columns: var(--aside-width) 1fr;
+  grid-template-rows: auto 1fr;
+  height: 100vh;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a[disabled] {
+  pointer-events: none;
+}
+
+body {
+  background-color: #FFFFFF;
+}
+
+h2 {
+  font-size: 3.75rem;
+  font-weight: normal;
+  line-height: 4.75rem;
+}
+
+h3 {
+  font-size: 2.125rem;
+  font-weight: normal;
+  line-height: 2.5rem;
+}
+
+h4{
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 1.5rem;
+  color: var(--text-color);
+}
+
+h5 {
+  font-size: 1.125rem;
+  font-weight: bold;
+  line-height: 1.4375rem;
+}
+
+h6 {
+  font-size: 0.875rem;
+  font-weight: bold;
+  line-height: 0.875rem;
+}
+
+.loading {
+  border: .5rem solid #f3f3f3;
+  border-top: .5rem solid var(--primary-color);
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  animation: spin 2s linear infinite;
+}
+
+.modal-open {
+  overflow: hidden;
+}
+
+.modal-open > div > .modal {
+  background-color: rgba(0, 0, 0, 0.6);
+  display: block;
+}
+
+.modal {
+  display: none;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  transition: background-color 0.25s;
+  width: 100vw;
+  z-index: 50;
+}
+
+:root {
+  --aside-width: 19rem;
+  --primary-color: #68AE29;
+  --error-color: #D0021B;
+  --text-grey: #898989;
+  --border-input: #EAEAEA;
+  --page-base: #FAFCF8;
+  --verified--green: #ECFBE0;
+  --verified--yellow: #FFF6D2;
+  --yellow-text: #FA9900;
+  --box-shadow-medium: 0 0.3125rem 0.9375rem rgba(74, 74, 74, 0.1);
+  --color-active-pagebase: #68AE29;
+  font-size: calc(100vw * 16 / 1440);
+}
+
+.modal-icon {
+  display: block;
+  position: absolute;
+  right:1.2rem;
+  top: 1.2rem;
+}
+
+.Toastify__toast-container {
+  width: 320px;
+}
+.Toastify__toast--default {
+    background: #fff;
+    color: #aaa;
+ }
+  .Toastify__toast--info {
+    background: #3498db;
+ }
+  .Toastify__toast--success {
+    background: #07bc0c;
+ }
+  .Toastify__toast--warning {
+    background: #f1c40f;
+ }
+  .Toastify__toast--error {
+    background: #FA2347;
+ }
+
+ .Toastify__close-button {
+    width: auto!important;
+}
+
+.Toastify__close-button svg{
+  fill: black;
+}
+
+.Toastify__toast-body > div:last-child{
+  color: #fff;
+  font-weight: 500;
+}
+
+.Toastify__toast-theme--colored.Toastify__toast--success {
+  color: #ffff;
+}
+
+.Toastify__toast-body svg {
+  fill: #fff;
+}

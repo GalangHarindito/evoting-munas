@@ -1,0 +1,57 @@
+.radio {
+  align-items: center;
+  color: var(--black-color-1);
+  display: flex;
+  font-size: 0.875rem;
+  font-weight: normal;
+  line-height: 1.0625rem;
+  width: fit-content;
+}
+
+.radio > input {
+  display: none;
+}
+
+.radio > span {
+  border: 0.125rem solid var(--primary-color);
+  border-radius: 50%;
+  display: inline-block;
+  height: 1.25rem;
+  margin-right: 0.5rem;
+  position: relative;
+  width: 1.25rem;
+}
+
+.radio:hover > span {
+  border-color: var(--primary-color-light);
+}
+.radio > input[type=radio]:checked + span {
+  border-color: var(--primary-color);
+}
+
+.radio > input[type=radio]:checked + span:before {
+  background-color: var(--primary-color);
+  content: '';
+  height: 0.75rem;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 0.75rem;
+  border-radius: 50%;
+}
+
+.radio > input[type=radio]:checked:disabled + span:before {
+  background-color: var(--black-color-3);
+}
+
+.radio > input[type=radio]:disabled + span {
+  border-color: var(--black-color-3);
+}
+
+.disabled {
+  color: var(--black-color-3);
+  cursor: auto;
+}

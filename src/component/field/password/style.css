@@ -1,0 +1,99 @@
+.passwordField {
+  margin-bottom: 1rem;
+
+}
+
+.passwordField div{
+  display: flex;
+  align-items: center ;
+}
+.textPassword input {
+  padding: 0 0.5rem;
+  border: none;
+  width: 100%;
+  height: 2.5rem;
+  border: 1px solid var(--border-input);
+  border-right: none;
+  border-radius: 0.4rem;
+  -webkit-border-radius: 0.4rem;
+  -moz-border-radius: 0.4rem;
+  -ms-border-radius: 0.4rem;
+  -o-border-radius: 0.4rem;
+}
+
+.textPassword-error input {
+  padding: 0 0.5rem;
+  border: none;
+  width: 100%;
+  height: 2.5rem;
+  border: 1px solid var(--error-color);
+  border-right: none;
+  border-radius: 0.4rem;
+  -webkit-border-radius: 0.4rem;
+  -moz-border-radius: 0.4rem;
+  -ms-border-radius: 0.4rem;
+  -o-border-radius: 0.4rem;
+}
+
+.textPassword-error {
+  width: 100%;
+  height: 2.5rem;
+  border: 1px solid var(--error-color);
+  border-radius: 0.4rem;
+  -webkit-border-radius: 0.4rem;
+  -moz-border-radius: 0.4rem;
+  -ms-border-radius: 0.4rem;
+  -o-border-radius: 0.4rem;
+}
+
+
+.textPassword {
+  width: 100%;
+  height: 2.5rem;
+  border: 1px solid var(--border-input);
+  border-radius: 0.4rem;
+  -webkit-border-radius: 0.4rem;
+  -moz-border-radius: 0.4rem;
+  -ms-border-radius: 0.4rem;
+  -o-border-radius: 0.4rem;
+}
+
+.error {
+  border-color: var(--error-color);
+}
+
+.passwordField button {
+  height: 2.5rem;
+  padding: 0.2rem;
+  background-color: transparent;
+  border: none;
+  width: auto;
+}
+
+.textInput {
+  margin-bottom: 1rem;
+}
+
+.validation {
+  color: red;
+  align-self: start;
+  font-size: 0.8rem;
+}
+
+.textPassword img{
+  width: 1rem;
+}
+
+.passwordField label {
+  font-size: 0.8rem;
+}
+
+.passwordField small {
+  color: var(--error-color);
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1rem;
+}
+
+
+

@@ -1,0 +1,78 @@
+.wrapper-register {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 0.7fr 1fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.register-text {
+  font-weight: 500;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.register-content p {
+  color: var(--text-grey);
+  margin-bottom: 2rem;
+}
+
+.register-content {
+  margin: 5rem 0;
+  justify-self: center;
+  width: 24rem;
+  align-self: center;
+
+}
+
+.login-now {
+  background-color: var(--primary-color);
+}
+
+.login-now img {
+  width: 100%;
+  height: 100vh;
+}
+
+.login-now-content {
+  padding: 0 6rem;
+  text-align: center;
+  margin-top: 18rem;
+}
+
+.login-now-header h4,
+.login-now-header p {
+  color: #ffff;
+  font-weight: 500;
+  margin-bottom: 4rem;
+}
+
+.login-now-header p {
+  color: #ffff;
+  font-weight: normal;
+  margin-bottom: 4rem;
+  font-size: 0.85rem;
+}
+
+.login-now-button {
+  margin: 0 auto;
+  width: 10rem;
+}
+
+.login-now-button a{
+  width: 100%;
+  background-color: transparent;
+  border: 0.1rem solid #FFFF;
+  color: #ffff;
+  padding: 0.5rem 3.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 0.3rem;
+  -webkit-border-radius: 0.3rem;
+  -moz-border-radius: 0.3rem;
+  -ms-border-radius: 0.3rem;
+  -o-border-radius: 0.3rem;
+}
+
+

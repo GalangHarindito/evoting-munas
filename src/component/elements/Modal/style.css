@@ -1,0 +1,15 @@
+.modal-global {
+  background-color: #ffffff;
+  box-shadow: var(--box-shadow-large);
+  border-radius: 0.25rem;
+  margin: auto;
+  margin: 1rem auto;
+  max-height: 90%;
+  max-width: 80%;
+  overflow-y: auto;
+  padding: 2.5rem;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 34.625rem;
+}

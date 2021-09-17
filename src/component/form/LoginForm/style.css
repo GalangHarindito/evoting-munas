@@ -1,0 +1,40 @@
+.loginForm section{
+  margin-bottom: 1rem;
+}
+
+.form-button {
+  width: 10rem;
+  margin: 0 auto;
+}
+
+.loginForm a {
+  display: flex;
+  justify-content: flex-end;
+  color: var(--primary-color);
+  font-size: 0.8rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.error-message-login {
+  color: var(--error-color);
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1rem;
+}
+
+.error-group-login {
+  position: absolute;
+  /*animation: fade-in 5s ease-in-out;
+  background-color: var(--error-color);*/
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  -webkit-border-radius: 0.4rem;
+  -moz-border-radius: 0.4rem;
+  -ms-border-radius: 0.4rem;
+  -o-border-radius: 0.4rem;
+  /*-webkit-animation: fade-in 5s ease-in-out;*/
+}

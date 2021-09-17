@@ -1,0 +1,25 @@
+.global-loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+.button-loader {
+  border: 0.2rem solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 0.2rem solid #000000;
+  width: 1.3rem;
+  height: 1.3rem;
+  margin: auto;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

@@ -1,0 +1,71 @@
+.header {
+  grid-area: header;
+  padding: 3rem;
+}
+
+.header-1 > h4 {
+  font-weight: 600;
+  align-self: center;
+}
+
+.header > p {
+  font-weight: 500;
+  line-height: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: normal;
+  color: var(--text-grey);
+  margin-top: 1rem;
+}
+
+.verified-status {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--verified--green);
+  padding: 0.4rem;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+}
+
+.verified-status > p {
+  color: var(--primary-color)
+}
+
+.verified-status > img {
+  margin-right: 0.3rem;
+}
+
+.not-verified-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--verified--yellow);
+  padding: 0.4rem;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+}
+
+.not-verified-status > p {
+  color: var(--yellow-text)
+}
+
+.not-verified-status > img {
+  margin-right: 0.3rem;
+}
+
+
+.header-1 {
+display: grid;
+grid-template-columns: 1fr 0.2fr;
+grid-template-rows: 1fr;
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+align-self: center;
+}

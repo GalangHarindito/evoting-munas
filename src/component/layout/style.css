@@ -1,0 +1,97 @@
+.aside {
+  background-color: var(--page-base);
+  box-shadow: var(--box-shadow-medium);
+  flex-direction: column;
+  grid-area: aside;
+  height: 100vh;
+  padding: 0;
+  overflow-y: auto;
+  z-index: 1;
+}
+
+.aside > footer {
+  margin-top: auto;
+}
+
+.aside > footer > button {
+  background-color: transparent;
+  border: none;
+  width: 100%;
+}
+
+.aside > img {
+  height: 4rem;
+  margin: 1.5rem 0;
+  width: 100%;
+}
+
+svg:hover > #styled-element {
+  stroke: #fff;
+}
+/*
+.aside > nav > a:first-child {
+  margin-top: 3rem;
+}*/
+
+.aside > nav > a,
+.aside > footer > button {
+  align-items: center;
+  align-content: center;
+  border-radius: 0;
+  color: var(--text-color);
+  cursor: pointer;
+  display: flex;
+  font-size: 0.8rem;
+  font-weight: 610;
+  margin-bottom: 0.1rem;
+  padding: 0.9rem 2rem;
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+.aside > nav > a:hover,
+.aside > footer > button:hover {
+  background-color: var(--color-active-pagebase);
+  border-left: 0.5rem solid #CCE3F5;
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.aside > nav > a:hover > svg > path {
+  stroke: #fff;
+}
+
+.aside > nav > a:hover > svg > #icDashboard {
+  fill: #fff;
+}
+
+.aside > nav > a.active > svg > path {
+  stroke: #fff;
+}
+
+.aside > nav > a.active > svg > #icDashboard {
+  fill: #fff;
+}
+
+
+.aside > nav > a.active {
+  background-color: var(--color-active-pagebase);
+  border-left: 0.25rem solid var(--text-color);
+}
+
+.aside > nav > a > svg,
+.aside > footer > button > img {
+  margin-right: 0.5rem;
+  width: 1.1rem;
+}
+
+.main {
+  grid-area: main;
+  overflow: hidden auto;
+  padding: 2.5rem;
+  position: relative;
+}
+
+.aside > nav > a:last-child {
+  border-top: 1px solid #C4C4C4;
+}

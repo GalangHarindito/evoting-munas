@@ -1,0 +1,25 @@
+button {
+  background-color: var(--primary-color);
+  border: none;
+  padding: 0.5rem;
+  width: 100%;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ffff;
+  cursor: pointer;
+  border-radius: 0.3rem;
+  -webkit-border-radius: 0.3rem;
+  -moz-border-radius: 0.3rem;
+  -ms-border-radius: 0.3rem;
+  -o-border-radius: 0.3rem;
+}
+
+.transparent {
+  background-color: transparent;
+  border: 0.1rem solid #FFFF;
+  color: #ffff;
+}
+
+.disabled {
+  opacity: 0.5;
+}
