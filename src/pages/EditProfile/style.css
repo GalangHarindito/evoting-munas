@@ -1,0 +1,17 @@
+.editProfile > div > h4 {
+  font-weight: 500;
+}
+
+.editProfile > section:nth-child(2){
+  margin: 2rem 0;
+}
+
+.editProfile > section:nth-child(3) {
+  padding: 3rem;
+  border: 0.1px solid #EAEAEA;
+  border-radius: 0.3rem;
+  -webkit-border-radius: 0.3rem;
+  -moz-border-radius: 0.3rem;
+  -ms-border-radius: 0.3rem;
+  -o-border-radius: 0.3rem;
+}

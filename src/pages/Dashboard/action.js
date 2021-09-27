@@ -32,9 +32,13 @@ export function getProfile() {
       axios(options)
       .then((res) => {
         const { status, data } = res.data;
+        const { hasVerified, hasVoted } = data;
+
         dispatch(loadingAction(false));
         if ( status === 200 ) {
           dispatch(successAction(data, 'Profile'));
+          dispatch(successAction(hasVerified, 'hasVerifiedDashboard'));
+          dispatch(successAction(hasVoted, 'hasVotedDashboard'));
         } else {
           dispatch(failedAction('You are not allowed to access'));
         }
@@ -44,7 +48,7 @@ export function getProfile() {
         if(status === 401){
           window.location.href = '/login'
         }
-        const messageStatus = status > 401 && status <= 500 ? 'Sedang ada malah, silahkan refresh halaman' : message;
+        const messageStatus = status > 401 && status <= 500 ? 'Sedang ada masalah, silahkan refresh halaman' : message;
         toasterError(messageStatus)
         dispatch(failedAction(messageStatus));
         dispatch(loadingAction(false));

@@ -99,21 +99,13 @@ export default function Register() {
               newData['fullName']= capitalizedArray(values.fullName)
               newData['email']= values.email
               newData['angkatan']= Number(values.angkatan)
-              newData['nim']= values.nim
-              newData['nationality']= values.nationality
-              newData['identityNumber']= values.identityNumber
               newData['phoneNumber']= values.phoneNumber
               newData['gender']= values.gender
-              newData['placeOfBirth']= capitalizedArray(values.placeOfBirth)
-              newData['dateOfBirth']= values.dateOfBirth
-            //  for (var pair of newData.entries()) {
-            //    console.log(pair[0]+ ' - ' + pair[1]); 
-            //}
+              newData['nim']= values.nim
               dispatch(register(newData))
             }} 
             optionAngkatan={optionAngkatan} 
             optionGender={optionGender}
-            optionNationality={optionNationality} 
             isLoading={isLoading}
             message={message}
           />

@@ -15,4 +15,6 @@ export default {
   Dashboard: Suspensed(React.lazy(() => import('./Dashboard'))),
   Profile: Suspensed(React.lazy(() => import('./Profile'))),
   Evoting: Suspensed(React.lazy(() => import('./Evoting'))),
+  DPT: Suspensed(React.lazy(() => import('./DPT'))),
+  SUMMARY: Suspensed(React.lazy(() => import('./Summary')))
 };

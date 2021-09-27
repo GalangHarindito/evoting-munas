@@ -1,53 +1,51 @@
-import React from "react";
-import './style.css'
+import React, { useEffect } from "react";
+import './style.css';
+import imgVote from '../../assets/img-Evote.svg';
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { getStatusVote } from "../../component/elements/headers/action";
 
 export default function Evoting() {
+  const dispatch = useDispatch();
+  const { datahasVoted } = useSelector(s => s.header);
+  console.log(datahasVoted)
 
-  //  const timer = () => {
-  //  // Set the date we're counting down to
-  //  var countDownDate = new Date('Dec 18, 2021 09:00:00').getTime();
-
-  //  // Update the count down every 1 second
-  //  var x = setInterval(function () {
-  //    // Get today's date and time
-  //    var now = new Date().getTime();
-
-  //    // Find the distance between now and the count down date
-  //    var distance = countDownDate - now;
-
-  //    // Time calculations for days, hours, minutes and seconds
-  //    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  //    var hours = Math.floor(
-  //      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-  //    );
-  //    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  //    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-  //    // Display the result in the element with id='demo'
-  //    document.getElementById('evoting-launch').innerHTML =
-  //      days + ' hari : ' + hours + ' jam : ' + minutes + ' menit : ' + seconds + ' detik ';
-
-  //    // If the count down is finished, write some text
-  //    if (distance < 0) {
-  //      clearInterval(x);
-  //      document.getElementById('evoting-launch').innerHTML = 'EXPIRED';
-  //    }
-  //  }, 1000);
-  //};
-
-  //useEffect(() => {
-  //  timer()
-  //})
-
-  //timer()
+  useEffect(() => {
+    dispatch(getStatusVote())
+  },[]);
 
   return(
     <section className='evoting'>
-      <h4>Pemilihan Ketua IKATA Periode 2021 - 2025</h4>
-      <div className='countdown'>
-        <p id='evoting-launch'/>
-      </div>
-       
+      {datahasVoted? <EvoteAfter /> : <EvoteBefore />}
     </section>
   )
 }
+
+function EvoteBefore() {
+  return(
+    <section className='evoteBefore'>
+    <section >
+      <img src={imgVote} alt="" />
+    </section>
+    <section>
+      <h4>Sesi E-Voting belum tersedia untuk saat ini </h4>
+      <h4>E- Voting Ketua IKATA Periode 2021 - 2025 akan dilaksanakan pada</h4>
+      <h4>Hari Sabtu 18 Desember 2021 Pukul 09.00 - 23.59 WIB</h4>
+    </section>
+    </section>
+  )
+}
+  function EvoteAfter() {
+    return(
+      <section className='evoteAfter'>
+      <section >
+        <img src={imgVote} alt="" />
+      </section>
+      <section>
+        <h4>Anda telah melakukan E-Voting</h4>
+        <h4>Terima kasih atas pertisipasi anda menjadi DPT dan Memlih Ketua IKATA Periode 2021 -2025</h4>
+        <h4>Berjumpa kembali di MUNAS IKATA selanjutnya</h4>
+      </section>
+      </section>
+    )
+} 

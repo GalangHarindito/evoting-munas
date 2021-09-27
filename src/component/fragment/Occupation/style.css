@@ -1,0 +1,44 @@
+.occupationDpt {
+  padding: 2rem;
+  border: 0.1rem solid #EAEAEA ;
+  border-radius: 0.3rem;
+  -webkit-border-radius: 0.3rem;
+  -moz-border-radius: 0.3rem;
+  -ms-border-radius: 0.3rem;
+  -o-border-radius: 0.3rem;
+}
+
+.occupationDpt h4{
+  font-weight: 500;
+}
+
+.occupationDpt  {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 1rem;
+  grid-row-gap: 0px;
+}
+
+.occupationDpt >  .occupation-1 {
+  padding: 2rem 2rem 0rem 0;
+}
+
+.occupationDpt >  .occupation-1 > div {
+  margin-bottom: 0.5rem;
+}
+
+.occupationDpt >  .occupation-1 > div > p {
+  padding: 0.3rem 0.3rem 0.3rem 0;
+}
+
+.occupationDpt > .occupation-1 > div > p:last-child {
+  padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+  background-color: #F4F4F4;
+  width: 100%;
+  border-radius: 0.3rem  ;
+  -webkit-border-radius: 0.3rem  ;
+  -moz-border-radius: 0.3rem  ;
+  -ms-border-radius: 0.3rem  ;
+  -o-border-radius: 0.3rem  ;
+}

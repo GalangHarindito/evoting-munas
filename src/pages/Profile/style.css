@@ -1,0 +1,37 @@
+.gr-1 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.gr-1 > h4{
+  font-weight: normal;
+}
+
+.profile-dpt > h4 {
+  font-weight: 500;
+}
+
+.profile-dpt a{
+  justify-self: self-end;
+  width: 30%;
+  text-align: center;
+  background-color: transparent;
+  border: 0.1rem solid var(--primary-color);
+  color: var(--primary-color);
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 0.3rem;
+  -webkit-border-radius: 0.3rem;
+  -moz-border-radius: 0.3rem;
+  -ms-border-radius: 0.3rem;
+  -o-border-radius: 0.3rem;
+}
+
+.buttonLink {
+  justify-self: self-end;
+}
+

@@ -4,5 +4,8 @@ export const routes = {
   FORGOTPASSWORD: () => { return `/forgot-password`; },
   DASHBOARD: () => { return `/`; },
   PROFILE: () => { return `/profile`; },
-  EVOTING: () => { return `/e-voting`; }
+  EDITPROFILE: () => { return `/profile?profileEdit=true`},
+  EVOTING: () => { return `/e-voting` },
+  DPT: () => { return `/dpt` },
+  SUMMARY: () => { return `/summary-dpt` },
 };

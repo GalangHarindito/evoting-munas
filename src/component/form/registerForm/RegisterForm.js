@@ -6,13 +6,12 @@ import Text from "../../field/text/Text";
 import Select from "../../field/select/Select";
 import RadioGroup from "../../field/radioGroup/RadioGroup";
 import ModalInfo from "../../elements/ModalInfo";
+import { angkatanKuliah } from "../../../utils/format";
 
 export default function RegisterForm(props) {
   const {
     handleSubmit,
-    optionAngkatan,
     optionGender,
-    optionNationality,
     isLoading,
   } = props;
   const [disabled, setDisabled] = useState(true);
@@ -27,7 +26,7 @@ export default function RegisterForm(props) {
         <Field component={Text} label='Nama Lengkap' name='fullName' />
       </section>
 
-      <label className='label-phone'>Nomer Handphone</label>
+      <label className='label-phone'>Nomer Handphone (WhatsApp aktif)</label>
       <section>
         <Field component={Text} label='' name='phoneNumber' />
       </section>
@@ -37,34 +36,7 @@ export default function RegisterForm(props) {
         <Field component={Text} label='Email' name='email' />
       </section>
       <section>
-        <Field component={Text} label='Nomer Induk Mahasiswa (opsional)' name='nim' />
-      </section>
-      <section>
-        <Field
-          component={Text}
-          label='NIK KTP / PASPOR'
-          name='identityNumber'
-        />
-      </section>
-      <section>
-        <Field component={Text} label='Tempat Lahir' name='placeOfBirth' />
-      </section>
-      <section>
-        <Field
-          component={Text}
-          label='Tanggal Lahir'
-          name='dateOfBirth'
-          type='date'
-        />
-      </section>
-      <section>
-        <Field
-          component={Select}
-          label={"Kewarganegaraan"}
-          name='nationality'
-          options={optionNationality}
-          inputProps={{ placeholder: "" }}
-        />
+        <Field component={Text} label='Nomer Induk Mahasiswa' name='nim' />
       </section>
 
       <div className='group-1'>
@@ -73,7 +45,7 @@ export default function RegisterForm(props) {
             component={Select}
             label='Angkatan'
             name='angkatan'
-            options={optionAngkatan}
+            options={angkatanKuliah}
             inputProps={{ placeholder: "" }}
           />
         </section>
@@ -89,7 +61,7 @@ export default function RegisterForm(props) {
       <section className='checkbox-syarat'>
           
          <input type="checkbox" onChange={handleDisabled} style={{margin: 'auto'}} /> 
-         <label >Saya menyutujui, <span style={{marginBottom:'0rem', fontSize:'0.8rem', cursor:'pointer', fontWeight:'500', color:'black', justifySelf :'center'}} onClick={() => setOpenResponse(true)}>Kebijakan Privasi</span></label>
+         <label >Saya menyutujui, <span style={{marginBottom:'0rem', fontSize:'0.8rem', cursor:'pointer', fontWeight:'500', color:'black', justifySelf :'center', textDecoration:'underline'}} onClick={() => setOpenResponse(true)}>Kebijakan Privasi</span></label>
         </section>
       <section className='form-button'>
        

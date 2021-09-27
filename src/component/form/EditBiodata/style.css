@@ -1,0 +1,30 @@
+.editBiodataForm > section {
+  margin-bottom: 1.5rem;
+}
+
+.editBiodataForm > .group-1 {
+  display: grid;
+grid-template-columns: 0.6fr 1fr;
+grid-template-rows: 1fr;
+grid-column-gap: 2rem;
+grid-row-gap: 0px
+
+}
+
+.editBiodataForm > .form-button {
+  margin-top: 2rem;
+}
+
+.image-profile {
+  width: 13rem;
+  height: 13rem;
+  border-radius: 50%; /*don't forget prefixes*/
+  /* as mentioned by Vad: */
+  background-size: cover;
+}
+
+.form-button{
+  width: 14rem;
+  margin: 0 auto;
+  
+}

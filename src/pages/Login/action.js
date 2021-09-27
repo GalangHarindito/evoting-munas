@@ -38,7 +38,12 @@ export function login(data) {
           setToken(accessToken);
           setUserData(data.data);
           dispatch(loginFailedAction(''));
-          window.location.href = '/';
+          if(data.data.role === 'ROLE_DPT'){
+            window.location.href = '/';
+          }
+          if(data.data.role === 'ROLE_VERIFIER'){
+            window.location.href = '/dpt';
+          }
         } else {
           dispatch(loginFailedAction('You are not allowed to access'));
         }

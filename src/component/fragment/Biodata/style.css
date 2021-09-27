@@ -1,0 +1,62 @@
+.biodataDpt {
+  padding: 2rem;
+  border: 0.1rem solid #EAEAEA ;
+  border-radius: 0.3rem;
+  -webkit-border-radius: 0.3rem;
+  -moz-border-radius: 0.3rem;
+  -ms-border-radius: 0.3rem;
+  -o-border-radius: 0.3rem;
+}
+
+.biodataDpt h4{
+  font-weight: 500;
+}
+
+.biodataDpt > div > img{
+  width: 15%;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.biodataDpt > section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 1rem;
+  grid-row-gap: 0px;
+}
+
+.biodataDpt > section > .biodata-1 {
+  padding: 2rem 2rem 0rem 0;
+}
+
+.biodataDpt > section  .biodata-1 > div {
+  margin-bottom: 0.5rem;
+}
+
+.biodataDpt > section  .biodata-1 > div > p {
+  padding: 0.3rem 0.3rem 0.3rem 0;
+}
+
+.biodataDpt > section  .biodata-1 > div > p:last-child {
+  padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+  background-color: #F4F4F4;
+  width: 100%;
+  border-radius: 0.3rem  ;
+  -webkit-border-radius: 0.3rem  ;
+  -moz-border-radius: 0.3rem  ;
+  -ms-border-radius: 0.3rem  ;
+  -o-border-radius: 0.3rem  ;
+}
+
+.profilePicture {
+  width: 13rem;
+  height: 13rem;
+  border-radius: 50%; /*don't forget prefixes*/
+  /* as mentioned by Vad: */
+  background-size: cover;
+}
+

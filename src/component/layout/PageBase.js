@@ -4,14 +4,11 @@ import Headers from '../../component/elements/headers';
 import { routes } from '../../configs/index';
 import { clearStorages } from '../../utils/storage';
 import './style.css';
-import logo from '../../assets/img-munas-1.svg';
+import logo from '../../assets/img-munas-1.png';
 import { getUserData } from '../../utils/storage';
 
-
-
-
-
 export default function PageBase({ children }) {
+
   useEffect(() => {
     const app = document.getElementById('root');
     app.className = 'pagebase';
@@ -20,10 +17,6 @@ export default function PageBase({ children }) {
   const { pathname } = useLocation();
   const path = pathname.split('/')[1];
   const [dataUser] = useState(getUserData);
-  console.log(path)
-  // if (path === 'dashboard' || path === 'home' || !path) {
-  //   path = 'loan';
-  // }
 
   const logOut = () => {
     clearStorages();
@@ -49,21 +42,36 @@ const svgEvoting = <svg width="28" height="28" viewBox="0 0 28 28" fill="none" x
 <path d="M19.4 16.1313V19.9055" stroke="#68AE29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M19.4666 2.33337H8.53331C4.7222 2.33337 2.33331 5.03081 2.33331 8.84939V19.1507C2.33331 22.9693 4.71109 25.6667 8.53331 25.6667H19.4666C23.2889 25.6667 25.6666 22.9693 25.6666 19.1507V8.84939C25.6666 5.03081 23.2889 2.33337 19.4666 2.33337Z" stroke="#68AE29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
-  
-  const navs = [
-    { name: 'Dashboard', image: svgDashboard, link: '/', linkTo: `/`},
-    { name: 'Profile', image: svgDashboard, link: `/profile`, linkTo: `/profile?id=${dataUser.id}`},
-    { name: 'E-Voting', image: svgEvoting, link: '/e-voting'},
-    { name: 'Keluar', image: svgLogOut, func:logOut }
-  ];
 
+let navsDpt = [
+  { name: 'Dashboard', image: svgDashboard, link: '/', linkTo: `/`},
+  { name: 'Profile', image: svgDashboard, link: `/profile`, linkTo: `/profile?id=${dataUser.id}`},
+  { name: 'E-Voting', image: svgEvoting, link: '/e-voting'},
+  { name: 'Keluar', image: svgLogOut, func:logOut }
+];
+
+let navsVerifier = [
+  { name: 'DPT', image: svgDashboard, link: '/dpt', linkTo: `/dpt`},
+  { name: 'Summary', image: svgDashboard, link: `/summary-dpt`, linkTo: `/profile?id=${dataUser.id}`},
+  { name: 'Keluar', image: svgLogOut, func:logOut }
+];
+
+const menu = () => {
+  if(dataUser.role === 'ROLE_DPT'){
+    return navsDpt
+  }
+  if(dataUser.role === 'ROLE_VERIFIER'){
+    return navsVerifier
+  }
+} 
+console.log(menu())
   return (
     <>
       <Headers />
       <aside className={'aside'}>
         <img src={logo} alt="logo" />
         <nav>
-          {navs.map((n, idx) => (
+          {menu().map((n, idx) => (
             <Link
               className={`/${path}`=== n.link ? 'active' : ''}
               key={idx}

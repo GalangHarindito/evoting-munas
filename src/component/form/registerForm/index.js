@@ -7,12 +7,8 @@ const initialValues = {
   email: '',
   angkatan : '',
   nim : '',
-  nationality : '',
-  identityNumber : '',
   phoneNumber : '',
   gender : '',
-  placeOfBirth : '',
-  dateOfBirth : '',
 };
 
 export default reduxForm({

@@ -9,3 +9,53 @@
 .countdown p{
   font-size: 1.5rem;
 }
+
+.evoteBefore{
+  display: flex;
+  flex-direction: column;
+  padding: 5rem;
+}
+
+.evoteBefore > section:first-child {
+  margin: 0 auto;
+}
+
+.evoteBefore > section > img {
+  width: 20rem;
+}
+
+.evoteBefore > section > h4 {
+  font-weight: normal;
+  text-align: center;
+  line-height: 3rem;
+}
+
+.evoteBefore > section > h4:last-child {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.evoteAfter{
+  display: flex;
+  flex-direction: column;
+  padding: 5rem;
+}
+
+.evoteAfter > section:first-child {
+  margin: 0 auto;
+}
+
+.evoteAfter > section > img {
+  width: 20rem;
+}
+
+.evoteAfter > section > h4 {
+  font-weight: normal;
+  text-align: center;
+  line-height: 3rem;
+}
+
+.evoteAfter > section > h4:first-child {
+  font-weight: bold;
+  font-size: 2rem;
+}

@@ -1,0 +1,127 @@
+.tabHeader {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 2rem;  
+  height: 100%;
+  margin: 0 auto;
+}
+
+.item {
+  justify-self: center;
+  align-self: center;
+}
+
+.tabHeader > .item {
+  justify-self: center;
+  display: block;
+  align-self: center;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  background-color:  #F4F4F4;
+  border-radius: 0;
+  box-shadow: none;
+  width: 15rem;
+  cursor: pointer;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+}
+
+.item p{
+  text-align: center;
+  font-weight: normal;
+  color: #C4C4C4;
+}
+
+.item > p > span{
+  font-size: 0.6rem;
+  font-weight: 500;
+  background-color: #C4C4C4;
+  padding: 0.3rem 0.6rem ;
+  color: #ffff;
+  border-radius:50% ;
+  -webkit-border-radius:50% ;
+  -moz-border-radius:50% ;
+  -ms-border-radius:50% ;
+  -o-border-radius:50% ;
+}
+
+.itemActive {
+  border-bottom: 0.2rem solid var(--primary-color);
+  background-color: #E9F4DE!important;
+  color: #0000;
+}
+.itemActive p{
+  color: var(--primary-color);
+}
+
+.itemActive > p > span{
+  background-color: var(--primary-color);
+}
+
+p{
+  font-weight: 500;
+}
+
+.item:hover{
+  background-color: #E9F4DE;
+}
+
+
+@media screen and (max-width: 1200px) {
+  .item p{
+    font-size: 1rem;
+  }
+
+  .item {
+    padding: 0rem 1rem 0rem 1rem;
+    width: 8rem;
+  }
+
+  .tabHeader {
+    margin: 0 auto;
+  }
+
+  .itemActive {
+    border-bottom: 0.1rem solid var(--primary-color);
+    color: #0000;
+  }
+
+  .itemActive p{
+    font-weight: 600;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .tabHeader {
+    display: none;
+  }
+}
+
+
+@media screen and (max-width: 700px) {
+  /*.item p{
+    font-size: 0.6rem;
+  }
+
+  .item {
+    padding: 0rem 0.8rem 0rem 0.8rem;
+    width: 70%;
+  }
+
+  .tabHeader {
+    margin: 0 auto;
+  }
+
+  .itemActive {
+    border-bottom: 0.1rem solid var(--primary-color);
+    color: #0000;
+  }
+
+  .itemActive p{
+    font-weight: 600;
+  }*/
+  .tabHeader {
+    display: none;
+  }
+}

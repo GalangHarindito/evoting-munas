@@ -3,7 +3,7 @@ import "./style.css";
 
 export default function Text(props) {
   const { className, input, inputProps, label, lined,
-    meta, rules, startAdornment, endAdornment, type  } = props;
+    meta, rules, startAdornment, endAdornment, type, disabled  } = props;
   let { active, dirty, error, touched } = meta;
 
   error = error || rules;
@@ -23,7 +23,7 @@ export default function Text(props) {
     {label && <label>{label}</label>}
     <div>
       {startAdornment && adornment(startAdornment) && (<span>{startAdornment}</span>)}
-      <input id={input.name} {...input} {...inputProps} type={typeInput} />
+      <input id={input.name} {...input} {...inputProps} type={typeInput} disabled={disabled} />
       {endAdornment && adornment(endAdornment) && (<span>{endAdornment}</span>)}
     </div>
     {!!error && (dirty || touched) && <small>{error}</small>}

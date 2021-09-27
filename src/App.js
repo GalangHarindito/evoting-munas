@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Provider } from "react-redux";
 import {
   BrowserRouter as Router,
@@ -9,10 +9,11 @@ import { routes } from "./configs";
 import AppContextProvider from "./contexts";
 import pages from './pages';
 import PageBase from "./component/layout/PageBase";
-import {getToken} from "./utils/storage";
+import {getToken, getUserData} from "./utils/storage";
 import 'react-toastify/dist/ReactToastify.css';
 
 function App({ history, store }) {
+  const [dataUser] = useState(getUserData);
 
   if (window.location.pathname!== '/login' && window.location.pathname!=='/sign-up') {
     if (!getToken()) {
@@ -22,8 +23,10 @@ function App({ history, store }) {
   //    clearStorages();
   //    window.location.href = routes.LOGIN;
   //  }
-  } else if (window.location.pathname===routes.LOGIN && getToken()){
-    window.location.href = routes.DASHBOARD;
+  } else if (window.location.pathname===routes.LOGIN && getToken() && dataUser.role === 'ROLE_DPT'){
+    window.location.href = routes.DASHBOARD();
+  } else if (window.location.pathname===routes.LOGIN && getToken() && dataUser.role === 'ROLE_VERIFIER'){
+    window.location.href = routes.DPT();
   }
 
   const MainPages = () => (
@@ -32,6 +35,8 @@ function App({ history, store }) {
         <Route exact path={routes.DASHBOARD()} component={pages.Dashboard} />
         <Route exact path={routes.PROFILE()} component={pages.Profile} />
         <Route exact path={routes.EVOTING()} component={pages.Evoting} />
+        <Route exact path={routes.DPT()} component={pages.DPT} />
+        <Route exact path={routes.SUMMARY()} component={pages.SUMMARY} />
       </Switch>
     </PageBase>
   );

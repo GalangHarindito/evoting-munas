@@ -7,6 +7,7 @@ const regexDate = /^((0[1-9]|[12]\d|3[01])-(0[1-9]|1[0-2])-[12]\d{3})$/;
 const regexPhone = /^\+\d{1,14}$/
 
 export default function validateInput(value, rules) {
+  //console.log(value.size)
   if (rules.find(i => i === 'required' && noValue(value)))
   {return 'Harus diisi';}
   if (rules.find(i => i === 'valid-number' && isNaN(Number(value))))
@@ -27,9 +28,9 @@ export default function validateInput(value, rules) {
   {return `Nilai minimal adalah ${Number(rules.find(i => i.includes('min-value')).replace(/[^0-9,]+/g, ''))}`;}
   if (rules.find(i => i.includes('max-value') && value > Number(i.replace(/[^0-9,]+/g, ''))))
   {return `Nilai maksimal adalah ${Number(rules.find(i => i.includes('max-value')).replace(/[^0-9,]+/g, ''))}`;}
-  if (rules.find(i => i.includes('min-size') && (value[0].size / 1024) < Number(i.replace(/[^0-9,]+/g, ''))))
+  if (rules.find(i => i.includes('min-size') && (value / 1024) < Number(i.replace(/[^0-9,]+/g, ''))))
   {return `Ukuran minimal adalah ${Number(rules.find(i => i.includes('min-size')).replace(/[^0-9,]+/g, ''))} KB`;}
-  if (rules.find(i => i.includes('max-size') && (value[0].size / 1024) > Number(i.replace(/[^0-9,]+/g, ''))))
+  if (rules.find(i => i.includes('max-size') && (value / 1024) > Number(i.replace(/[^0-9,]+/g, ''))))
   {return `Ukuran maksimal adalah ${Number(rules.find(i => i.includes('max-size')).replace(/[^0-9,]+/g, ''))} KB`;}
   //if (rules.find(i => i.includes('file-accept') && !matchVal(i, value[0].type)))
   //{return `Type File hanya ${getRules(rules.find(i => i.includes('file-accept')))}`;}

@@ -5,12 +5,8 @@ export default function validate(values) {
     fullName,
     email,
     angkatan,
-    nationality,
-    identityNumber, 
+    nim, 
     gender,
-    placeOfBirth,
-    dateOfBirth,
-    countryCode,
     phoneNumber
   } = values;
 
@@ -18,12 +14,8 @@ export default function validate(values) {
     fullName: validateInput(fullName, ['required']),
     email: validateInput(email, ['required', 'valid-email']),
     angkatan: validateInput(angkatan, ['required']),
-    nationality: validateInput(nationality, ['required']),
-    identityNumber: validateInput(identityNumber, ['required', 'valid-number']),
     gender: validateInput(gender, ['required']),
-    placeOfBirth: validateInput(placeOfBirth, ['required']),
-    dateOfBirth: validateInput(dateOfBirth, ['required']),
-    countryCode: validateInput(countryCode, ['required']),
+    nim: validateInput(nim, ['required', 'valid-number']),
     phoneNumber: validateInput(phoneNumber, ['required','valid-number', 'valid-phone'])
   };
 }

@@ -1,0 +1,116 @@
+.root {
+  margin-bottom: 1.5rem;
+  margin-right: 2.5rem;
+}
+
+.root > div > img {
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+.root > label {
+  color: var(--light-text-color);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1rem;
+}
+
+.root > label > a {
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+.root > section {
+  background-color: white;
+  border: 0.0625rem solid var(--ultra-light-text-color);
+  border-radius: 0.25rem;
+  position: relative;
+  margin-top: 0.625rem;
+  padding: 1rem 0.5rem;
+  width: 100%;
+}
+
+.root.focus > section {
+  border-color: var(--secondary-color);
+}
+
+.root.error > section {
+  border-color: var(--error-color);
+}
+
+.root.error > small {
+  color: var(--error-color);
+}
+
+.root > section > p {
+  color: var(--text-color);
+  font-size: 0.875rem;
+  font-weight: 450;
+  line-height: 1rem;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 70%;
+}
+
+.root > section > input {
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.root > section > input:disabled {
+  background-color: var(--grey-color);
+}
+
+.root > section::before {
+  background-color: var(--primary-color);
+  border-radius: 0.25rem;
+  color: #ffffff;
+  content: "Upload";
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1rem;
+  margin-bottom: -0.5rem;
+  margin-top: -0.5rem;
+  padding: 0.5rem 1rem;
+}
+
+/*.root > section::after {
+  background: url('/assets/ic-approve.svg');
+  background-size: contain;
+  content: "";
+  height: 1.5rem;
+  opacity: 1;
+  position: absolute;
+  right: -2rem;
+  top: 0.75rem;
+  width: 1.5rem;
+}*/
+
+.root.empty > section::after {
+  opacity: 0;
+}
+
+.root.empty > section > p {
+  color: var(--light-text-color);
+}
+
+.root > small {
+  color: var(--light-text-color);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.root > small > small {
+  color: var(--error-color);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
