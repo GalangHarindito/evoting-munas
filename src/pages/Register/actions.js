@@ -39,7 +39,6 @@ export function register(data) {
         }
       })
       .catch(err => {
-        console.log(err.response.data)
         const { status, message } = err.response.data
         const messageStatus = status >= 400 && status < 500 ? err.message[0].msg : message;
         for(let i in messageStatus){

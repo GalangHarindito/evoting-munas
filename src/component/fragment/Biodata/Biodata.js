@@ -1,10 +1,9 @@
 import React from "react";
 import "./style.css";
-import noImage from "../../../assets/blank-person.svg";
+import noImage from "../../../assets/blank-person2.svg";
 
 export default function Biodata(props) {
   const { data, profile } = props;
-  console.log(data.photo)
   const { account } = profile;
   const gender = value => {
     switch (value) {

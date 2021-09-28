@@ -60,11 +60,18 @@ svg:hover > #styled-element {
   stroke: #fff;
 }
 
+.aside > nav > a:hover > svg > ellipse {
+  stroke: #fff;
+}
+
 .aside > nav > a:hover > svg > #icDashboard {
   fill: #fff;
 }
 
 .aside > nav > a.active > svg > path {
+  stroke: #fff;
+}
+.aside > nav > a.active > svg > ellipse {
   stroke: #fff;
 }
 

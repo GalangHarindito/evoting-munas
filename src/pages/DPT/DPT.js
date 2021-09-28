@@ -7,7 +7,6 @@ import { useSelector } from 'react-redux';
 export default function DPT() {
   const dispatch = useDispatch();
   const { data, message, isLoading } = useSelector(s => s.dpt)
-  console.log(data)
   useEffect(() => {
     dispatch(getAllDPT())
   },[])

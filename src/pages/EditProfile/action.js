@@ -9,6 +9,7 @@ export function getProfile() {
   
   return dispatch => {
     dispatch(loadingAction(true));
+    dispatch(failedAction(''));
 
       const options = {
         method: 'GET',
@@ -246,7 +247,7 @@ export function fetchUpdateOccupation(payload) {
         if(status === 401){
           window.location.href = '/login'
         }
-        const messageStatus = status === 400 ?  message : 'Sedang ada masalah, silahkan coba kembali' ;
+        const messageStatus = status === 400 || status === 500 ?  message : 'Sedang ada masalah, silahkan coba kembali' ;
         toasterError(messageStatus)
         dispatch(failedAction(messageStatus));
         dispatch(loadingAction(false, 'Occupation'));

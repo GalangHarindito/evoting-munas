@@ -4,6 +4,7 @@ import './style.css'
 export default function Select(props){
   const { className, input, inputProps, meta, options, label } = props;
   const { dirty, error, touched } = meta;
+  console.log(meta)
   const classes = [
     'inputSelect',
     //(!!input.value || !!inputProps.value) || 'empty',
@@ -53,7 +54,7 @@ export default function Select(props){
         </select>
         {inputProps.helper && <p className='helper'>{inputProps.helper}</p>}
       </div>
-      {!!error && (dirty || touched) && <small className='error'>{error}</small>}
+      {!!error && (dirty || touched ) && <small className='error'>{error}</small>}
     </div>
   );
 }

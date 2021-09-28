@@ -43,16 +43,21 @@ const svgEvoting = <svg width="28" height="28" viewBox="0 0 28 28" fill="none" x
 <path fill-rule="evenodd" clip-rule="evenodd" d="M19.4666 2.33337H8.53331C4.7222 2.33337 2.33331 5.03081 2.33331 8.84939V19.1507C2.33331 22.9693 4.71109 25.6667 8.53331 25.6667H19.4666C23.2889 25.6667 25.6666 22.9693 25.6666 19.1507V8.84939C25.6666 5.03081 23.2889 2.33337 19.4666 2.33337Z" stroke="#68AE29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
 
+const svgProfile=<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="13.5088" cy="8.49087" rx="5.57437" ry="5.57437" stroke="#68AE29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M4.66671 21.818C4.66521 21.4261 4.75285 21.039 4.923 20.686C5.45694 19.6181 6.96266 19.0522 8.21209 18.7959C9.11318 18.6036 10.0267 18.4751 10.9459 18.4114C12.6477 18.2619 14.3593 18.2619 16.0611 18.4114C16.9802 18.4758 17.8936 18.6043 18.7949 18.7959C20.0443 19.0522 21.55 19.5647 22.0839 20.686C22.4261 21.4056 22.4261 22.241 22.0839 22.9606C21.55 24.0819 20.0443 24.5945 18.7949 24.8401C17.8948 25.0404 16.981 25.1724 16.0611 25.2352C14.6759 25.3526 13.2844 25.3741 11.8963 25.2993C11.5759 25.2993 11.2662 25.2993 10.9459 25.2352C10.0294 25.1732 9.11906 25.0411 8.22277 24.8401C6.96266 24.5945 5.46762 24.0819 4.923 22.9606C4.75372 22.6035 4.66616 22.2132 4.66671 21.818Z" stroke="#68AE29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
 let navsDpt = [
   { name: 'Dashboard', image: svgDashboard, link: '/', linkTo: `/`},
-  { name: 'Profile', image: svgDashboard, link: `/profile`, linkTo: `/profile?id=${dataUser.id}`},
+  { name: 'Profile', image: svgProfile, link: `/profile`, linkTo: `/profile?id=${dataUser.id}`},
   { name: 'E-Voting', image: svgEvoting, link: '/e-voting'},
   { name: 'Keluar', image: svgLogOut, func:logOut }
 ];
 
 let navsVerifier = [
-  { name: 'DPT', image: svgDashboard, link: '/dpt', linkTo: `/dpt`},
   { name: 'Summary', image: svgDashboard, link: `/summary-dpt`, linkTo: `/profile?id=${dataUser.id}`},
+  { name: 'DPT', image: svgProfile, link: '/dpt', linkTo: `/dpt`},
   { name: 'Keluar', image: svgLogOut, func:logOut }
 ];
 
@@ -64,7 +69,6 @@ const menu = () => {
     return navsVerifier
   }
 } 
-console.log(menu())
   return (
     <>
       <Headers />

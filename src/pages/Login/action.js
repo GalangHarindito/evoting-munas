@@ -42,7 +42,7 @@ export function login(data) {
             window.location.href = '/';
           }
           if(data.data.role === 'ROLE_VERIFIER'){
-            window.location.href = '/dpt';
+            window.location.href = '/summary-dpt';
           }
         } else {
           dispatch(loginFailedAction('You are not allowed to access'));

@@ -7,7 +7,6 @@ const regexDate = /^((0[1-9]|[12]\d|3[01])-(0[1-9]|1[0-2])-[12]\d{3})$/;
 const regexPhone = /^\+\d{1,14}$/
 
 export default function validateInput(value, rules) {
-  //console.log(value.size)
   if (rules.find(i => i === 'required' && noValue(value)))
   {return 'Harus diisi';}
   if (rules.find(i => i === 'valid-number' && isNaN(Number(value))))

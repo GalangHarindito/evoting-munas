@@ -7,13 +7,12 @@ import Select from "../../field/select/Select";
 import RadioGroup from "../../field/radioGroup/RadioGroup";
 import ImageField from "../../field/Image/Image";
 import { useSelector } from "react-redux";
-import imageEmpty from '../../../assets/no-image.png';
+import imageEmpty from '../../../assets/blank-person2.svg';
 import { angkatanKuliah } from "../../../utils/format";
 import { fileAccept } from '../../../utils/format'
 
 export default function EditBiodataForm (props) {
   const { 'editBiodataForm':dataForm } = useSelector(s => s.form);
-  //console.log(dataForm)
  
   const [size, setSize] = useState(false)
 

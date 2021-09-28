@@ -17,7 +17,6 @@ export default function EditProfile() {
   const history = useHistory();
   const { dataBiodata, dataAccount, dataAddress,dataOccupation, dataPropinsi, dataKabupaten, dataKecamatan, message, isLoadingBiodata, isLoadingAddress, isLoadingOccupation } = useSelector((s) => s.editProfile);
   const { propinsiId, kabupatenId } = dataAddress;
-  console.log(dataOccupation)
   const optionAngkatan = [];
   const [size, setSize] = useState(true);
 
@@ -135,7 +134,6 @@ function Content() {
     return (
       <EditBiodataForm
       onSubmit={(values) => {
-        console.log(typeof values.photo)
         const newData = new FormData
         newData.append('fullName', capitalizedArray(values.fullName)) 
         newData.append('email', values.email) 
@@ -143,13 +141,12 @@ function Content() {
         newData.append('nim', values.nim) 
         newData.append('phoneNumber', values.phoneNumber) 
         newData.append('gender', values.gender) 
-        
-          if(typeof values.photo === 'string' ){
+       
+          if(typeof values.photo === 'string' || values.photo === null ){
             dispatch(fetchUpdateBiodata(newData))
       
           }
           else{
-      
              if((Number(values.photo[0].size/1024)) > 1024){
             setSize(true)
             toasterError('Ukuran File Tidak lebih dari 1MB')
@@ -215,7 +212,7 @@ isLoading={isLoadingOccupation}
     onSubmit={(values) => {
       
       //const phone = `${values.countryCode}${inputPhone(values.phoneNumber)}`
-      console.log(typeof values.photo)
+
       const newData = new FormData
       newData.append('fullName', capitalizedArray(values.fullName)) 
       newData.append('email', values.email) 

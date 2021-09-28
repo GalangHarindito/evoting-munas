@@ -8,7 +8,6 @@ export default function Tabs(props) {
 
   const history = useHistory();
   const { search } = useLocation();
-  console.log(useLocation())
   const { tab } = queryString.parse(search.replace('?', ''));
   const { edit } = queryString.parse(search.replace('?', ''));
   let activeIndex = navItems.findIndex(i => i.value === tab || i.value === edit);

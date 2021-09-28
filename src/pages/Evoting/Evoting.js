@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import './style.css';
 import imgVote from '../../assets/img-Evote.svg';
 import { useDispatch } from "react-redux";
@@ -7,16 +7,31 @@ import { getStatusVote } from "../../component/elements/headers/action";
 
 export default function Evoting() {
   const dispatch = useDispatch();
-  const { datahasVoted } = useSelector(s => s.header);
-  console.log(datahasVoted)
+  const { datahasVoted, datahasVerified } = useSelector(s => s.header);
 
   useEffect(() => {
     dispatch(getStatusVote())
   },[]);
 
+  const onTime = () => {
+    const d = Date.now();
+    const today = new Date(d);
+    const date = new Date('Dec 18 2021 03:07 GMT')
+    console.log(today.toISOString() > date.toISOString() && !datahasVerified)
+    if(today.toISOString() > date.toISOString() && datahasVerified){
+      return <h4>Test</h4>
+    }
+    if(today.toISOString() > date.toISOString() && !datahasVerified){
+      return <EvoteNotVerified />
+    }
+    else{
+      return <EvoteBefore />
+    }
+  }
+ 
   return(
     <section className='evoting'>
-      {datahasVoted? <EvoteAfter /> : <EvoteBefore />}
+      {datahasVoted? <EvoteAfter /> : onTime()}
     </section>
   )
 }
@@ -48,4 +63,18 @@ function EvoteBefore() {
       </section>
       </section>
     )
+} 
+
+function EvoteNotVerified() {
+  return(
+    <section className='evoteAfter'>
+    <section >
+      <img src={imgVote} alt="" />
+    </section>
+    <section>
+      <h4>Akun Anda Belum Terverifikasi</h4>
+      <h4>Untuk melakukan E-Voting Silahkan Menghubungi Panitia</h4>
+    </section>
+    </section>
+  )
 } 

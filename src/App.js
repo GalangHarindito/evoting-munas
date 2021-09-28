@@ -26,7 +26,7 @@ function App({ history, store }) {
   } else if (window.location.pathname===routes.LOGIN && getToken() && dataUser.role === 'ROLE_DPT'){
     window.location.href = routes.DASHBOARD();
   } else if (window.location.pathname===routes.LOGIN && getToken() && dataUser.role === 'ROLE_VERIFIER'){
-    window.location.href = routes.DPT();
+    window.location.href = routes.SUMMARY();
   }
 
   const MainPages = () => (

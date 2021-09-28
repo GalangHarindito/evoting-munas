@@ -26,7 +26,7 @@ export default function Text(props) {
       <input id={input.name} {...input} {...inputProps} type={typeInput} disabled={disabled} />
       {endAdornment && adornment(endAdornment) && (<span>{endAdornment}</span>)}
     </div>
-    {!!error && (dirty || touched) && <small>{error}</small>}
+    {!!error && (dirty || touched || active) && <small>{error}</small>}
   </div>
 );
 }

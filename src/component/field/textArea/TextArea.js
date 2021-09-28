@@ -5,7 +5,6 @@ export default function TextArea(props) {
   const { className, input, inputProps, label, lined,
     meta, rules, type, disabled, rows, cols  } = props;
   let { active, dirty, error, touched } = meta;
-  console.log(meta)
 
   error = error || rules;
 

@@ -11,6 +11,7 @@ import Tabs from "../../component/elements/tabs/Tabs";
 import { useHistory, useLocation } from "react-router";
 import Button from "../../component/elements/button";
 import EditProfile from "../EditProfile";
+import Loaders from "../../component/elements/loaders/Loaders";
 
 export default function Profile() {
   const history = useHistory();
@@ -40,11 +41,6 @@ export default function Profile() {
     tabsName: "tab",
   };
 
-  const onClick = () => () => {
-    const newQuery = queryString.stringify({ profileEdit: true });
-    history.push(`?${newQuery}`);
-  };
-
   const { edit } = queryString.parse(search.replace("?", ""));
 
   return (
@@ -60,11 +56,13 @@ export default function Profile() {
           <br />
           <Tabs data={data} />
           <br />
+          {isLoading && <Loaders use='global' />}
+          
           {/*<div className='drop-down'>
           <p>Profile :</p>
           <DropDown id='dropDown' data= {data} />
         </div>*/}
-          <Content />
+          {!isLoading && <Content />}
         </div>
       </section>
     }
