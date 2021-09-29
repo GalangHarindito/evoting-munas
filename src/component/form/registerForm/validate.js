@@ -5,7 +5,6 @@ export default function validate(values) {
     fullName,
     email,
     angkatan,
-    nim, 
     gender,
     phoneNumber
   } = values;
@@ -15,7 +14,6 @@ export default function validate(values) {
     email: validateInput(email, ['required', 'valid-email']),
     angkatan: validateInput(angkatan, ['required']),
     gender: validateInput(gender, ['required']),
-    nim: validateInput(nim, ['required', 'valid-number']),
     phoneNumber: validateInput(phoneNumber, ['required','valid-number', 'valid-phone'])
   };
 }

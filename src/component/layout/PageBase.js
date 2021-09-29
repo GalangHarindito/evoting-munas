@@ -10,6 +10,7 @@ import { getUserData } from '../../utils/storage';
 export default function PageBase({ children }) {
 
   useEffect(() => {
+   
     const app = document.getElementById('root');
     app.className = 'pagebase';
   }, []);
@@ -69,12 +70,24 @@ const menu = () => {
     return navsVerifier
   }
 } 
+const [menuBar, setMenuBar] = useState(false);
+const menuButton = () => {
+  setMenuBar(!menuBar);
+};
   return (
     <>
       <Headers />
       <aside className={'aside'}>
-        <img src={logo} alt="logo" />
-        <nav>
+        <div>
+           <img src={logo} alt="logo" />
+        <div className={`bar-menu ${menuBar? 'change' : ''}`} onClick={() => menuButton()}>
+          <div className='bar1'></div>
+          <div className='bar2'></div>
+          <div className='bar3'></div>
+        </div>
+        </div>
+       
+        <nav className={menuBar? 'block' : 'none'}>
           {menu().map((n, idx) => (
             <Link
               className={`/${path}`=== n.link ? 'active' : ''}

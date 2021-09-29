@@ -55,3 +55,14 @@
   color: var(--black-color-3);
   cursor: auto;
 }
+
+@media screen and (max-width: 700px) {
+  .radio > span {
+    height: 0.865rem;
+    width: 0.865rem;
+}
+.radio > input[type=radio]:checked + span:before {
+  height: 0.5rem;
+  width: 0.5rem;
+}
+}

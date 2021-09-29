@@ -86,7 +86,7 @@ export default function EditBiodataForm (props) {
         <Field component={Text} label='Email' name='email' disabled={true} />
       </section>
       <section>
-        <Field component={Text} label='Nomer Induk Mahasiswa' name='nim' />
+        <Field component={Text} label='Nomer Induk Mahasiswa (Opsional)' name='nim' />
       </section>
       <div className='group-1'>
         <section>

@@ -4,7 +4,7 @@ import './style.css'
 export default function Select(props){
   const { className, input, inputProps, meta, options, label } = props;
   const { dirty, error, touched } = meta;
-  console.log(meta)
+
   const classes = [
     'inputSelect',
     //(!!input.value || !!inputProps.value) || 'empty',

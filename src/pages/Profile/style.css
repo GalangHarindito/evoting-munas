@@ -7,7 +7,7 @@
 }
 
 .gr-1 > h4{
-  font-weight: normal;
+  font-weight: 500;
 }
 
 .profile-dpt > h4 {
@@ -35,3 +35,40 @@
   justify-self: self-end;
 }
 
+.label-menu{
+  display: none;
+}
+.select-tabheader {
+  display: none;
+}
+
+
+@media screen and (max-width: 700px) {
+  .gr-1 > h4{
+    font-size: 1.2rem;
+  }
+  .select-tabheader {
+    display: block;
+    width: 100%;
+  height: 2.5rem;
+  border: 1px solid var(--border-input);
+  background-color: #ffff;
+  padding: 0 0.5rem;
+  font-size: 0.856rem;
+  border-radius: 0.4rem;
+  -webkit-border-radius: 0.4rem;
+  -moz-border-radius: 0.4rem;
+  -ms-border-radius: 0.4rem;
+  -o-border-radius: 0.4rem;
+}
+  
+  .select-tabheader > option {
+    font-size: 0.865rem;
+  }
+
+  .label-menu {
+    font-size: 0.865rem;
+    display: block;
+  }
+
+}

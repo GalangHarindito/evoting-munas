@@ -8,7 +8,7 @@ export default function RadioGroup(props) {
   const classes = ["radio-group", !!error && (dirty || touched) && 'error', className].filter(Boolean).join(" ");
 
   return (
-    <div className='wrapper-radio'>
+    <div className='wrapper-radio' style={{marginTop: '0.4rem'}}>
       <div className={classes}>
         <label>{label}</label>
         {options.map((option, idx) => {

@@ -30,6 +30,7 @@
 .item p{
   text-align: center;
   font-weight: normal;
+  font-size: 1rem;
   color: #C4C4C4;
 }
 
@@ -68,7 +69,7 @@ p{
 }
 
 
-@media screen and (max-width: 1200px) {
+/*@media screen and (max-width: 1200px) {
   .item p{
     font-size: 1rem;
   }
@@ -96,7 +97,7 @@ p{
   .tabHeader {
     display: none;
   }
-}
+}*/
 
 
 @media screen and (max-width: 700px) {

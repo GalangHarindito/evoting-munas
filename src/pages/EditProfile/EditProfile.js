@@ -15,9 +15,10 @@ import Button from "../../component/elements/button/Button";
 export default function EditProfile() {
   const dispatch = useDispatch()
   const history = useHistory();
-  const { dataBiodata, dataAccount, dataAddress,dataOccupation, dataPropinsi, dataKabupaten, dataKecamatan, message, isLoadingBiodata, isLoadingAddress, isLoadingOccupation } = useSelector((s) => s.editProfile);
+  const { pathname, search } = useLocation();
+  const {dataAddress, message } = useSelector((s) => s.editProfile);
   const { propinsiId, kabupatenId } = dataAddress;
-  const optionAngkatan = [];
+  const { lastPage } = useSelector(s => s.profile)
   const [size, setSize] = useState(true);
 
   useEffect(() => {
@@ -49,16 +50,40 @@ export default function EditProfile() {
     navValues: ["biodata", "address", "occupation"],
     tabsName: "edit",
   };
+  const [route, setRoute] = useState('');
+  const nav = [
+    { name: "Biodata", value:'/profile?edit=biodata'},
+    { name: "Alamat", value:'/profile?edit=address'},
+    { name: "Pekerjaan", value:'/profile?edit=occupation'}
+  ];
 
   return (
     <>
       <section className='editProfile'>
       <div className='gr-1'>
           <h4>Silakan lengkapi data diri Anda</h4>
-          <Button onClick={() => history.push('/profile')} label='Lihat Profile' className='buttonLink' />
+          <Button onClick={() => history.push(`${lastPage}`)} label='Lihat Profile' className='buttonLink' />
         </div>
         <section>
          <Tabs data={data}/> 
+         <label className='label-menu'>Pilih Profile:</label>
+          <select className='select-tabheader'  onChange={e => {
+            history.push(e.target.value)
+            setRoute(e.target.value)
+          }
+          
+        }
+          value={route || `${pathname}${search}`}
+          >
+            {nav.map((el,idx) => 
+              {
+                return(
+                  <>
+                  <option key={idx} value={el.value}>{el.name}</option>
+                  </>
+                )
+            })}
+          </select>
         </section>
         
         <section>

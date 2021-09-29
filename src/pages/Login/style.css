@@ -20,13 +20,13 @@
 
 .login-content {
   justify-self: center;
-  width: 24rem;
   align-self: center;
-
+  width: 24rem;
 }
 
 .register-now {
   background-color: var(--primary-color);
+
 }
 
 .register-now img {
@@ -74,3 +74,48 @@
   -o-border-radius: 0.3rem;
 }
 
+
+@media screen and (max-width: 1200px) {
+
+  .register-now-content {
+    padding: 2rem;
+    margin-top: 10rem;
+  }
+  
+  }
+
+@media screen and (max-width: 900px) {
+  .wrapper-login{
+    height: 0;
+    grid-template-columns: none;
+  }
+  .login-content {
+    padding: 2rem;
+}
+.register-now-content {
+  padding: 3rem;
+  margin-top: 0rem;
+}
+.login-content p {
+  font-size: 0.865rem;
+}
+}
+
+@media screen and (max-width: 700px) {
+  .wrapper-login{
+    height: 0;
+    grid-template-columns: none;
+  }
+  .login-content {
+    padding: 1rem;
+    width: 100%;
+}
+.register-now-content {
+  padding: 2rem;
+  margin-top: 0rem;
+}
+
+.login-content p {
+  font-size: 0.865rem;
+}
+}

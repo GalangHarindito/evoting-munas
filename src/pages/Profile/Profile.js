@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { getProfile } from "./action";
+import { getProfile, changeLastPage } from "./action";
 import queryString from "querystring";
 import "./style.css";
 import Biodata from "../../component/fragment/Biodata";
@@ -15,14 +15,15 @@ import Loaders from "../../component/elements/loaders/Loaders";
 
 export default function Profile() {
   const history = useHistory();
-  const { search } = useLocation();
+  const { pathname, search } = useLocation();
   const dispatch = useDispatch();
-  const { dataProfile, isLoading } = useSelector((s) => s.profile);
+  const { dataProfile, isLoading, lastPage } = useSelector((s) => s.profile);
   const { message } = useSelector((s) => s.editProfile);
-
   useEffect(() => {
     dispatch(getProfile());
   }, []);
+
+
 
   useEffect(() => {
     if (message === 'Data Biodata berhasil diperbaharui' || message === 'Data Alamat berhasil diperbaharui' || message === 'Data Pekerjaan berhasil diperbaharui') {
@@ -41,7 +42,14 @@ export default function Profile() {
     tabsName: "tab",
   };
 
+  const nav = [
+    { name: "Biodata", value:'/profile?tab=biodata'},
+    { name: "Alamat", value:'/profile?tab=address'},
+    { name: "Pekerjaan", value:'/profile?tab=occupation'}
+  ];
+
   const { edit } = queryString.parse(search.replace("?", ""));
+  const [route, setRoute] = useState('');
 
   return (
     <>
@@ -55,6 +63,26 @@ export default function Profile() {
 
           <br />
           <Tabs data={data} />
+          <label className='label-menu'>Pilih Profile:</label>
+          <select className='select-tabheader'  onChange={e => {
+            history.push(e.target.value)
+            dispatch(changeLastPage(e.target.value))
+            setRoute(e.target.value)
+          }
+          
+        }
+          value={route}
+          >
+            <option value=""></option>
+            {nav.map((el,idx) => 
+              {
+                return(
+                  <>
+                  <option key={idx} value={el.value}>{el.name}</option>
+                  </>
+                )
+            })}
+          </select>
           <br />
           {isLoading && <Loaders use='global' />}
           

@@ -9,11 +9,16 @@
   border: 1px solid var(--border-input);
   background-color: #ffff;
   padding: 0 0.5rem;
+  font-size: 0.856rem;
   border-radius: 0.4rem;
   -webkit-border-radius: 0.4rem;
   -moz-border-radius: 0.4rem;
   -ms-border-radius: 0.4rem;
   -o-border-radius: 0.4rem;
+}
+
+.inputSelect > option {
+  font-size:0.856rem;
 }
 
 .inputSelect:focus{

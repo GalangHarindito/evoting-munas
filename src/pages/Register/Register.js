@@ -5,7 +5,7 @@ import * as image from "../../utils/Images";
 import { Link } from "react-router-dom";
 import { useSelector,useDispatch } from "react-redux";
 import { capitalizedArray } from "../../utils/format";
-import { register, resetMessage } from "./actions";
+import { register, resetMessage, resetMessageSuccess } from "./actions";
 import { ToastContainer } from "react-toastify";
 import ModalResponse from "../../component/elements/ModalResponse";
 
@@ -30,6 +30,10 @@ export default function Register() {
   useEffect(() => {
     angkatan()
   })
+
+  useEffect(() => {
+    dispatch(resetMessageSuccess())
+  },[])
 
   const optionAngkatan = []
 

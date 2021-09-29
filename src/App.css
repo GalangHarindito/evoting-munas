@@ -4,7 +4,7 @@
   list-style: none;
   margin: 0;
   outline: none;
-  font-size: 0.875rem;
+  font-size: 1.2rem;
   padding: 0;
   color: #2A2A2A;
 }
@@ -73,7 +73,10 @@ h6 {
   height: 3rem;
   animation: spin 2s linear infinite;
 }
-
+p {
+  font-size: 0.865rem;
+  line-height: 1.3rem;
+}
 .modal-open {
   overflow: hidden;
 }
@@ -106,8 +109,10 @@ h6 {
   --yellow-text: #FA9900;
   --box-shadow-medium: 0 0.3125rem 0.9375rem rgba(74, 74, 74, 0.1);
   --color-active-pagebase: #68AE29;
-  font-size: calc(100vw * 16 / 1440);
+  font-size: calc(100vw * 16 / 1200);
 }
+
+
 
 .modal-icon {
   display: block;
@@ -155,4 +160,33 @@ h6 {
 
 .Toastify__toast-body svg {
   fill: #fff;
+}
+
+
+@media screen and (max-width: 700px) {
+  :root{
+    font-size: 1.2rem;
+  }
+
+  #root.pagebase {
+    display: grid;
+    grid-template-areas: 'aside' 'header' 'main';
+    grid-template-columns: none;
+    grid-template-rows: auto 0.1fr 1fr;
+  }
+
+  small {
+    font-size: 0.6rem;
+  }
+
+  p{
+    font-size: 0.865rem!important ;
+  }
+  h4{
+    font-size: 1rem!important
+  }
+
+  .Toastify__toast-body > div:last-child {
+    font-size: 0.865rem;
+}
 }

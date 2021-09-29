@@ -39,7 +39,7 @@ export function login(data) {
           setUserData(data.data);
           dispatch(loginFailedAction(''));
           if(data.data.role === 'ROLE_DPT'){
-            window.location.href = '/';
+            window.location.href = '/profile';
           }
           if(data.data.role === 'ROLE_VERIFIER'){
             window.location.href = '/summary-dpt';

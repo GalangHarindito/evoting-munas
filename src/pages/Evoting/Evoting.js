@@ -17,7 +17,7 @@ export default function Evoting() {
     const d = Date.now();
     const today = new Date(d);
     const date = new Date('Dec 18 2021 03:07 GMT')
-    console.log(today.toISOString() > date.toISOString() && !datahasVerified)
+    
     if(today.toISOString() > date.toISOString() && datahasVerified){
       return <h4>Test</h4>
     }
@@ -45,7 +45,7 @@ function EvoteBefore() {
     <section>
       <h4>Sesi E-Voting belum tersedia untuk saat ini </h4>
       <h4>E- Voting Ketua IKATA Periode 2021 - 2025 akan dilaksanakan pada</h4>
-      <h4>Hari Sabtu 18 Desember 2021 Pukul 09.00 - 23.59 WIB</h4>
+      <h4>Hari Jumat 17 Desember 2021 Pukul 00.00 - 23.59 WIB</h4>
     </section>
     </section>
   )

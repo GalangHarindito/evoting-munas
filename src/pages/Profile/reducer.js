@@ -8,7 +8,8 @@ const initialState = {
   dataAddress:{},
   dataOccupancy:{},
   datahasVerifiedProfile:'',
-  datahasVotedProfile:''
+  datahasVotedProfile:'',
+  lastPage:''
 };
 
 export default function reducer(state = initialState, action = {}) {

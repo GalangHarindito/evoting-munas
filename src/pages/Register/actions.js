@@ -7,6 +7,8 @@ const BASIC_URL = 'https://ikata.semoga.online/api/'
 export function register(data) {
   return dispatch => {
     dispatch(loadingAction(true));
+    dispatch(successMessageAction(''));
+    dispatch(failedAction(''))
 
       const options = {
         method: 'POST',
@@ -105,4 +107,8 @@ function successMessageAction(messageSuccess) {
 
 export function resetMessage() {
   return failedAction('');
+}
+
+export function resetMessageSuccess() {
+  return successMessageAction('');
 }

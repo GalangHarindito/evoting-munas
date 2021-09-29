@@ -21,9 +21,8 @@
 .register-content {
   margin: 5rem 0;
   justify-self: center;
-  width: 24rem;
   align-self: center;
-
+  width: 24rem;
 }
 
 .login-now {
@@ -73,6 +72,54 @@
   -moz-border-radius: 0.3rem;
   -ms-border-radius: 0.3rem;
   -o-border-radius: 0.3rem;
+
+
+}
+
+@media screen and (max-width: 1200px) {
+
+.login-now-content {
+  padding: 2rem;
+  margin-top: 10rem;
+}
+
+}
+
+@media screen and (max-width: 900px) {
+  .wrapper-register{
+    height: 0;
+    grid-template-columns: none;
+  }
+  .register-content {
+    padding: 2rem;
+}
+.login-now-content {
+  padding: 3rem;
+  margin-top: 0rem;
+}
+.login-content p {
+  font-size: 0.865rem;
+}
+}
+
+@media screen and (max-width: 700px) {
+  .wrapper-register{
+    height: 0;
+    grid-template-columns: none;
+    grid-auto-flow: dense;
+  }
+  .register-content {
+    padding: 1rem;
+    width: 100%;
+    margin: 1rem 0;
+}
+.login-now-content {
+  padding: 2rem;
+  margin-top: 0rem;
+}
+.login-content p {
+  font-size: 0.865rem;
+}
 }
 
 

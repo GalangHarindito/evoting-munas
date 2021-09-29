@@ -30,3 +30,25 @@
 .forgot-group-1 {
   text-align: center;
 }
+
+@media screen and (max-width: 900px) {
+  .forgot-password-content {
+    width: 100%;
+    padding: 2rem;
+  }
+
+  .forgot-group-1 p {
+    font-size: 0.865rem;
+}
+}
+
+@media screen and (max-width: 700px) {
+  .forgot-password-content {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .forgot-group-1 p {
+    font-size: 0.865rem;
+}
+}

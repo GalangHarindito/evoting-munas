@@ -9,20 +9,16 @@
   top: 0.5rem;
 }
 
-.modal-response > img:last-of-type {
-  width: 12rem;
-}
 
 .modal-response-text > p {
   color: var(--light-text-color);
-  font-size: 1rem;
   font-weight: normal;
   white-space: pre-wrap;
 }
 
 .modal-response-text > p > b {
   color: var(--light-text-color);
-  font-size: 2rem;
+  font-size: 1.2rem;
   white-space: pre-wrap;
 }
 

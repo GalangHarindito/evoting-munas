@@ -19,7 +19,7 @@
   width: 100%;
 }
 
-.aside > img {
+.aside > div > img {
   height: 5rem;
   margin: 1.5rem 1.5rem;
 }
@@ -100,4 +100,84 @@ svg:hover > #styled-element {
 
 .aside > nav > a:last-child {
   border-top: 1px solid #C4C4C4;
+}
+
+@media screen and (max-width: 700px) {
+  .aside {
+    height: 100%;
+  }
+
+  .aside > div{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .aside > div > img {
+    height: 3rem;
+    margin: 0.7rem 1rem;
+  }
+
+  .aside > .block {
+    display: block;
+  }
+
+  .aside > .none {
+    display: none;
+  }
+
+  .bar-menu{
+    display: block;
+    margin: 0 1rem 0 auto;
+
+  }
+
+  .bar-menu{
+   border: 0.1rem solid var(--primary-color);
+   padding: 0.1rem 0.5rem;
+   border-radius: 0.2rem;
+   -webkit-border-radius: 0.2rem;
+   -moz-border-radius: 0.2rem;
+   -ms-border-radius: 0.2rem;
+   -o-border-radius: 0.2rem;
+}
+  /*.bar-menu::after{
+    content:'Menu';
+    font-weight: ;
+    font-size: 0.85rem;
+    color: var(--primary-color); 
+  }*/
+
+  .change {
+    background-color: var(--primary-color);
+  }
+
+  .change::after {
+    background-color: var(--primary-color);
+    color: #fff;
+  }
+
+  .bar1, .bar2, .bar3 {
+    width: 1.5rem;
+    height: 0.15rem;
+    background-color: #333;
+    margin: 0.3rem 0;
+    transition: 0.4s;
+  }
+  
+  .change .bar1 {
+    background-color: #fff;
+  }
+  
+  .change .bar2 {
+    background-color: #fff;
+  }
+  
+  .change .bar3 {
+    background-color: #fff;
+  }
+
+  .main {
+    padding: 1rem;
+  }
 }

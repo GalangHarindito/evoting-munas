@@ -1,4 +1,6 @@
 import React from "react";
+import './style.css'
+import construction from '../../assets/img-underconstruction.png'
 
 
 export default function Dashboard() {
@@ -6,8 +8,8 @@ export default function Dashboard() {
 
 
   return(
-    <section>
-      <h2>Tata Cara Pemilihan</h2>
+    <section className='dashboard'>
+      <img src={construction} alt="" />
     </section>
   )
 }

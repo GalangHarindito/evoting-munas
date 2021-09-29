@@ -28,7 +28,7 @@ export default function Headers() {
          </section>
       }
       </section>
-      <p>Selamat datang di E-Voting Munas IKATA UPN</p>
+      <p>Selamat datang di E-Voting Munas IKATA UPN 2021</p>
     </section>
   )
 }
