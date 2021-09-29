@@ -50,6 +50,20 @@ export default function Profile() {
 
   const { edit } = queryString.parse(search.replace("?", ""));
   const [route, setRoute] = useState('');
+  const [profileSelect, setprofileSelect] = useState('');
+  const translateRoute = (value) => {
+
+    if(value === '/profile?tab=biodata'){
+      return 'biodata'
+    }
+    else if(value === '/profile?tab=address'){
+      return 'address'
+    }
+    else if(value === '/profile?tab=occupation'){
+      return 'occupation'
+    }
+  }
+
 
   return (
     <>
@@ -58,7 +72,16 @@ export default function Profile() {
         <div className='profile-dpt'>
           <div className='gr-1'>
             <h4>Data Diri DPT</h4>
-            <Button onClick={() => history.push('/profile?edit=biodata')} label='Edit Profile' className='buttonLink' />
+            <Button onClick={() => {
+              if(profileSelect)
+              return history.push(`/profile?edit=${profileSelect}`)
+              else{
+              return history.push(`/profile?edit=biodata`)
+              }
+            }} 
+              label='Edit Profile' 
+              className='buttonLink'
+            />
           </div>
 
           <br />
@@ -68,6 +91,7 @@ export default function Profile() {
             history.push(e.target.value)
             dispatch(changeLastPage(e.target.value))
             setRoute(e.target.value)
+            setprofileSelect(translateRoute(e.target.value))
           }
           
         }
@@ -78,7 +102,7 @@ export default function Profile() {
               {
                 return(
                   <>
-                  <option key={idx} value={el.value}>{el.name}</option>
+                  <option key={idx} value={el.value} name={el.name}>{el.name}</option>
                   </>
                 )
             })}

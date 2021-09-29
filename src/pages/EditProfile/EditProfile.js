@@ -3,7 +3,15 @@ import "./style.css";
 import EditBiodataForm from "../../component/form/EditBiodata";
 import EditAddress from "../../component/form/EditAlamat";
 import EditOccupation from "../../component/form/EditOccupation";
-import { getProfile, fetchUpdateBiodata, fetchUpdateAddress, fetchUpdateOccupation, fetchPropinsi, fetchKabupaten, fetchKecamatan } from "./action";
+import {
+  getProfile,
+  fetchUpdateBiodata,
+  fetchUpdateAddress,
+  fetchUpdateOccupation,
+  fetchPropinsi,
+  fetchKabupaten,
+  fetchKecamatan,
+} from "./action";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import { capitalizedArray } from "../../utils/format";
@@ -13,33 +21,31 @@ import Tabs from "../../component/elements/tabs/Tabs";
 import Button from "../../component/elements/button/Button";
 
 export default function EditProfile() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const history = useHistory();
   const { pathname, search } = useLocation();
-  const {dataAddress, message } = useSelector((s) => s.editProfile);
+  const { dataAddress, message } = useSelector((s) => s.editProfile);
   const { propinsiId, kabupatenId } = dataAddress;
-  const { lastPage } = useSelector(s => s.profile)
+  const { lastPage } = useSelector((s) => s.profile);
   const [size, setSize] = useState(true);
 
   useEffect(() => {
-    dispatch(getProfile())
-    dispatch(fetchPropinsi())
-  },[])
+    dispatch(getProfile());
+    dispatch(fetchPropinsi());
+  }, []);
 
   useEffect(() => {
-    if(propinsiId && kabupatenId){
-      dispatch(fetchKabupaten(propinsiId))
-      dispatch(fetchKecamatan(kabupatenId))
+    if (propinsiId && kabupatenId) {
+      dispatch(fetchKabupaten(propinsiId));
+      dispatch(fetchKecamatan(kabupatenId));
     }
-  },[propinsiId, kabupatenId])
+  }, [propinsiId, kabupatenId]);
 
   useEffect(() => {
-      if (message === 'Data Biodata berhasil diperbaharui') {
-        dispatch(getProfile())
-      }
-      
+    if (message === "Data Biodata berhasil diperbaharui") {
+      dispatch(getProfile());
+    }
   }, [message]);
-  
 
   const data = {
     navItems: [
@@ -50,81 +56,103 @@ export default function EditProfile() {
     navValues: ["biodata", "address", "occupation"],
     tabsName: "edit",
   };
-  const [route, setRoute] = useState('');
+  const [route, setRoute] = useState("");
   const nav = [
-    { name: "Biodata", value:'/profile?edit=biodata'},
-    { name: "Alamat", value:'/profile?edit=address'},
-    { name: "Pekerjaan", value:'/profile?edit=occupation'}
+    { name: "Biodata", value: "/profile?edit=biodata" },
+    { name: "Alamat", value: "/profile?edit=address" },
+    { name: "Pekerjaan", value: "/profile?edit=occupation" },
   ];
 
   return (
     <>
       <section className='editProfile'>
-      <div className='gr-1'>
+        <div className='gr-1'>
           <h4>Silakan lengkapi data diri Anda</h4>
-          <Button onClick={() => history.push(`${lastPage}`)} label='Lihat Profile' className='buttonLink' />
+          <Button
+            onClick={() => {
+              if (lastPage) {
+                history.push(`${lastPage}`);
+              } else {
+                history.push(`/profile`);
+              }
+            }}
+            label='Lihat Profile'
+            className='buttonLink'
+          />
         </div>
         <section>
-         <Tabs data={data}/> 
-         <label className='label-menu'>Pilih Profile:</label>
-          <select className='select-tabheader'  onChange={e => {
-            history.push(e.target.value)
-            setRoute(e.target.value)
-          }
-          
-        }
-          value={route || `${pathname}${search}`}
+          <Tabs data={data} />
+          <label className='label-menu'>Pilih Profile:</label>
+          <select
+            className='select-tabheader'
+            onChange={(e) => {
+              history.push(e.target.value);
+              setRoute(e.target.value);
+            }}
+            value={route || `${pathname}${search}`}
           >
-            {nav.map((el,idx) => 
-              {
-                return(
-                  <>
-                  <option key={idx} value={el.value}>{el.name}</option>
-                  </>
-                )
+            {nav.map((el, idx) => {
+              return (
+                <>
+                  <option key={idx} value={el.value}>
+                    {el.name}
+                  </option>
+                </>
+              );
             })}
           </select>
         </section>
-        
+
         <section>
-       
-        <Content />
-         </section>
+          <Content />
+        </section>
 
         {size && (
-        <ToastContainer
-          position='top-center'
-          //autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
-      )}
+          <ToastContainer
+            position='top-center'
+            //autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
+        )}
         {message && (
-        <ToastContainer
-          position='top-center'
-          //autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
-      )}
+          <ToastContainer
+            position='top-center'
+            //autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
+        )}
       </section>
     </>
   );
 }
 
 function Content() {
-  const dispatch = useDispatch()
-  const { dataBiodata, dataAccount, dataAddress,dataOccupation, dataPropinsi, dataKabupaten, dataKecamatan, message, isLoadingBiodata, isLoadingAddress, isLoadingOccupation } = useSelector((s) => s.editProfile);
+  const dispatch = useDispatch();
+  const {
+    dataBiodata,
+    dataAccount,
+    dataAddress,
+    dataOccupation,
+    dataPropinsi,
+    dataKabupaten,
+    dataKecamatan,
+    message,
+    isLoadingBiodata,
+    isLoadingAddress,
+    isLoadingOccupation,
+  } = useSelector((s) => s.editProfile);
   const { search } = useLocation();
   const { edit } = queryString.parse(search.replace("?", ""));
   const [size, setSize] = useState(true);
@@ -143,7 +171,6 @@ function Content() {
     { text: "Tidak Bekerja", value: "Tidak Bekerja" },
   ];
 
-
   const toasterError = (text) => {
     toast.error(`${text}`, {
       position: "top-center",
@@ -153,141 +180,109 @@ function Content() {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      });
-  }
+    });
+  };
   if (edit === "biodata") {
     return (
       <EditBiodataForm
-      onSubmit={(values) => {
-        const newData = new FormData
-        newData.append('fullName', capitalizedArray(values.fullName)) 
-        newData.append('email', values.email) 
-        newData.append('angkatan', Number(values.angkatan)) 
-        newData.append('nim', values.nim) 
-        newData.append('phoneNumber', values.phoneNumber) 
-        newData.append('gender', values.gender) 
-       
-          if(typeof values.photo === 'string' || values.photo === null ){
-            dispatch(fetchUpdateBiodata(newData))
-      
+        onSubmit={(values) => {
+          const newData = new FormData();
+          newData.append("fullName", capitalizedArray(values.fullName));
+          newData.append("email", values.email);
+          newData.append("angkatan", Number(values.angkatan));
+          newData.append("nim", values.nim);
+          newData.append("phoneNumber", values.phoneNumber);
+          newData.append("gender", values.gender);
+
+          if (typeof values.photo === "string" || values.photo === null) {
+            dispatch(fetchUpdateBiodata(newData));
+          } else {
+            if (Number(values.photo[0].size / 1024) > 1024) {
+              setSize(true);
+              toasterError("Ukuran File Tidak lebih dari 1MB");
+            } else {
+              newData.append("photo", values.photo[0]);
+              dispatch(fetchUpdateBiodata(newData));
+            }
           }
-          else{
-             if((Number(values.photo[0].size/1024)) > 1024){
-            setSize(true)
-            toasterError('Ukuran File Tidak lebih dari 1MB')
-          }else{
-            newData.append('photo', values.photo[0]) 
-            dispatch(fetchUpdateBiodata(newData))
-        
-          }       
-          
-          }
-        
-              
-      }} 
-      data={dataBiodata}
-      dataAccount={dataAccount}
-      //optionAngkatan={optionAngkatan}
-      optionGender={optionGender}
-      isLoading={isLoadingBiodata}
+        }}
+        data={dataBiodata}
+        dataAccount={dataAccount}
+        //optionAngkatan={optionAngkatan}
+        optionGender={optionGender}
+        isLoading={isLoadingBiodata}
       />
     );
   }
   if (edit === "address") {
     return (
-      <EditAddress 
-data={dataAddress}
-onSubmit={ values => {
-const newDataAddress = {}
-newDataAddress['address'] = values.address
-newDataAddress['propinsiId'] = values.propinsiId
-newDataAddress['kabupatenId'] = values.kabupatenId
-newDataAddress['kecamatanId'] = values.kecamatanId
-newDataAddress['kodePos'] = values.kodePos
-dispatch(fetchUpdateAddress(newDataAddress))
-}}
-isLoading={isLoadingAddress}
-dataPropinsi = {dataPropinsi}
-fetch1={id => dispatch(fetchKabupaten(id))}
-fetch2={id => dispatch(fetchKecamatan(id))}
-dataKabupaten = {dataKabupaten}    
-dataKecamatan = {dataKecamatan}    
-/>
+      <EditAddress
+        data={dataAddress}
+        onSubmit={(values) => {
+          const newDataAddress = {};
+          newDataAddress["address"] = values.address;
+          newDataAddress["propinsiId"] = values.propinsiId;
+          newDataAddress["kabupatenId"] = values.kabupatenId;
+          newDataAddress["kecamatanId"] = values.kecamatanId;
+          newDataAddress["kodePos"] = values.kodePos;
+          dispatch(fetchUpdateAddress(newDataAddress));
+        }}
+        isLoading={isLoadingAddress}
+        dataPropinsi={dataPropinsi}
+        fetch1={(id) => dispatch(fetchKabupaten(id))}
+        fetch2={(id) => dispatch(fetchKecamatan(id))}
+        dataKabupaten={dataKabupaten}
+        dataKecamatan={dataKecamatan}
+      />
     );
   }
   if (edit === "occupation") {
     return (
-      <EditOccupation 
-data={dataOccupation}
-optionOccupation = {optionOccupation}
-onSubmit={ values => {
-const newDataOccupation = {}
-newDataOccupation['occupation'] = values.occupation
-newDataOccupation['officeName'] = values.officeName
-newDataOccupation['jobTitle'] = values.jobTitle
-newDataOccupation['officeAddress'] = values.officeAddress
-dispatch(fetchUpdateOccupation(newDataOccupation))
-}}
-isLoading={isLoadingOccupation}
-/>
+      <EditOccupation
+        data={dataOccupation}
+        optionOccupation={optionOccupation}
+        onSubmit={(values) => {
+          const newDataOccupation = {};
+          newDataOccupation["occupation"] = values.occupation;
+          newDataOccupation["officeName"] = values.officeName;
+          newDataOccupation["jobTitle"] = values.jobTitle;
+          newDataOccupation["officeAddress"] = values.officeAddress;
+          dispatch(fetchUpdateOccupation(newDataOccupation));
+        }}
+        isLoading={isLoadingOccupation}
+      />
     );
   }
   return (
     <EditBiodataForm
-    onSubmit={(values) => {
-      
-      //const phone = `${values.countryCode}${inputPhone(values.phoneNumber)}`
+      onSubmit={(values) => {
+        //const phone = `${values.countryCode}${inputPhone(values.phoneNumber)}`
 
-      const newData = new FormData
-      newData.append('fullName', capitalizedArray(values.fullName)) 
-      newData.append('email', values.email) 
-      newData.append('angkatan', Number(values.angkatan)) 
-      newData.append('nim', values.nim) 
-      newData.append('phoneNumber', values.phoneNumber) 
-      newData.append('gender', values.gender) 
-      
-        if(typeof values.photo === 'string' ){
-          dispatch(fetchUpdateBiodata(newData))
-    
+        const newData = new FormData();
+        newData.append("fullName", capitalizedArray(values.fullName));
+        newData.append("email", values.email);
+        newData.append("angkatan", Number(values.angkatan));
+        newData.append("nim", values.nim);
+        newData.append("phoneNumber", values.phoneNumber);
+        newData.append("gender", values.gender);
+
+        if (typeof values.photo === "string") {
+          dispatch(fetchUpdateBiodata(newData));
+        } else {
+          if (Number(values.photo[0].size / 1024) > 1024) {
+            setSize(true);
+            toasterError("Ukuran File Tidak lebih dari 1MB");
+          } else {
+            newData.append("photo", values.photo[0]);
+            dispatch(fetchUpdateBiodata(newData));
+          }
         }
-        else{
-    
-           if((Number(values.photo[0].size/1024)) > 1024){
-          setSize(true)
-          toasterError('Ukuran File Tidak lebih dari 1MB')
-        }else{
-          newData.append('photo', values.photo[0]) 
-          dispatch(fetchUpdateBiodata(newData))
-      
-        }       
-        
-        }
-      
-            
-    }} 
-    data={dataBiodata}
-    dataAccount={dataAccount}
-    //optionAngkatan={optionAngkatan}
-    optionGender={optionGender}
-    isLoading={isLoadingBiodata}
+      }}
+      data={dataBiodata}
+      dataAccount={dataAccount}
+      //optionAngkatan={optionAngkatan}
+      optionGender={optionGender}
+      isLoading={isLoadingBiodata}
     />
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

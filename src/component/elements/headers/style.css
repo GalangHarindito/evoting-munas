@@ -56,7 +56,6 @@
 
 .not-verified-status > p {
   color: var(--yellow-text);
-  color: var(--primary-color);
 }
 
 .not-verified-status > img {
@@ -85,6 +84,10 @@ align-self: center;
   width: 1rem;
 }
 .verified-status > p{
+  font-size: 0.7rem;
+}
+
+.not-verified-status > p {
   font-size: 0.7rem;
 }
 

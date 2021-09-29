@@ -4,7 +4,7 @@
   list-style: none;
   margin: 0;
   outline: none;
-  font-size: 1.2rem;
+  font-size: 1rem;
   padding: 0;
   color: #2A2A2A;
 }
@@ -109,7 +109,7 @@ p {
   --yellow-text: #FA9900;
   --box-shadow-medium: 0 0.3125rem 0.9375rem rgba(74, 74, 74, 0.1);
   --color-active-pagebase: #68AE29;
-  font-size: calc(100vw * 16 / 1200);
+  font-size: calc(100vw * 16 / 1440);
 }
 
 
