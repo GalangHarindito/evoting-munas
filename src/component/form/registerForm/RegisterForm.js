@@ -7,6 +7,7 @@ import Select from "../../field/select/Select";
 import RadioGroup from "../../field/radioGroup/RadioGroup";
 import ModalInfo from "../../elements/ModalInfo";
 import { angkatanKuliah } from "../../../utils/format";
+import { ToastContainer } from 'react-toastify';
 
 export default function RegisterForm(props) {
   const {
@@ -87,6 +88,17 @@ export default function RegisterForm(props) {
         onClose={closeModal}
         open={openResponse} 
         />
+         <ToastContainer
+        position='top-center'
+        //autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </form>
   );
 }

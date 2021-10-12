@@ -1,0 +1,33 @@
+.root-confimation {
+  text-align: center;
+}
+
+.root-confimation > img:first-child {
+  cursor: pointer;
+  display: block;
+  position: absolute;
+  right: 0.1875rem;
+  top: 0.5rem;
+}
+
+.root-confimation > img:last-of-type {
+  margin-bottom: 2.5rem;
+  width: 14.375rem;
+}
+
+.root-confimation > p {
+  color: var(--light-text-color);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 2rem;
+}
+
+.root-confimation > footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.875rem;
+}
+
+.root-confimation > footer > button:first-child {
+  margin-right: 2.5rem;
+}

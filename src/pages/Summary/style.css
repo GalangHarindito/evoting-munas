@@ -1,0 +1,23 @@
+.summary > section {
+  margin-top: 1rem;
+}
+
+.summary > section > h5 {
+  font-weight: normal;
+  line-height: 3rem;
+}
+
+.summary > section:nth-child(3) > section > div {
+  margin: 1rem 0;
+  margin-right: 2rem;
+}
+
+.summary > section:nth-child(3) > section{
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+
+.summary > section:nth-child(3) > section > div > p {
+  padding: 0.5rem 0 ;
+}

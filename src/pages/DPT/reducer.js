@@ -2,8 +2,16 @@ import { FAILED, LOADING, SUCCESS } from './constants';
 
 const initialState = {
   isLoading: false,
+  isLoadingDelete:false,
+  isLoadingVerified:false,
+  isLoadingRegister:false,
   message:'',
+  messageVerified:'',
   data:[],
+  dataMetaDpt:{},
+  dataMesDelete:'',
+  dataMesVerified:'',
+  dataMesRegister:''
 };
 
 export default function reducer(state = initialState, action = {}) {
@@ -13,7 +21,7 @@ export default function reducer(state = initialState, action = {}) {
     case FAILED:
       return {
         ...state,
-        message,
+        [`message${key}`]: message,
       };
     case LOADING:
       return {

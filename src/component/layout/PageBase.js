@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Headers from '../../component/elements/headers';
 import { routes } from '../../configs/index';
@@ -6,6 +6,7 @@ import { clearStorages } from '../../utils/storage';
 import './style.css';
 import logo from '../../assets/img-munas-1.png';
 import { getUserData } from '../../utils/storage';
+import useOutsideClick from './useOutsideClick';
 
 export default function PageBase({ children }) {
 
@@ -62,6 +63,13 @@ let navsVerifier = [
   { name: 'Keluar', image: svgLogOut, func:logOut }
 ];
 
+let navsAdmin= [
+  { name: 'Calon Ketua', image: svgDashboard, link: `/caketum`, linkTo: `/caketum`},
+  { name: 'Events', image: svgProfile, link: '/events', linkTo: `/events`},
+  { name: 'Keluar', image: svgLogOut, func:logOut }
+];
+
+
 const menu = () => {
   if(dataUser.role === 'ROLE_DPT'){
     return navsDpt
@@ -69,11 +77,22 @@ const menu = () => {
   if(dataUser.role === 'ROLE_VERIFIER'){
     return navsVerifier
   }
+  if(dataUser.role === 'ROLE_ADMIN'){
+    return navsAdmin
+  }
 } 
 const [menuBar, setMenuBar] = useState(false);
 const menuButton = () => {
   setMenuBar(!menuBar);
 };
+
+const ref = useRef();
+
+useOutsideClick(ref, () => {
+  if (menuBar) setMenuBar(false);
+});
+
+
   return (
     <>
       <Headers />
@@ -87,7 +106,7 @@ const menuButton = () => {
         </div>
         </div>
        
-        <nav className={menuBar? 'block' : 'none'}>
+        <nav className={menuBar? 'block' : 'none'} ref={ref}>
           {menu().map((n, idx) => (
             <Link
               className={`/${path}`=== n.link ? 'active' : ''}

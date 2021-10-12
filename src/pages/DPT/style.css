@@ -1,3 +1,49 @@
 .dpt > h3 {
   font-weight: normal;
 }
+
+.votedIndicator {
+  padding: 0.5rem;
+  width: 0.5rem;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.search {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr 0.3fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 0rem;
+  grid-row-gap: 0px;
+  padding: 2rem 0
+
+}
+
+.search > div{
+  display: grid;
+  grid-template-columns: 0.3fr 0.2fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 0.5rem;
+  grid-row-gap: 0px
+
+}
+
+.search > div > input {
+  height: 2rem;
+  padding: 1rem;
+  font-size: 0.865rem;
+}
+
+.search > label { 
+  font-size: 0.865rem;
+}
+
+.search > label > span > select { 
+  font-size: 0.865rem;
+  width: 10rem;
+  height: 2rem;
+  margin-left: 1rem;
+}

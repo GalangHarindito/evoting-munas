@@ -39,6 +39,20 @@ button {
   -o-border-radius: 0.3rem;
 }
 
+.outlined {
+  background-color: transparent;
+  color: #000;
+  border: 0.1rem solid var(--primary-color);
+}
+
+.find{
+  background-color: #3B4FAD;
+}
+
+.delete {
+  background-color: red;
+}
+
 @media screen and (max-width: 700px) {
   .buttonLink {
     width: 100%;

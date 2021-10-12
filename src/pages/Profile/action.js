@@ -2,6 +2,7 @@ import { FAILED, LOADING, LASTPAGE, SUCCESS } from './constants';
 import axios from 'axios';
 import { getToken } from '../../utils/storage';
 import { toast } from 'react-toastify';
+import { clearStorages } from '../../utils/storage';
 
 const BASIC_URL = 'https://ikata.semoga.online/api/';
 
@@ -49,9 +50,14 @@ export function getProfile() {
       .catch(err => {
         const { status, message } = err.response.data
         if(status === 401){
+          clearStorages();
           window.location.href = '/login'
         }
-        const messageStatus = status > 401 && status <= 500 ? 'Sedang ada masalah, silahkan refresh halaman' : message;
+        if(status === 403){
+          clearStorages();
+          window.location.href = '/login'
+        }
+        const messageStatus = status > 403 && status <= 500 ? 'Sedang ada masalah, silahkan refresh halaman' : message;
         toasterError(messageStatus)
         dispatch(failedAction(messageStatus));
         dispatch(loadingAction(false));

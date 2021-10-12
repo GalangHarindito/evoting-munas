@@ -16,5 +16,7 @@ export default {
   Profile: Suspensed(React.lazy(() => import('./Profile'))),
   Evoting: Suspensed(React.lazy(() => import('./Evoting'))),
   DPT: Suspensed(React.lazy(() => import('./DPT'))),
-  SUMMARY: Suspensed(React.lazy(() => import('./Summary')))
+  SUMMARY: Suspensed(React.lazy(() => import('./Summary'))),
+  CalonKetua:Suspensed(React.lazy(() => import('./admin/CalonKetua'))),
+  Events:Suspensed(React.lazy(() => import('./admin/Events')))
 };

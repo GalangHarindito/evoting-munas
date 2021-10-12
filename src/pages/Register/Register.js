@@ -27,9 +27,9 @@ export default function Register() {
     (messageSuccess) ? setOpenResponse(true):closeModal();
   }, [messageSuccess]);
 
-  useEffect(() => {
-    angkatan()
-  })
+  //useEffect(() => {
+  //  angkatan()
+  //})
 
   useEffect(() => {
     dispatch(resetMessageSuccess())
@@ -37,18 +37,18 @@ export default function Register() {
 
   const optionAngkatan = []
 
-  const angkatan = () => {
-    let start = 1961
-    let finish = 2019
+  //const angkatan = () => {
+  //  let start = 1961
+  //  let finish = 2019
     
 
-    for(let i = start;i<finish;i++){
-      const objAngkatan = {}
-      objAngkatan.value = i
-      objAngkatan.text = `${i}`
-      optionAngkatan.push(objAngkatan)
-    }
-  }
+  //  for(let i = start;i<finish;i++){
+  //    const objAngkatan = {}
+  //    objAngkatan.value = i
+  //    objAngkatan.text = `${i}`
+  //    optionAngkatan.push(objAngkatan)
+  //  }
+  //}
 
   //const optionCode = []
 
@@ -108,7 +108,6 @@ export default function Register() {
               newData['nim']= values.nim
               dispatch(register(newData))
             }} 
-            optionAngkatan={optionAngkatan} 
             optionGender={optionGender}
             isLoading={isLoading}
             message={message}

@@ -2,6 +2,7 @@ import { FAILED, LOADING, LASTPAGE, SUCCESS } from './constants';
 import axios from 'axios';
 import { getToken } from '../../utils/storage';
 import { toast } from 'react-toastify';
+import { clearStorages } from '../../utils/storage';
 
 const BASIC_URL = 'https://ikata.semoga.online/api/';
 
@@ -52,9 +53,14 @@ export function getProfile() {
       .catch(err => {
         const { status, message } = err.response.data
         if(status === 401){
+          clearStorages();
           window.location.href = '/login'
         }
-        const messageStatus = status > 401 && status <= 500 ? 'Sedang ada masalah, silahkan refresh halaman' : message;
+        if(status === 403){
+          clearStorages();
+          window.location.href = '/login'
+        }
+        const messageStatus = status > 403 && status <= 500 ?  message : 'Sedang ada masalah, silahkan coba kembali' ;
         toasterError(messageStatus)
         dispatch(failedAction(messageStatus));
         dispatch(loadingAction(false));
@@ -117,9 +123,14 @@ export function fetchUpdateBiodata(payload) {
       .catch(err => {
         const { status, message } = err.response.data
         if(status === 401){
+          clearStorages();
           window.location.href = '/login'
         }
-        const messageStatus = status === 400 ?  message : 'Sedang ada masalah, silahkan coba kembali' ;
+        if(status === 403){
+          clearStorages();
+          window.location.href = '/login'
+        }
+        const messageStatus = status > 403 && status <= 500 ?  message : 'Sedang ada masalah, silahkan coba kembali' ;
         toasterError(messageStatus)
         dispatch(failedAction(messageStatus));
         dispatch(loadingAction(false, 'Biodata'));
@@ -181,9 +192,14 @@ export function fetchUpdateAddress(payload) {
       .catch(err => {
         const { status, message } = err.response.data
         if(status === 401){
+          clearStorages();
           window.location.href = '/login'
         }
-        const messageStatus = status === 400 ?  message : 'Sedang ada masalah, silahkan coba kembali' ;
+        if(status === 403){
+          clearStorages();
+          window.location.href = '/login'
+        }
+        const messageStatus = status > 403 && status <= 500 ?  message : 'Sedang ada masalah, silahkan coba kembali' ;
         toasterError(messageStatus)
         dispatch(failedAction(messageStatus));
         dispatch(loadingAction(false, 'Address'));
@@ -245,9 +261,14 @@ export function fetchUpdateOccupation(payload) {
       .catch(err => {
         const { status, message } = err.response.data
         if(status === 401){
+          clearStorages();
           window.location.href = '/login'
         }
-        const messageStatus = status === 400 || status === 500 ?  message : 'Sedang ada masalah, silahkan coba kembali' ;
+        if(status === 403){
+          clearStorages();
+          window.location.href = '/login'
+        }
+        const messageStatus = status > 403 && status <= 500 ?  message : 'Sedang ada masalah, silahkan coba kembali' ;
         toasterError(messageStatus)
         dispatch(failedAction(messageStatus));
         dispatch(loadingAction(false, 'Occupation'));
@@ -293,9 +314,14 @@ export function fetchPropinsi() {
       .catch(err => {
         const { status, message } = err.response.data
         if(status === 401){
+          clearStorages();
           window.location.href = '/login'
         }
-        const messageStatus = status === 400 ?  message : 'Sedang ada masalah, silahkan coba kembali' ;
+        if(status === 403){
+          clearStorages();
+          window.location.href = '/login'
+        }
+        const messageStatus = status > 403 && status <= 500 ?  message : 'Sedang ada masalah, silahkan coba kembali' ;
         toasterError(messageStatus)
         dispatch(failedAction(messageStatus));
       });
@@ -340,9 +366,14 @@ export function fetchKabupaten(payload) {
       .catch(err => {
         const { status, message } = err.response.data
         if(status === 401){
+          clearStorages();
           window.location.href = '/login'
         }
-        const messageStatus = status === 400 ?  message : 'Sedang ada masalah, silahkan coba kembali' ;
+        if(status === 403){
+          clearStorages();
+          window.location.href = '/login'
+        }
+        const messageStatus = status > 403 && status <= 500 ?  message : 'Sedang ada masalah, silahkan coba kembali' ;
         toasterError(messageStatus)
         dispatch(failedAction(messageStatus));
       });
@@ -387,9 +418,14 @@ export function fetchKecamatan(payload) {
       .catch(err => {
         const { status, message } = err.response.data
         if(status === 401){
+          clearStorages();
           window.location.href = '/login'
         }
-        const messageStatus = status === 400 ?  message : 'Sedang ada masalah, silahkan coba kembali' ;
+        if(status === 403){
+          clearStorages();
+          window.location.href = '/login'
+        }
+        const messageStatus = status > 403 && status <= 500 ?  message : 'Sedang ada masalah, silahkan coba kembali' ;
         toasterError(messageStatus)
         dispatch(failedAction(messageStatus));
       });

@@ -10,6 +10,11 @@ import header from '../component/elements/headers/reducer';
 import editProfile from '../pages/EditProfile/reducer';
 import evoting from '../pages/Evoting/reducer';
 import dpt from '../pages/DPT/reducer';
+import calonKetua from '../pages/admin/CalonKetua/reducer';
+import events from '../pages/admin/Events/reducer';
+import detailCalonKetua from '../pages/admin/DetailCalonKetua/reducer';
+import detailDPT from '../pages/DetailDPT/reducer';
+import summary from '../pages/Summary/reducer';
 
 const rootReducer = combineReducers({
   login,
@@ -21,6 +26,11 @@ const rootReducer = combineReducers({
   editProfile,
   evoting,
   dpt,
+  calonKetua,
+  events,
+  detailCalonKetua,
+  detailDPT,
+  summary,
   form: formReducer,
   routing: routerReducer
 });

@@ -15,9 +15,9 @@ import Loaders from "../../component/elements/loaders/Loaders";
 
 export default function Profile() {
   const history = useHistory();
-  const { pathname, search } = useLocation();
+  const { search } = useLocation();
   const dispatch = useDispatch();
-  const { dataProfile, isLoading, lastPage } = useSelector((s) => s.profile);
+  const { isLoading } = useSelector((s) => s.profile);
   const { message } = useSelector((s) => s.editProfile);
   useEffect(() => {
     dispatch(getProfile());

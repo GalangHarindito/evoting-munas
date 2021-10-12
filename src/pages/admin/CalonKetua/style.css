@@ -1,0 +1,21 @@
+.table-link {
+  font-size: 0.865rem;
+  cursor: pointer;
+}
+
+.table-link:hover {
+  text-decoration: underline;
+}
+
+.header-calonKetua{
+  display: grid;
+  grid-template-columns: 1fr 0.1fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  margin-bottom: 1.5rem;
+}
+
+.delete{
+  background-color: red;
+}

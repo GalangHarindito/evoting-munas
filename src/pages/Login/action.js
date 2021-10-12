@@ -44,6 +44,9 @@ export function login(data) {
           if(data.data.role === 'ROLE_VERIFIER'){
             window.location.href = '/summary-dpt';
           }
+          if(data.data.role === 'ROLE_ADMIN'){
+            window.location.href = '/caketum';
+          }
         } else {
           dispatch(loginFailedAction('You are not allowed to access'));
         }

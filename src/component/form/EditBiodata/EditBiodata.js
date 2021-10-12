@@ -10,8 +10,10 @@ import { useSelector } from "react-redux";
 import imageEmpty from '../../../assets/blank-person2.svg';
 import { angkatanKuliah } from "../../../utils/format";
 import { fileAccept } from '../../../utils/format'
+import { useLocation } from "react-router";
 
 export default function EditBiodataForm (props) {
+  const { search } = useLocation();
   const { 'editBiodataForm':dataForm } = useSelector(s => s.form);
  
   const [size, setSize] = useState(false)
@@ -25,6 +27,7 @@ export default function EditBiodataForm (props) {
     optionGender,
     isLoading,
   } = props;
+
   const { photo } = data;
   const [selectedImage, setSelectedImage] = useState(null);
 
@@ -80,10 +83,10 @@ export default function EditBiodataForm (props) {
         <Field component={Text} label='Nama Lengkap' name='fullName'  />
       </section>
       <section>
-        <Field component={Text} label='Nomer Handphone' name='phoneNumber' disabled={true} />
+        <Field component={Text} label='Nomer Handphone' name='phoneNumber' disabled={search ? false : true} />
       </section>
       <section>
-        <Field component={Text} label='Email' name='email' disabled={true} />
+        <Field component={Text} label='Email' name='email' disabled={search ? false : true} />
       </section>
       <section>
         <Field component={Text} label='Nomer Induk Mahasiswa (Opsional)' name='nim' />

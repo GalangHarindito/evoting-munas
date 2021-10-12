@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import './style.css';
 import imgVote from '../../assets/img-Evote.svg';
 import { useDispatch } from "react-redux";

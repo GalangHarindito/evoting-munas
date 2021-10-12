@@ -32,7 +32,7 @@ export const convertOptions = arr => {
 };
 
 export const capitalized = value => {
-  return value.charAt(0).toUpperCase() + value.slice(1);
+  return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
 };
 
 export const capitalizedArray = value => {
@@ -85,6 +85,7 @@ export const angkatanKuliah = [
   { text: 1997, value:1997 },
   { text: 1998, value:1998 },
   { text: 1999, value:1999 },
+  { text: 2000, value:2000 },
   { text: 2001, value:2001 },
   { text: 2002, value:2002 },
   { text: 2003, value:2003 },
