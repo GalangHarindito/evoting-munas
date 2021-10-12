@@ -1,3 +1,8 @@
+.summary {
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
 .summary > section {
   margin-top: 1rem;
 }

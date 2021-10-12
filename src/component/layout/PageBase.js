@@ -7,6 +7,7 @@ import './style.css';
 import logo from '../../assets/img-munas-1.png';
 import { getUserData } from '../../utils/storage';
 import useOutsideClick from './useOutsideClick';
+import Button from '../elements/button/Button';
 
 export default function PageBase({ children }) {
 
@@ -98,6 +99,7 @@ useOutsideClick(ref, () => {
       <Headers />
       <aside className={'aside'}>
         <div>
+            
            <img src={logo} alt="logo" />
         <div className={`bar-menu ${menuBar? 'change' : ''}`} onClick={() => menuButton()}>
           <div className='bar1'></div>

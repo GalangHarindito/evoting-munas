@@ -11,7 +11,8 @@ const initialState = {
   dataMetaDpt:{},
   dataMesDelete:'',
   dataMesVerified:'',
-  dataMesRegister:''
+  dataMesRegister:'',
+  dataMesUnVerified:''
 };
 
 export default function reducer(state = initialState, action = {}) {

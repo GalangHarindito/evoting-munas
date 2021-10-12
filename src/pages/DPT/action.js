@@ -130,15 +130,17 @@ export function fetchDeleteDpt(id, name) {
 }
 }
 
-export function fetchUpdateVerified(id, name) {
+export function fetchUpdateVerified(id, name, action) {
   
   return dispatch => {
     dispatch(loadingAction(true, 'Verified'));
     dispatch(failedAction('', 'Verified'));
+    dispatch(successAction('', 'MesVerified'));
+    dispatch(successAction('', 'MesUnVerified'));
 
       const options = {
         method: 'GET',
-        url: `${BASIC_URL}verification/${id}/approve`,
+        url: `${BASIC_URL}verification/${id}/${action}`,
         headers: {  
           Authorization : getToken()
         }
@@ -166,17 +168,35 @@ export function fetchUpdateVerified(id, name) {
           progress: undefined,
           });
       }
+
+      const toasterWarning = (text) => {
+        toast.warning(`${text}`, {
+          position: "top-center",
+          autoClose: false,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          });
+      }
   
       axios(options)
       .then((res) => {
-        const { status } = res.data;
+        const { status, message } = res.data;
         //const { hasVerified, hasVoted, biodata, address, occupancy } = data;
 
         dispatch(loadingAction(false, 'Verified'));
-        if ( status === 200 ) {
+        if ( status === 200 && message === 'Menyetujui Data DPT berhasil' ) {
           dispatch(successAction('Berhasil Verifikasi DPT', 'MesVerified'));
           toasterSuccess(`Berhasil VERIFIKASI DPT ${name}`)
-        } else {
+        } 
+        if( status === 200 && message === 'Menolak Data DPT berhasil' ){
+          dispatch(successAction('Berhasil unveriifed', 'MesUnVerified'));
+          toasterWarning(`Berhasil mengganti status verifikasi DPT ${name}`)
+        }
+        
+        else {
           dispatch(failedAction('You are not allowed to access'));
         }
       })

@@ -9,8 +9,6 @@ import queryString from "querystring";
 import moment from "moment";
 import Button from "../../component/elements/button/Button";
 import SwitchCheck from "../../component/elements/Switch/Switch";
-import Text from "../../component/field/text/Text";
-import Select from "../../component/field/select/Select";
 import { angkatanKuliah } from "../../utils/format";
 import { useHistory, useLocation } from "react-router-dom";
 import Pagination from "../../component/elements/Pagination/Pagination";
@@ -35,6 +33,7 @@ export default function DPT() {
     dataMesDelete,
     dataMesVerified,
     dataMesRegister,
+    dataMesUnVerified,
     message,
     messageVerified,
     isLoading,
@@ -77,11 +76,11 @@ export default function DPT() {
   }, [page, angkatan, fullName]);
 
   useEffect(() => {
-    if (dataMesDelete === "Berhasil Hapus DPT" || dataMesVerified === 'Berhasil Verifikasi DPT' || dataMesRegister === 'Pendaftaran DPT Berhasil') {
+    if (dataMesDelete === "Berhasil Hapus DPT" || dataMesVerified === 'Berhasil Verifikasi DPT' || dataMesRegister === 'Pendaftaran DPT Berhasil' || dataMesUnVerified === 'Berhasil unveriifed') {
       setConfirmation(false)
       dispatch(getAllDPT(req))
     }
-  }, [dataMesDelete, dataMesVerified, dataMesRegister, page, angkatan, fullName])
+  }, [dataMesDelete, dataMesVerified, dataMesUnVerified, dataMesRegister, page, angkatan, fullName])
 
   //useEffect(() => {
   //  if (dataMetaDpt.totalPage <= 1) {
@@ -90,6 +89,7 @@ export default function DPT() {
   //}, [dataMetaDpt])
 
   const col = [
+    { id: "no", label: "No", minWidth: 80 },
     { id: "name", label: "Nama", minWidth: 170 },
     {
       id: "angkatan",
@@ -158,21 +158,26 @@ export default function DPT() {
     );
   };
 
-  const parsedQuery = queryString.parse(location.search.replace("?", ""));
   const idUser = (id, name) => {
     setConfirmation(true);
     setidDPT(id);
     setnamaDPT(name);
   };
-  const verifiedAction = (id, name) => {
-    dispatch(fetchUpdateVerified(id, name));
+  const verifiedAction = (id, name, action) => {
+    dispatch(fetchUpdateVerified(id, name, action));
   };
   const row = [];
 
   const dataRow = () => {
-    data.map((el) => {
-      console.log(el)
+    data.map((el, idx) => {
+      const size = 15
+      let b = idx+1;
+      if ( page > 1 ) {
+        b = ( idx+1 )+(( page - 1 ) * size );
+      }
+    
       const obj = {
+        no: b < 10 ? `0${b}` : b,
         name: el.fullName,
         email: el.email,
         nomerHandphone: el.phoneNumber,
@@ -184,7 +189,7 @@ export default function DPT() {
           <SwitchCheck
             nameSwitch={el.userId}
             checked={el.hasVerified}
-            verified={() => verifiedAction(el.dptId, el.fullName)}
+            verified={(value) => verifiedAction(el.dptId, el.fullName, (value?'approve' : 'reject'))}
             message={messageVerified}
           />
         ),

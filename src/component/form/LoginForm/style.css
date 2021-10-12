@@ -38,3 +38,13 @@
   -o-border-radius: 0.4rem;
   /*-webkit-animation: fade-in 5s ease-in-out;*/
 }
+
+.form-button > a {
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-decoration: underline;
+  margin-top: 1rem; 
+  justify-content: flex-start;
+  margin: 0.5rem 0;
+  color: #A0A4A8;
+}

@@ -8,9 +8,14 @@ import { capitalizedArray } from "../../utils/format";
 import { register, resetMessage, resetMessageSuccess } from "./actions";
 import { ToastContainer } from "react-toastify";
 import ModalResponse from "../../component/elements/ModalResponse";
+import caraDaftar from "../../assets/cara-daftar-dpt.pdf";
+import { useHistory, useLocation } from "react-router-dom";
+import CaraMendaftar from "../../component/fragment/CaraMendaftar/CaraMendaftar";
 
 export default function Register() {
   const dispatch = useDispatch();
+  const history = useHistory();
+  const { search } = useLocation();
   const { isLoading, message, messageSuccess} = useSelector(s => s.register)
   const [openResponse, setOpenResponse] = useState(false);
   const closeModal = () => setOpenResponse(false);
@@ -70,6 +75,10 @@ export default function Register() {
     { text: 'WNI', value: 'WNI'},
     { text: 'WNA', value: 'WNA'},
   ]
+
+  if(search === '?embed=caradaftar'){
+    return  <CaraMendaftar data={caraDaftar} />
+  }
   return (
     <section className='wrapper-register'>
        <section
@@ -82,6 +91,7 @@ export default function Register() {
       >
         <section className='login-now-content'>
           <div className='login-now-header'>
+            
             <h4>Sudah Memiliki Akun DPT?</h4>
             <p>
             Silakan klik tombol Login di bawah ini untuk masuk ke halaman E-Voting
@@ -93,7 +103,8 @@ export default function Register() {
         </section>
       </section>
       <section className='register-content'>
-        <h4 className='register-text'>Buat Akun Baru</h4>
+        <h4 className='register-text'>Buat Akun Baru  <span><small style={{cursor:'pointer', fontSize:'0.865rem', textDecoration:'underline'}} onClick={() => history.push(`?embed=caradaftar`)}>Cara Mendaftar</small></span></h4>
+       
 
           <RegisterForm 
             onSubmit={(values) => {
@@ -137,7 +148,6 @@ export default function Register() {
         open={openResponse} 
         labelLink='Login' 
         toLink='/login' />
-        
     </section>
   );
 }

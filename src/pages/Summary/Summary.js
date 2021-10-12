@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import './style.css';
 import { fetchSummaryAll, fetchSummaryAngkatan } from './action';
 import { useSelector } from 'react-redux';
+import Chart from '../../component/elements/Chart';
 
 export default function Summary() {
   const dispatch = useDispatch();
@@ -13,19 +14,25 @@ export default function Summary() {
     dispatch(fetchSummaryAngkatan())
   },[])
 
+  const summaryChart = [
+    {...dataAll}
+  ]
+
   return(
     <section className='summary'>
     <h3 style={{fontWeight:'normal'}}>Summary</h3>
     <section>
-      <h5>Total DPT Terdaftar  : <b>{dataAll.countAllDpt || '-'} </b>orang</h5>
+      {/*<h5>Total DPT Terdaftar  : <b>{dataAll.countAllDpt || '-'} </b>orang</h5>
       <h5>Total DPT Terverifikasi  : <b>{dataAll.countAllDptVerified || '-'} </b>orang</h5>
       <h5>Total DPT Belum Terverifikasi  : <b>{dataAll.countAllDptUnverified || '-'} </b>orang</h5>
       <h5>Total DPT Voting  : <b>{dataAll.countAllDptVoted || '-'} </b>orang</h5>
-      <h5>Total DPT Belum Voting  : <b>{dataAll.countAllDptUnvoted || '-'} </b>orang</h5>
+      <h5>Total DPT Belum Voting  : <b>{dataAll.countAllDptUnvoted || '-'} </b>orang</h5>*/}
+      <Chart data={summaryChart} height={300} width={1500} />
     </section>
+      <br />
     <section>
     <h3 style={{fontWeight:'normal'}}>Summary Angkatan</h3>
-    <section>
+    {/*<section>
       {dataAngkatan.map((el,idx) => {
         return(
           <div key={idx}>
@@ -38,8 +45,10 @@ export default function Summary() {
           </div>
         )
       })}
+    </section>*/}
+     <Chart data={dataAngkatan} height={200} width={5000} />
     </section>
-    </section>
+    
     </section>
   )
 }

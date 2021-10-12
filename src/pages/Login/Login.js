@@ -41,6 +41,7 @@ export default function Login() {
           <div className='register-now-button'>
             <Link to='/sign-up'>Sign Up</Link>
           </div>
+          <br />
         </section>
       </section>
       {message && (

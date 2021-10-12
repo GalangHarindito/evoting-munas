@@ -73,6 +73,7 @@ export default function RegisterForm(props) {
           onSubmit={handleSubmit}
           isLoading={isLoading}
         />
+        <a href="https://wa.link/3yl5vn" target='_blank'>Butuh bantuan?</a>
       </section>
       <ModalInfo
         message= {[

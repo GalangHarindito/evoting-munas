@@ -18,11 +18,13 @@ export default function Headers() {
 
   const renderDpt = (
     <>
+ 
     <section className='header-1'>
+    
       <h4>
         Halo, {capitalizedArray(dataUser.fullName)}
       </h4>
-
+     
       <section className={datahasVerified ? 'verified-status' : 'not-verified-status'}>
         <img src={datahasVerified ? icVerified : icUnverified} alt="" />
         <p>{datahasVerified ? 'Terverifikasi' : 'Belum Terverifikasi'}</p>

@@ -1,6 +1,6 @@
 .modal-info {
   text-align: left;
-  width: auto;
+
 }
 
 .modal-info > img:first-child {
@@ -49,4 +49,17 @@
 
 .modal-info-text {
   margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-info-text > embed {
+  height: 100%;
+}
+
+@media screen and (max-width: 700px) {
+  .modal-info-text > img {
+    width: 99%;
+    margin: 0 0;
+  }
 }
