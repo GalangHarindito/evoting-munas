@@ -14,7 +14,7 @@
 
 .search {
   display: grid;
-  grid-template-columns: 1fr 0.8fr 0.3fr;
+
   grid-template-rows: 1fr;
   grid-column-gap: 0rem;
   grid-row-gap: 0px;
@@ -24,9 +24,21 @@
 
 .search > div{
   display: grid;
-  grid-template-columns: 0.3fr 0.2fr;
+  grid-template-columns: 0.3fr 0.1fr 1fr;
   grid-template-rows: 1fr;
   grid-column-gap: 0.5rem;
+  grid-row-gap:  0px;
+  margin-bottom: 1rem
+}
+.search > div:nth-child(1) > section{
+  justify-self: self-end;
+}
+
+.search > div:nth-child(2){
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 0.3fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 0.2rem;
   grid-row-gap: 0px
 
 }
@@ -37,11 +49,11 @@
   font-size: 0.865rem;
 }
 
-.search > label { 
+.search > div:nth-child(2) > label { 
   font-size: 0.865rem;
 }
 
-.search > label > span > select { 
+.search > div:nth-child(2) > label > span > select { 
   font-size: 0.865rem;
   width: 10rem;
   height: 2rem;

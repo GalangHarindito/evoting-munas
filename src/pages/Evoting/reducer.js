@@ -4,7 +4,8 @@ const initialState = {
   isLoading: false,
   message:'',
   datahasVerified:'',
-  datahasVoted:''
+  datahasVoted:'',
+  data:[]
 };
 
 export default function reducer(state = initialState, action = {}) {

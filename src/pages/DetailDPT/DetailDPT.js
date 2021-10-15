@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './style.css';
-import { fetchDPTId } from './action';
+import { fetchDPTId, fetchEditDPT } from './action';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import queryString from "querystring";
@@ -8,7 +8,6 @@ import EditBiodataForm from '../../component/form/EditBiodata';
 import Address from '../../component/fragment/Address';
 import Occupation from '../../component/fragment/Occupation';
 import { capitalizedArray } from '../../utils/format';
-import { fetchUpdateBiodata } from '../EditProfile/action';
 import { ToastContainer, toast } from "react-toastify";
 
 
@@ -16,7 +15,7 @@ export default function DetailDPT() {
   const dispatch = useDispatch();
   const { search } = useLocation();
   const { id } = queryString.parse(search.replace("?", ""));
-  const { dataDPT, isLoading, message } = useSelector(s => s.detailDPT)
+  const { dataDPT, isLoading, message, isLoadingEditDPT } = useSelector(s => s.detailDPT)
   const { biodata, account, address, occupancy } = dataDPT;
   useEffect(() => {
     dispatch(fetchDPTId(id))
@@ -50,6 +49,7 @@ export default function DetailDPT() {
          data={biodata?biodata:{}} 
          dataAccount={account?account:{}} 
          optionGender={optionGender}
+         isLoading={isLoadingEditDPT}
          onSubmit={(values) => {
           const newData = new FormData();
           newData.append("fullName", capitalizedArray(values.fullName));
@@ -60,14 +60,14 @@ export default function DetailDPT() {
           newData.append("gender", values.gender);
 
           if (typeof values.photo === "string" || values.photo === null) {
-            dispatch(fetchUpdateBiodata(newData));
+            dispatch(fetchEditDPT(id, newData));
           } else {
             if (Number(values.photo[0].size / 1024) > 1024) {
               setSize(true);
               toasterError("Ukuran File Tidak lebih dari 1MB");
             } else {
               newData.append("photo", values.photo[0]);
-              dispatch(fetchUpdateBiodata(newData));
+              dispatch(fetchEditDPT(id, newData));
             }
           }
         }}

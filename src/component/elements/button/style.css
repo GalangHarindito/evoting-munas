@@ -53,6 +53,12 @@ button {
   background-color: red;
 }
 
+.small {
+  font-size: 0.7rem;
+  font-weight: normal;
+  background-color: grey;
+}
+
 @media screen and (max-width: 700px) {
   .buttonLink {
     width: 100%;

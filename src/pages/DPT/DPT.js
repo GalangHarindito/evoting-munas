@@ -16,6 +16,7 @@ import { capitalizedArray } from "../../utils/format";
 import { ToastContainer } from "react-toastify";
 import DetailDPT from "../DetailDPT";
 import RegisterForm from "../../component/form/registerForm";
+//import 'moment/locale/id';
 
 export default function DPT() {
   const dispatch = useDispatch();
@@ -27,6 +28,8 @@ export default function DPT() {
   const { angkatan } = queryString.parse(location.search.replace("?", ""));
   const { fullName } = queryString.parse(location.search.replace("?", ""));
   const { createDPT } = queryString.parse(location.search.replace("?", ""));
+  const { verify } = queryString.parse(location.search.replace("?", ""));
+  const { vote } = queryString.parse(location.search.replace("?", ""));
   const {
     data,
     dataMetaDpt,
@@ -64,6 +67,18 @@ export default function DPT() {
     req.fullName = fullName;
   }
 
+  if (verify) {
+    let valVerify = {};
+    valVerify["verify"] = verify;
+    req.verify = verify;
+  }
+
+  if (vote) {
+    let valVote = {};
+    valVote["vote"] = vote;
+    req.vote = vote;
+  }
+
 
 
   useEffect(() => {
@@ -73,20 +88,40 @@ export default function DPT() {
 
   useEffect(() => {
     dispatch(getAllDPT(req));
-  }, [page, angkatan, fullName]);
+  }, [page, angkatan, fullName, verify, vote]);
 
   useEffect(() => {
     if (dataMesDelete === "Berhasil Hapus DPT" || dataMesVerified === 'Berhasil Verifikasi DPT' || dataMesRegister === 'Pendaftaran DPT Berhasil' || dataMesUnVerified === 'Berhasil unveriifed') {
       setConfirmation(false)
       dispatch(getAllDPT(req))
     }
-  }, [dataMesDelete, dataMesVerified, dataMesUnVerified, dataMesRegister, page, angkatan, fullName])
+  }, [dataMesDelete, dataMesVerified, dataMesUnVerified, dataMesRegister, page, angkatan, fullName, verify, vote])
 
   //useEffect(() => {
   //  if (dataMetaDpt.totalPage <= 1) {
   //    history.push('?page=1')
   //  }
   //}, [dataMetaDpt])
+
+  const statusVerified = [
+    { text: 'Terverifikasi', value: true},
+    { text: 'Belum Terverifikasi', value: false}
+  ]
+
+  const statusVote = [
+    { text: 'Voted', value: true},
+    { text: 'Unvoted', value: false}
+  ]
+
+  const reset = () => {
+    
+    delete req.angkatan
+    delete req.fullName
+    delete req.verify
+    delete req.vote
+    history.push(req)
+    
+  }
 
   const col = [
     { id: "no", label: "No", minWidth: 80 },
@@ -116,12 +151,6 @@ export default function DPT() {
       align: "left",
     },
     {
-      id: "input",
-      label: "Tanggal Input",
-      minWidth: 170,
-      align: "left",
-    },
-    {
       id: "edit",
       label: "Edit/Lihat",
       minWidth: 170,
@@ -140,7 +169,18 @@ export default function DPT() {
       minWidth: 90,
       align: "left",
     },
-   
+    {
+      id: "input",
+      label: "Tanggal Input",
+      minWidth: 170,
+      align: "left",
+    },
+    {
+      id: "change",
+      label: "Tanggal Edit",
+      minWidth: 170,
+      align: "left",
+    },
     {
       id: "delete",
       label: "Action",
@@ -183,7 +223,7 @@ export default function DPT() {
         nomerHandphone: el.phoneNumber,
         angkatan: el.angkatan,
         nim: !el.nim || el.nim === "null" ? "-" : el.nim,
-        input: moment(el.createdAt).format("DD MMM YYYY"),
+        input: moment.utc(el.createdAt).format("DD MMM YYYY"),
         hasVoted: voted(el.hasVoted),
         hasVerified: (
           <SwitchCheck
@@ -201,7 +241,8 @@ export default function DPT() {
           />
         ),
         id: el.dptId,
-        edit: <p style={{cursor:'pointer'}} onClick={(value) => history.push(`?id=${el.dptId}`)}>Lihat/Edit</p>
+        edit: <p style={{cursor:'pointer'}} onClick={(value) => history.push(`?id=${el.dptId}`)}>Lihat/Edit</p>,
+        change: moment.utc(el.updatedAt).format("DD MMM YYYY"),
       };
       return row.push(obj);
     });
@@ -263,7 +304,7 @@ export default function DPT() {
   if (search.includes("?id") || (search.includes("?id=create") && id)) {
     return <DetailDPT />;
   }
-
+ 
   return (
     <section className='dpt'>
       <h3>Daftar DPT MUNAS IKATA 2021</h3>
@@ -274,11 +315,18 @@ export default function DPT() {
             type='text'
             placeHolder='Nama DPT'
             name='nama'
-            defaultValue={fullName}
+            defaultValue={fullName? fullName : ''}
             onChange={(e) => setSearchName(e.target.value)}
           />
           <Button label='Cari' className='find' onClick={submitValue} />
+          <section>
+          <Button
+            label='Create DPT'
+            onClick={() => history.push("?createDPT=true")}
+          />
+        </section>
         </div>
+        <div>
         <label>
           Pilih Angkatan :
           <span>
@@ -296,7 +344,7 @@ export default function DPT() {
               
             
               }}
-              value={angkatan}
+              value={angkatan? angkatan : 'All'}
             >
               <option value=''>All</option>
               {angkatanKuliah.map((el, idx) => {
@@ -311,12 +359,75 @@ export default function DPT() {
             </select>
           </span>
         </label>
+        <label>
+          Pilih Status :
+          <span>
+            <select
+              className='select-tabheader'
+              onChange={(e) => {
+                if(e.target.value){
+                  req['verify'] = e.target.value;
+                  req.page = 1;
+                }else{
+                  delete req.verify;
+                }
+                const newQuery = queryString.stringify(req);
+                history.push(newQuery?`?${newQuery}` : search);
+              
+            
+              }}
+              value={verify?verify:'All'}
+            >
+              <option value=''>All</option>
+              {statusVerified.map((el, idx) => {
+                return (
+                  <>
+                    <option key={idx} value={el.value} name={el.text}>
+                      {el.text}
+                    </option>
+                  </>
+                );
+              })}
+            </select>
+          </span>
+        </label>
+        <label>
+          Pilih Status Vote :
+          <span>
+            <select
+              className='select-tabheader'
+              onChange={(e) => {
+                if(e.target.value){
+                  req['vote'] = e.target.value;
+                  req.page = 1;
+                }else{
+                  delete req.vote;
+                }
+                const newQuery = queryString.stringify(req);
+                history.push(newQuery?`?${newQuery}` : search);
+              
+            
+              }}
+              value={vote? vote:'All'}
+            >
+              <option value=''>All</option>
+              {statusVote.map((el, idx) => {
+                return (
+                  <>
+                    <option key={idx} value={el.value} name={el.text}>
+                      {el.text}
+                    </option>
+                  </>
+                );
+              })}
+            </select>
+          </span>
+        </label>
         <section>
-          <Button
-            label='Create'
-            onClick={() => history.push("?createDPT=true")}
-          />
+          <Button className='small' label='Reset' onClick={() => reset()} />
         </section>
+        </div>
+        
       </section>
       <section>
         {angkatan ? (

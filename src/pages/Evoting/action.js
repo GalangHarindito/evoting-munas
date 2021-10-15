@@ -62,6 +62,61 @@ export function getStatusVote() {
 }
 }
 
+export function fetchAllCandidate() {
+  
+  return dispatch => {
+    dispatch(loadingAction(true));
+
+      const options = {
+        method: 'GET',
+        url: `${BASIC_URL}candidate`,
+        headers: {  
+          Authorization : getToken()
+        }
+      };
+      const toasterError = (text) => {
+        toast.error(`${text}`, {
+          position: "top-center",
+          autoClose: false,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          });
+      }
+  
+      axios(options)
+      .then((res) => {
+        const { status, data } = res.data;
+        //const { hasVerified, hasVoted, biodata, address, occupancy } = data;
+
+        dispatch(loadingAction(false));
+        if ( status === 200 ) {
+          dispatch(successAction(data, ''));
+        } else {
+          dispatch(failedAction('You are not allowed to access'));
+        }
+      })
+      .catch(err => {
+        const { status, message } = err.response.data
+        if(status === 401){
+          clearStorages();
+          window.location.href = '/login'
+        }
+        if(status === 403){
+          clearStorages();
+          window.location.href = '/login'
+        }
+        const messageStatus = status > 403 && status <= 500 ? 'Sedang ada masalah, silahkan refresh halaman' : message;
+        toasterError(messageStatus)
+        dispatch(failedAction(messageStatus));
+        dispatch(loadingAction(false));
+      });
+
+}
+}
+
 export function resetMessage() {
   return failedAction('');
 }

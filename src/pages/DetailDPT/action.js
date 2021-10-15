@@ -63,12 +63,12 @@ export function fetchDPTId(id) {
 export function fetchEditDPT(id,payload) {
   
   return dispatch => {
-    dispatch(loadingAction(true, 'EditKetua'));
+    dispatch(loadingAction(true, 'EditDPT'));
     dispatch(failedAction(''));
 
       const options = {
         method: 'PUT',
-        url: `${BASIC_URL}candidate/${id}`,
+        url: `${BASIC_URL}dpt/${id}/update`,
         data: payload,
         headers: {  
           Authorization : getToken()
@@ -101,11 +101,11 @@ export function fetchEditDPT(id,payload) {
   
       axios(options)
       .then((res) => {
-        const messageSuccess = 'Data Calon Ketua Ikata Berhasil Diubah';
+        const messageSuccess = 'Data DPT Berhasil Diubah';
         const { status, message } = res.data;
-        dispatch(loadingAction(false, 'EditKetua'));
+        dispatch(loadingAction(false, 'EditDPT'));
         if ( status === 200 ) {
-          dispatch(successAction(messageSuccess, 'EditCandidate'));
+          dispatch(successAction(messageSuccess, 'EditDPT'));
           toasterSuccess(messageSuccess)
         } else {
           dispatch(failedAction('You are not allowed to access'));
@@ -114,6 +114,7 @@ export function fetchEditDPT(id,payload) {
       .catch(err => {
         const { status, message } = err.response.data
         if(status === 401){
+          clearStorages();
           window.location.href = '/login'
         }
         if(status === 403){
@@ -123,7 +124,7 @@ export function fetchEditDPT(id,payload) {
         const messageStatus = status > 403 && status <= 500 ? 'Sedang ada masalah, silahkan refresh halaman' : message;
         toasterError(messageStatus)
         dispatch(failedAction(messageStatus));
-        dispatch(loadingAction(false, 'EditKetua'));
+        dispatch(loadingAction(false, 'EditDPT'));
       });
 
 }

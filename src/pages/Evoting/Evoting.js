@@ -4,22 +4,30 @@ import imgVote from '../../assets/img-Evote.svg';
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { getStatusVote } from "../../component/elements/headers/action";
+import EvoteCandidate from "../../component/fragment/EvoteCandidate";
+import { fetchAllCandidate } from './action';
 
 export default function Evoting() {
   const dispatch = useDispatch();
   const { datahasVoted, datahasVerified } = useSelector(s => s.header);
+  const { data } = useSelector(s => s.evoting)
 
   useEffect(() => {
     dispatch(getStatusVote())
+    dispatch(fetchAllCandidate())
   },[]);
 
+  //useEffect(() => {
+  //  if(!datahasVoted && )
+  //})
+ 
   const onTime = () => {
     const d = Date.now();
     const today = new Date(d);
-    const date = new Date('Dec 18 2021 03:07 GMT')
+    const date = new Date('Dec 17 2021 05:03 GMT')
     
     if(today.toISOString() > date.toISOString() && datahasVerified){
-      return <h4>Test</h4>
+      return <EvoteCandidate data={data} />
     }
     if(today.toISOString() > date.toISOString() && !datahasVerified){
       return <EvoteNotVerified />
@@ -58,7 +66,7 @@ function EvoteBefore() {
       </section>
       <section>
         <h4>Anda telah melakukan E-Voting</h4>
-        <h4>Terima kasih atas pertisipasi anda menjadi DPT dan Memlih Ketua IKATA Periode 2021 -2025</h4>
+        <h4>Terima kasih atas pertisipasi anda menjadi DPT dan Memilih Ketua IKATA Periode 2021 -2025</h4>
         <h4>Berjumpa kembali di MUNAS IKATA selanjutnya</h4>
       </section>
       </section>
@@ -73,7 +81,7 @@ function EvoteNotVerified() {
     </section>
     <section>
       <h4>Akun Anda Belum Terverifikasi</h4>
-      <h4>Untuk melakukan E-Voting Silahkan Menghubungi Panitia</h4>
+      <h4>Untuk melakukan E-Voting Silahkan Masuk Halaman Bantuan</h4>
     </section>
     </section>
   )

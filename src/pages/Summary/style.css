@@ -1,6 +1,6 @@
 .summary {
   overflow-x: scroll;
-  overflow-y: hidden;
+  overflow-y: scroll;
 }
 
 .summary > section {

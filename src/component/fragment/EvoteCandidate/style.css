@@ -1,0 +1,76 @@
+.evote-candidate > h4 {
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.evote-candidate > p {
+  margin-bottom: 1rem;
+}
+
+.evote-candidate > section {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+border: 1px solid #EAEAEA;
+padding: 1rem;
+
+}
+.cards-candidate {
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.cards-candidate {
+  display: grid;
+  grid-template-rows: 1fr 0.2fr 0.3fr 0.1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0.5rem;
+  border: 1px solid #EAEAEA;
+  box-sizing: border-box;
+  border-radius: 0.2rem;
+  -webkit-border-radius: 0.2rem;
+  -moz-border-radius: 0.2rem;
+  -ms-border-radius: 0.2rem;
+  -o-border-radius: 0.2rem;
+  width: 18rem;
+  height: 100%;
+}
+.cards-candidate > section:nth-child(1) {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.cards-candidate > section:nth-child(1) > p {
+  justify-self: center;
+  font-size: 2.5rem;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.imageCandidate {
+  width: 13rem;
+  height: 13rem  ;
+  background-size: cover;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+/*.cards-candidate > section {
+  margin-bottom: 1rem;
+}*/
+
+.cards-candidate > section > blockquote {
+  font-size: 0.865rem;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.buttonVote {
+  align-self: center;
+}

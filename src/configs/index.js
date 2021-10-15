@@ -10,4 +10,5 @@ export const routes = {
   SUMMARY: () => { return `/summary-dpt` },
   CALONKETUA: () => { return `/caketum` },
   EVENTS: () => { return `/events` },
-};
+  BANTUAN: () => { return `/bantuan`}
+}; 

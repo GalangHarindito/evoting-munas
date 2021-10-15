@@ -1,0 +1,15 @@
+.bantuan > h4 {
+  font-weight: 500;
+  margin-bottom: 1.25rem;
+}
+
+.bantuan > p > a {
+  font-size: 0.865rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.bantuan > p > a:hover {
+  text-decoration: underline;
+}
+

@@ -18,5 +18,6 @@ export default {
   DPT: Suspensed(React.lazy(() => import('./DPT'))),
   SUMMARY: Suspensed(React.lazy(() => import('./Summary'))),
   CalonKetua:Suspensed(React.lazy(() => import('./admin/CalonKetua'))),
-  Events:Suspensed(React.lazy(() => import('./admin/Events')))
+  Events:Suspensed(React.lazy(() => import('./admin/Events'))),
+  Bantuan:Suspensed(React.lazy(() => import('./Bantuan')))
 };

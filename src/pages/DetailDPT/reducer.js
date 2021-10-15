@@ -7,7 +7,7 @@ const initialState = {
   message:'',
   dataDPT:{},
   dataEditDPT:'',
-  dataPostDPT:''
+  dataPostDPT:'',
 };
 
 export default function reducer(state = initialState, action = {}) {

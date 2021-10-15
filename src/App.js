@@ -65,6 +65,7 @@ function App({ history, store }) {
         <Route exact path={routes.SUMMARY()} component={pages.SUMMARY} />
         <Route exact path={routes.CALONKETUA()} component={pages.CalonKetua} />
         <Route exact path={routes.EVENTS()} component={pages.Events} />
+        <Route exact path={routes.BANTUAN()} component={pages.Bantuan}></Route>
       </Switch>
     </PageBase>
   );
