@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import './style.css';
 import imgVote from '../../assets/img-Evote.svg';
 import { useDispatch } from "react-redux";
@@ -6,11 +6,14 @@ import { useSelector } from "react-redux";
 import { getStatusVote } from "../../component/elements/headers/action";
 import EvoteCandidate from "../../component/fragment/EvoteCandidate";
 import { fetchAllCandidate } from './action';
+import ModalConfirmation from "../../component/elements/ModalConfirmation";
 
 export default function Evoting() {
   const dispatch = useDispatch();
   const { datahasVoted, datahasVerified } = useSelector(s => s.header);
-  const { data } = useSelector(s => s.evoting)
+  const { data } = useSelector(s => s.evoting);
+  const [confirmation, setConfirmation] = useState(false);
+  const [candidateName, setCandidateName] = useState('')
 
   useEffect(() => {
     dispatch(getStatusVote())
@@ -24,10 +27,13 @@ export default function Evoting() {
   const onTime = () => {
     const d = Date.now();
     const today = new Date(d);
-    const date = new Date('Dec 17 2021 05:03 GMT')
+    const date = new Date('Dec 17 2021 02:35 GMT')
     
     if(today.toISOString() > date.toISOString() && datahasVerified){
-      return <EvoteCandidate data={data} />
+      return <EvoteCandidate data={data} openModal={(value) => {
+        setConfirmation(true)
+        setCandidateName(value)
+      }} />
     }
     if(today.toISOString() > date.toISOString() && !datahasVerified){
       return <EvoteNotVerified />
@@ -40,6 +46,12 @@ export default function Evoting() {
   return(
     <section className='evoting'>
       {datahasVoted? <EvoteAfter /> : onTime()}
+      <ModalConfirmation
+        message={`Apakah Anda yakin memilih ${candidateName.toUpperCase()} sebagai KETUA IKATA PERIODE 2021-2025 ? `}
+        onClose={() => setConfirmation(false)}
+        open={confirmation}
+
+      />
     </section>
   )
 }

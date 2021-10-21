@@ -49,6 +49,10 @@ button {
   background-color: #3B4FAD;
 }
 
+.download{
+  background-color: #E67817;
+}
+
 .delete {
   background-color: red;
 }

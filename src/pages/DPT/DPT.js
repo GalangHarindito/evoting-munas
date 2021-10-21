@@ -30,6 +30,7 @@ export default function DPT() {
   const { createDPT } = queryString.parse(location.search.replace("?", ""));
   const { verify } = queryString.parse(location.search.replace("?", ""));
   const { vote } = queryString.parse(location.search.replace("?", ""));
+  const { download } = queryString.parse(location.search.replace("?", ""));
   const {
     data,
     dataMetaDpt,
@@ -46,6 +47,7 @@ export default function DPT() {
   const [confirmation, setConfirmation] = useState(false);
   const [idDPT, setidDPT] = useState("");
   const [namaDPT, setnamaDPT] = useState("");
+  const [downloadAll, setDownloadAll] = useState(false)
   //useEffect(() => {
   //  dispatch(getAllDPT(page));
   //}, []);
@@ -79,6 +81,10 @@ export default function DPT() {
     req.vote = vote;
   }
 
+  if(download) {
+    req.download = download
+  }
+
 
 
   useEffect(() => {
@@ -88,7 +94,7 @@ export default function DPT() {
 
   useEffect(() => {
     dispatch(getAllDPT(req));
-  }, [page, angkatan, fullName, verify, vote]);
+  }, [page, angkatan, fullName, verify, vote, download]);
 
   useEffect(() => {
     if (dataMesDelete === "Berhasil Hapus DPT" || dataMesVerified === 'Berhasil Verifikasi DPT' || dataMesRegister === 'Pendaftaran DPT Berhasil' || dataMesUnVerified === 'Berhasil unveriifed') {
@@ -135,7 +141,7 @@ export default function DPT() {
     {
       id: "email",
       label: "Email",
-      minWidth: 120,
+      minWidth: 40,
       align: "left",
     },
     {
@@ -263,8 +269,10 @@ export default function DPT() {
     if(searchName){
       req['fullName'] = searchName;
       req.page = 1;
+      delete req.download;
     }else{
       delete req.fullName;
+      delete req.download;
     }
     const newQuery = queryString.stringify(req);
     history.push(newQuery?`?${newQuery}` : search);
@@ -274,6 +282,13 @@ export default function DPT() {
   const deleted = (id, name) => {
     dispatch(fetchDeleteDpt(id, name));
   };
+
+  const downloadDPT = () => {
+    req['download'] = true;
+
+    const newQuery = queryString.stringify(req);
+    history.push(newQuery?`?${newQuery}` : search);
+  }
 
   const optionGender = [
     { label: 'Laki-laki', value: 'Male'},
@@ -319,7 +334,9 @@ export default function DPT() {
             onChange={(e) => setSearchName(e.target.value)}
           />
           <Button label='Cari' className='find' onClick={submitValue} />
+          <Button label='Download' className='download' onClick={downloadDPT} download />
           <section>
+         
           <Button
             label='Create DPT'
             onClick={() => history.push("?createDPT=true")}
@@ -336,8 +353,10 @@ export default function DPT() {
                 if(e.target.value){
                   req['angkatan'] = e.target.value;
                   req.page = 1;
+                  delete req.download;
                 }else{
                   delete req.angkatan;
+                  delete req.download;
                 }
                 const newQuery = queryString.stringify(req);
                 history.push(newQuery?`?${newQuery}` : search);
@@ -368,8 +387,10 @@ export default function DPT() {
                 if(e.target.value){
                   req['verify'] = e.target.value;
                   req.page = 1;
+                  delete req.download;
                 }else{
                   delete req.verify;
+                  delete req.download
                 }
                 const newQuery = queryString.stringify(req);
                 history.push(newQuery?`?${newQuery}` : search);
@@ -400,8 +421,10 @@ export default function DPT() {
                 if(e.target.value){
                   req['vote'] = e.target.value;
                   req.page = 1;
+                  delete req.download;
                 }else{
                   delete req.vote;
+                  delete req.download;
                 }
                 const newQuery = queryString.stringify(req);
                 history.push(newQuery?`?${newQuery}` : search);

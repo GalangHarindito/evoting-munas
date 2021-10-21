@@ -21,11 +21,12 @@ export default function DetailCalonKetua() {
   const { propinsiId, kabupatenId } = dataAddressCandidate;
   //const renderAddress = Object.keys(dataCandidate.address).map(el => el)
 
+
   useEffect(() => {
     if(id !== 'create'){
       dispatch(fetchCandidateId(id));
     }
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     dispatch(fetchPropinsi());
@@ -39,6 +40,7 @@ export default function DetailCalonKetua() {
     
  
   }, [propinsiId, kabupatenId]);
+
 
   const optionGender = [
     { label: "Laki-laki", value: "Male" },
@@ -55,6 +57,7 @@ export default function DetailCalonKetua() {
   ];
 
    const render = Object.keys(dataCandidate).map(el => el)
+   const renderAddress = Object.keys(dataAddressCandidate).map(el => el)
 
    const toasterError = (text) => {
     toast.error(`${text}`, {
@@ -68,12 +71,21 @@ export default function DetailCalonKetua() {
     });
   };
 
+  //const blankDataCandidate = {
+  //  biodata: { photo: '', number:'', fullName:'', phoneNumber:'', nim:'', angkatan:'', gender:'', jargon:'', visi:'', misi:'', linkVideo:'', email:''},
+  //  occupancy: { occupation: '', jobTitle: '', officeName: '', officeAddress:'' }
+  //}
+
+  //const blankAddressCandidate = {
+  //  address: '', kabupatenId: '', kecamatanId: '', kodePos: '', propinsiId : ''
+  //}
+
   return(
     <>
      
      <CalonKetuaForm 
       optionGender={optionGender} 
-      data={dataCandidate} 
+      data={dataCandidate } 
       dataAddressCandidate={dataAddressCandidate}
       optionOccupation={optionOccupation}
       dataPropinsi={dataPropinsi}
@@ -104,7 +116,9 @@ export default function DetailCalonKetua() {
         newData.append("visi", values.visi);
         newData.append("misi", values.misi);
         newData.append("linkVideo", values.linkVideo);
-        newData.append("identityNumber", values.nim);
+        newData.append("linkedin", values.linkedin);
+        newData.append("facebook", values.facebook);
+        newData.append("instagram", values.instagram);
       //  for(var pair of newData.entries()) {
       //    console.log(pair[0]+ ', ' + pair[1]); 
       // }
@@ -121,7 +135,7 @@ export default function DetailCalonKetua() {
           else{dispatch(fetchEditCandidate(id, newData))}
         }
       }
-        //dispatch(fetchPostCandidate(newData));
+        dispatch(fetchPostCandidate(newData));
       }}
       />
  

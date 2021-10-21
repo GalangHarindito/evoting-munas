@@ -65,6 +65,7 @@ export function fetchDeleteCandidate(id) {
   
   return dispatch => {
     dispatch(loadingAction(true, 'Delete'));
+    dispatch(successAction('', 'MesDelete'));
 
       const options = {
         method: 'DELETE',

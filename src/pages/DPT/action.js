@@ -7,7 +7,7 @@ import { clearStorages } from '../../utils/storage';
 
 const BASIC_URL = 'https://ikata.semoga.online/api/';
 
-export function getAllDPT(payload) {
+export function getAllDPT(payload, download) {
   return dispatch => {
     dispatch(loadingAction(true,''));
       const newQuery = queryString.stringify(payload);

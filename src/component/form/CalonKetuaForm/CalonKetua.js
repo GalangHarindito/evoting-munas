@@ -34,7 +34,7 @@ export default function CalonKetuaForm(props) {
   } = props;
 
   const { biodata, occupancy } = data;
-  const photo = biodata? biodata.photo: null;
+  const  photo = biodata? biodata.photo: null;
   const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
@@ -61,6 +61,9 @@ export default function CalonKetuaForm(props) {
       let kodePos = dataAddressCandidate? dataAddressCandidate.kodePos:null;
       let propinsiId = dataAddressCandidate? dataAddressCandidate.propinsiId:null;
       let email = biodata? biodata.email:null;
+      let linkedin = biodata? biodata.linkedin:null;
+      let facebook = biodata? biodata.facebook:null;
+      let instagram = biodata? biodata.instagram:null;
 
     //const { email } = dataAccount
     initialize({
@@ -85,7 +88,10 @@ export default function CalonKetuaForm(props) {
       kecamatanId: kecamatanId,
       kodePos: kodePos,
       propinsiId: propinsiId,
-      email: email
+      email: email,
+      linkedin: linkedin,
+      facebook: facebook,
+      instagram: instagram
     });
   }, [biodata, occupancy, dataAddressCandidate]);
 
@@ -171,6 +177,27 @@ export default function CalonKetuaForm(props) {
               component={Text}
               label='Link Video '
               name='linkVideo'
+            />
+          </section>
+          <section>
+            <Field
+              component={Text}
+              label='linkedin'
+              name='linkedin'
+            />
+          </section>
+          <section>
+            <Field
+              component={Text}
+              label='facebook'
+              name='facebook'
+            />
+          </section>
+          <section>
+            <Field
+              component={Text}
+              label='instagram'
+              name='instagram'
             />
           </section>
           </div>

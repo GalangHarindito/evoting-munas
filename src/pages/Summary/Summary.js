@@ -27,8 +27,9 @@ export default function Summary() {
       <h5>Total DPT Belum Terverifikasi  : <b>{dataAll.countAllDptUnverified || '-'} </b>orang</h5>
       <h5>Total DPT Voting  : <b>{dataAll.countAllDptVoted || '-'} </b>orang</h5>
       <h5>Total DPT Belum Voting  : <b>{dataAll.countAllDptUnvoted || '-'} </b>orang</h5>*/}
-      <Chart data={summaryChart} height={300} width={1500} />
+      <Chart data={summaryChart} height={500} width={500} layout='vertical' />
     </section>
+      <br />
       <br />
     <section>
     <h3 style={{fontWeight:'normal'}}>Summary Angkatan</h3>
@@ -46,7 +47,7 @@ export default function Summary() {
         )
       })}
     </section>*/}
-     <Chart data={dataAngkatan} height={200} width={5000} />
+     <Chart data={dataAngkatan} height={3000} width={1000} layout='vertical' />
     </section>
     
     </section>

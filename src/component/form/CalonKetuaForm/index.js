@@ -1,5 +1,6 @@
 import { reduxForm } from "redux-form";
 import Component from "./CalonKetua";
+import validate from './validate';
 
 const initialValues = {
   number: '',
@@ -23,10 +24,14 @@ const initialValues = {
   kodePos: '',
   propinsiId: '',
   identityNumber:'',
-  email:''
+  email:'',
+  linkedin:'',
+  facebook:'',
+  instagram:''
 };
 
 export default reduxForm({
   form: "calonKetuaForm",
   initialValues,
+  validate
 })(Component);

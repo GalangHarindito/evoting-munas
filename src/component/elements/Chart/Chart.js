@@ -3,12 +3,14 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'rec
 import './style.css';
 
 export default function Chart(props) {
-    const { data, width, height } = props;
+    const { data, width, height, layout } = props;
+
     return (
       <BarChart
       width={width}
       height={height}
       data={data}
+      layout={layout}
       margin={{
         top: 20,
         right: 30,
@@ -16,11 +18,12 @@ export default function Chart(props) {
         bottom: 5
       }}
     >
+      
       <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey={'angkatan'?'angkatan' : 'All'} />
-      <YAxis />
+      <XAxis type="number" />
+      <YAxis type={ 'category' } orientation={ 'left' } dataKey={'angkatan'?'angkatan' : 'All'}/>
       <Tooltip />
-      <Legend />
+      <Legend layout="vertical" verticalAlign="middle" align="right" />
       <Bar dataKey="countAllDptUnverified" stackId="a" fill="#8884d8" />
       <Bar dataKey="countAllDptVerified" stackId="a" fill="#82ca9d" />
       <Bar dataKey="countAllDptUnvoted" stackId="b" fill="var(--primary-color)" />

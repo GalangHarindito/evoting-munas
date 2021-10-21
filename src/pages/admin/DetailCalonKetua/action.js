@@ -68,6 +68,7 @@ export function fetchEditCandidate(id,payload) {
   return dispatch => {
     dispatch(loadingAction(true, 'EditKetua'));
     dispatch(failedAction(''));
+    dispatch(successAction('', 'EditCandidate'));
 
       const options = {
         method: 'PUT',
@@ -137,6 +138,7 @@ export function fetchPostCandidate(payload) {
   return dispatch => {
     dispatch(loadingAction(true, 'postKetua'));
     dispatch(failedAction(''));
+    dispatch(successAction('', 'PostCandidate'));
 
       const options = {
         method: 'POST',

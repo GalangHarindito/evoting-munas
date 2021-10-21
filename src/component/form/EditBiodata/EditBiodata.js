@@ -45,6 +45,8 @@ export default function EditBiodataForm (props) {
     });
   },[data])
 
+  
+
   const handlePhoto = (event) => {
     setSelectedImage(event.target.files[0])
     return event.target.files[0]
