@@ -3,8 +3,7 @@ import axios from 'axios';
 import { getToken } from '../../utils/storage';
 import { toast } from 'react-toastify';
 import { clearStorages } from '../../utils/storage';
-
-const BASIC_URL = 'https://ikata.semoga.online/api/';
+import { BASIC_URL } from '../../utils/fetch';
 
 export function fetchDPTId(id) {
   

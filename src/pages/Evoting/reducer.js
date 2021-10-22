@@ -2,10 +2,12 @@ import { FAILED, LOADING, SUCCESS } from './constants';
 
 const initialState = {
   isLoading: false,
+  isLoadingVote: false,
   message:'',
   datahasVerified:'',
   datahasVoted:'',
-  data:[]
+  data:[],
+  dataVote:''
 };
 
 export default function reducer(state = initialState, action = {}) {

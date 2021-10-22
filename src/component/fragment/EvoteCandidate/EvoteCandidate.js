@@ -3,13 +3,13 @@ import Button from "../../elements/button/Button";
 import "./style.css";
 
 export default function EvoteCandidate(props) {
-  const { data, openModal } = props
+  const { data, openModal, isLoading } = props;
   return (
     <section className='evote-candidate'>
       <h4>Daftar Calon Ketua IKATA 2021 - 2025</h4>
       <p>Silahkan pilih salah satu dari calon Ketua IKATA </p>
       <section>
-        {data.length >=1 ?<Cards datas={data} openModal={openModal} /> : <h2>Belum ada data</h2>}
+        {data.length >=1 ?<Cards datas={data} openModal={openModal} isLoading={isLoading} /> : <h2>Belum ada data</h2>}
       </section>
       
     </section>
@@ -18,7 +18,7 @@ export default function EvoteCandidate(props) {
 
 function Cards(props) {
   
-  const { datas, openModal } = props;
+  const { datas, openModal, isLoading } = props;
 
   return(
       <>
@@ -39,7 +39,7 @@ function Cards(props) {
             <a href={`https://munasikataupn.com/tentangMunas?tab=${el.biodata.fullName.toLowerCase().split(' ').join('')}`} target='_blank'>Tentang Calon Ketua</a>
           </section>
           <section className='buttonVote'>
-            <Button label='Pilih' onClick={() => openModal(el.biodata.fullName)} />
+            <Button label='Pilih' isLoading={isLoading} onClick={() => openModal(el.biodata.fullName, el.id, el.biodata.photo, el.biodata.number)} />
           </section>
           </section>
           )

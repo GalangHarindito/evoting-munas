@@ -5,6 +5,7 @@ const initialState = {
   isLoadingDelete:false,
   isLoadingVerified:false,
   isLoadingRegister:false,
+  isLoadingDownload:false,
   message:'',
   messageVerified:'',
   data:[],
@@ -12,7 +13,8 @@ const initialState = {
   dataMesDelete:'',
   dataMesVerified:'',
   dataMesRegister:'',
-  dataMesUnVerified:''
+  dataMesUnVerified:'',
+  dataDownload:''
 };
 
 export default function reducer(state = initialState, action = {}) {

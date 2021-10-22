@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
-import { getAllDPT, fetchDeleteDpt, fetchUpdateVerified, register } from "./action";
+import { getAllDPT, fetchDeleteDpt, fetchUpdateVerified, register, getDownload } from "./action";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import TableGrid from "../../component/elements/Table";
@@ -16,6 +16,7 @@ import { capitalizedArray } from "../../utils/format";
 import { ToastContainer } from "react-toastify";
 import DetailDPT from "../DetailDPT";
 import RegisterForm from "../../component/form/registerForm";
+import fileDownload from 'js-file-download'
 //import 'moment/locale/id';
 
 export default function DPT() {
@@ -38,6 +39,7 @@ export default function DPT() {
     dataMesVerified,
     dataMesRegister,
     dataMesUnVerified,
+    dataDownload,
     message,
     messageVerified,
     isLoading,
@@ -51,7 +53,7 @@ export default function DPT() {
   //useEffect(() => {
   //  dispatch(getAllDPT(page));
   //}, []);
-
+  
   let req = {
     page: parseInt(page) || 1,
     size: 15,
@@ -283,11 +285,12 @@ export default function DPT() {
     dispatch(fetchDeleteDpt(id, name));
   };
 
-  const downloadDPT = () => {
-    req['download'] = true;
+  const date = Date.now();
+  const today = new Date(date);
 
-    const newQuery = queryString.stringify(req);
-    history.push(newQuery?`?${newQuery}` : search);
+  const downloadDPT = () => {
+      dispatch(getDownload(req))
+      fileDownload(dataDownload, `DPT-${moment(today).format("DD MMM YYYY HH:mm:ss")}.xlsx`)
   }
 
   const optionGender = [
@@ -316,10 +319,11 @@ export default function DPT() {
       </section>;
   }
 
+
   if (search.includes("?id") || (search.includes("?id=create") && id)) {
     return <DetailDPT />;
   }
- 
+
   return (
     <section className='dpt'>
       <h3>Daftar DPT MUNAS IKATA 2021</h3>
@@ -334,7 +338,7 @@ export default function DPT() {
             onChange={(e) => setSearchName(e.target.value)}
           />
           <Button label='Cari' className='find' onClick={submitValue} />
-          <Button label='Download' className='download' onClick={downloadDPT} download />
+          <Button label='Download' className='download' onClick={() => downloadDPT() } />
           <section>
          
           <Button

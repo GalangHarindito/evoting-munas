@@ -4,8 +4,7 @@ import { getToken } from '../../utils/storage';
 import { toast } from 'react-toastify';
 import queryString from 'querystring';
 import { clearStorages } from '../../utils/storage';
-
-const BASIC_URL = 'https://ikata.semoga.online/api/';
+import { BASIC_URL } from '../../utils/fetch';
 
 export function getAllDPT(payload, download) {
   return dispatch => {
@@ -35,7 +34,6 @@ export function getAllDPT(payload, download) {
       axios(options)
       .then((res) => {
         const { status, data, meta } = res.data;
-
         dispatch(loadingAction(false,''));
         if ( status === 200 ) {
           dispatch(successAction(data, ''));
@@ -58,6 +56,62 @@ export function getAllDPT(payload, download) {
         toasterError(messageStatus)
         dispatch(failedAction(messageStatus));
         dispatch(loadingAction(false,''));
+      });
+
+}
+}
+
+export function getDownload(payload) {
+  return dispatch => {
+    dispatch(loadingAction(true,'Download'));
+      const newQuery = queryString.stringify(payload);
+      const req = newQuery ? `?${decodeURIComponent(newQuery)}` : '';
+      const options = {
+        method: 'GET',
+        url: `${BASIC_URL}dpt${req}${req? '&download=true' : '?download=true'}`,
+        headers: {  
+          Authorization : getToken()
+        },
+        responseType: 'blob'
+      };
+     
+      const toasterError = (text) => {
+        toast.error(`${text}`, {
+          position: "top-center",
+          autoClose: false,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          });
+      }
+  
+      axios(options)
+      .then((res) => {
+        const { status, data } = res;
+        dispatch(loadingAction(false,'Download'));
+        
+        if ( status === 200 ) {
+          dispatch(successAction(res.data, 'Download'));
+        } else {
+          dispatch(failedAction('You are not allowed to access'));
+        }
+      })
+      .catch(err => {
+        const { status, message } = err.response.data
+        if(status === 401){
+          clearStorages();
+          window.location.href = '/login'
+        }
+        if(status === 403){
+          clearStorages();
+          window.location.href = '/login'
+        }
+        const messageStatus = status > 403 && status <= 500 ? 'Sedang ada masalah, silahkan refresh halaman' : message;
+        toasterError(messageStatus)
+        dispatch(failedAction(messageStatus));
+        dispatch(loadingAction(false,'Download'));
       });
 
 }

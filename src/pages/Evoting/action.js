@@ -3,8 +3,7 @@ import axios from 'axios';
 import { getToken } from '../../utils/storage';
 import { toast } from 'react-toastify';
 import { clearStorages } from '../../utils/storage';
-
-const BASIC_URL = 'https://ikata.semoga.online/api/';
+import { BASIC_URL } from '../../utils/fetch';
 
 export function getStatusVote() {
   
@@ -117,8 +116,65 @@ export function fetchAllCandidate() {
 }
 }
 
-export function resetMessage() {
-  return failedAction('');
+export function fetchVote(payload) {
+  
+  return dispatch => {
+    dispatch(loadingAction(true, 'Vote'));
+    dispatch(successAction( '', 'Vote'));
+
+      const options = {
+        method: 'GET',
+        url: `${BASIC_URL}vote/${payload}`,
+        headers: {  
+          Authorization : getToken()
+        }
+      };
+      const toasterError = (text) => {
+        toast.error(`${text}`, {
+          position: "top-center",
+          autoClose: false,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          });
+      }
+  
+      axios(options)
+      .then((res) => {
+        const { status, data } = res.data;
+        //const { hasVerified, hasVoted, biodata, address, occupancy } = data;
+        const mesSuccess = 'Vote Berhasil'
+        dispatch(loadingAction(false, 'Vote'));
+        if ( status === 200 ) {
+          dispatch(successAction( mesSuccess, 'Vote'));
+        } else {
+          dispatch(failedAction('You are not allowed to access'));
+        }
+      })
+      .catch(err => {
+        const { status, message } = err.response.data
+        if(status === 401){
+          clearStorages();
+          window.location.href = '/login'
+        }
+        if(status === 403){
+          clearStorages();
+          window.location.href = '/login'
+        }
+        const messageStatus = status > 403 && status <= 500 ? 'Sedang ada masalah, silahkan refresh halaman' : message;
+        toasterError(messageStatus)
+        dispatch(failedAction(messageStatus));
+        dispatch(loadingAction(false, 'Vote'));
+      });
+
+}
+}
+
+export function resetMessage(data, key) {
+  console.log(data, key)
+  return successAction(data, key);
 }
 
 function failedAction(message) {

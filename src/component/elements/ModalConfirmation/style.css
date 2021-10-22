@@ -10,6 +10,22 @@
   top: 0.5rem;
 }
 
+.root-confimation > section > img {
+  width: 10em;
+  border-radius: 0.4rem;
+  -webkit-border-radius: 0.4rem;
+  -moz-border-radius: 0.4rem;
+  -ms-border-radius: 0.4rem;
+  -o-border-radius: 0.4rem;
+}
+
+.root-confimation > section > section > label {
+  position: absolute;
+  font-size: 2rem;
+  right: 15em;
+  font-weight: 600;
+}
+
 .root-confimation > img:last-of-type {
   margin-bottom: 2.5rem;
   width: 14.375rem;
@@ -19,15 +35,37 @@
   color: var(--light-text-color);
   font-size: 1rem;
   font-weight: 400;
-  line-height: 2rem;
+
 }
 
 .root-confimation > footer {
   display: flex;
   justify-content: center;
-  margin-top: 2.875rem;
+  margin-top: 2rem;
 }
 
 .root-confimation > footer > button:first-child {
   margin-right: 2.5rem;
+}
+
+.photo-evote {
+  width: 10em;
+  height: 10em;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: auto;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+
+@media screen and (max-width: 700px) {
+  .root-confimation > section > section > label {
+    right: 1em;
+  }
+  
 }

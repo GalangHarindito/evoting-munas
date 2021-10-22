@@ -2,8 +2,7 @@ import { setToken, setUserData } from '../../utils/storage';
 import { FAILED, LOADING } from './constants';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-
-const BASIC_URL = 'https://ikata.semoga.online/api/'
+import { BASIC_URL } from '../../utils/fetch';
 
 export function login(data) {
   return dispatch => {

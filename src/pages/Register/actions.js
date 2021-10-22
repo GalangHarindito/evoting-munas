@@ -1,8 +1,7 @@
 import { FAILED, LOADING, SUCCESS } from './constants';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-
-const BASIC_URL = 'https://ikata.semoga.online/api/'
+import { BASIC_URL } from '../../utils/fetch';
 
 export function register(data) {
   return dispatch => {

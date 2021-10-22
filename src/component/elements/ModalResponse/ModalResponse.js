@@ -7,7 +7,7 @@ import iluSuccess from '../../../assets/ilu-success.svg';
 import iluError from '../../../assets/ilu-error.svg';
 import { Link } from 'react-router-dom';
 
-export default function ModalResponse({ error, open, onClose, message, labelLink, toLink }) {
+export default function ModalResponse({ voted, error, open, onClose, message, labelLink, toLink }) {
 
   return (
     <Modal className='modal-response' onClose={onClose} open={open}>
@@ -22,7 +22,7 @@ export default function ModalResponse({ error, open, onClose, message, labelLink
       </div>
       
       {error ?  
-        <Link to={toLink}>{labelLink}</Link> :
+        labelLink? <Link to={toLink}>{labelLink}</Link> : <Button onClick={onClose} label={'Tutup'} /> :
         <Button onClick={onClose} label={'Tutup'} /> 
       }
     </Modal>
