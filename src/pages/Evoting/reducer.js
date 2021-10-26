@@ -7,7 +7,8 @@ const initialState = {
   datahasVerified:'',
   datahasVoted:'',
   data:[],
-  dataVote:''
+  dataVote:'',
+  dataStatusVote:''
 };
 
 export default function reducer(state = initialState, action = {}) {

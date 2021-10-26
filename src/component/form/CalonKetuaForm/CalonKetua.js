@@ -36,6 +36,7 @@ export default function CalonKetuaForm(props) {
   const { biodata, occupancy } = data;
   const  photo = biodata? biodata.photo: null;
   const [selectedImage, setSelectedImage] = useState(null);
+  console.log(data)
 
   useEffect(() => {
 
@@ -61,7 +62,7 @@ export default function CalonKetuaForm(props) {
       let kodePos = dataAddressCandidate? dataAddressCandidate.kodePos:null;
       let propinsiId = dataAddressCandidate? dataAddressCandidate.propinsiId:null;
       let email = biodata? biodata.email:null;
-      let linkedin = biodata? biodata.linkedin:null;
+      let linkedIn = biodata? biodata.linkedIn:null;
       let facebook = biodata? biodata.facebook:null;
       let instagram = biodata? biodata.instagram:null;
 
@@ -89,7 +90,7 @@ export default function CalonKetuaForm(props) {
       kodePos: kodePos,
       propinsiId: propinsiId,
       email: email,
-      linkedin: linkedin,
+      linkedIn: linkedIn,
       facebook: facebook,
       instagram: instagram
     });
@@ -183,7 +184,7 @@ export default function CalonKetuaForm(props) {
             <Field
               component={Text}
               label='linkedin'
-              name='linkedin'
+              name='linkedIn'
             />
           </section>
           <section>

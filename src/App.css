@@ -7,6 +7,8 @@
   font-size: 1rem;
   padding: 0;
   color: #2A2A2A;
+  /*animation: fade-in 0.1s ease-in-out;
+  -webkit-animation: fade-in 0.1s ease-in-out;*/
 }
 
 #root.pagebase {
@@ -82,19 +84,21 @@ p {
 }
 
 .modal-open > div > .modal {
-  background-color: rgba(0, 0, 0, 0.6);
-  display: block;
+	        background-color: rgba(0, 0, 0, 0.6);
+	        display: block;
+	        -webkit-animation: fade-in 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: fade-in 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
 .modal {
-  display: none;
-  height: 100%;
-  left: 0;
-  position: fixed;
-  top: 0;
-  transition: background-color 0.25s;
-  width: 100vw;
-  z-index: 50;
+	        display: none;
+	        height: 100%;
+	        left: 0;
+	        position: fixed;
+	        top: 0;
+	        transition: background-color 0.25s;
+	        width: 100vw;
+	        z-index: 50;
 }
 
 :root {
@@ -160,6 +164,11 @@ p {
 
 .Toastify__toast-body svg {
   fill: #fff;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 

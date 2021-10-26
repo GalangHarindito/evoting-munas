@@ -14,7 +14,7 @@ export default function Evoting() {
   const dispatch = useDispatch();
   const history = useHistory()
   const { datahasVoted, datahasVerified } = useSelector(s => s.header);
-  const { data, isLoadingVote, dataVote } = useSelector(s => s.evoting);
+  const { data, isLoadingVote, dataVote, dataStatusVote } = useSelector(s => s.evoting);
   const [confirmation, setConfirmation] = useState(false);
   const [info, setInfo] = useState(false);
   const [successVote, setsuccessVote] = useState(false);
@@ -22,30 +22,32 @@ export default function Evoting() {
   const [idCandidate, setCandidateId] = useState('');
   const [photo, setPhoto] = useState('');
   const [number, setNumber] = useState('')
-  const closeModal = () => {
-    setInfo(false)
-    //history.push('/bantuan'); 
-  };
-
+  //const closeModal = () => {
+    
+  //  //history.push('/bantuan'); 
+  //};
+  
   useEffect(() => {
     dispatch(getStatusVote())
     dispatch(fetchAllCandidate())
   },[]);
+  
 
   useEffect(() => {
-    if(dataVote){
+    if(dataStatusVote){
       setConfirmation(false)
       setsuccessVote(true)
+      
     }
-  },[dataVote])
+  },[dataStatusVote])
 
   useEffect(() => {
     if (!successVote) {
-      dispatch(resetMessage('', 'Vote'));
+      dispatch(resetMessage('', 'StatusVote'));
     }
   }, [successVote]);
 
-  console.log(dataVote)
+
   const vote = () => {
     dispatch(fetchVote(idCandidate))
   }
@@ -67,7 +69,6 @@ export default function Evoting() {
         setPhoto(photo)
         setNumber(number)
       }}
-      isLoading={isLoadingVote}
       />
     }
     if(today.toISOString() > date.toISOString() && !datahasVerified){
@@ -99,19 +100,22 @@ export default function Evoting() {
           <b>ANDA TELAH MELAKUKAN VOTING</b>, 
           'Mohon maaf Hak voting tiap DPT hanya satu kali',
         ] : []}
-        onClose={closeModal}
+        onClose={() => setInfo(false)}
         open={info} 
       />
       <ModalResponse
-        error={dataVote? true : false }
-        message= {dataVote? [
+        error={dataStatusVote === 200? true : false }
+        message= {dataStatusVote === 200? [
           <b>E-VOTE BERHASIL</b>, 
           'Terimakasih telah berpartisipasi pada E-voting Pemilihan ketua IKATA UPN periode 2021 - 2025. Berjumpa kembali di MUNAS IKATA periode berikutnya.', 
         ] : [
           <b>E-VOTE GAGAL</b>, 
-          'Silahkan Mencoba Kembali', 
+          'Mohon maaf anda telah menggunakan Hak Pilih Anda dalam Pemilihan Ketua Ikata Periode 2021 - 2025', 
         ]}
-        onClose={() => setsuccessVote(false)}
+        onClose={() => {
+          setsuccessVote(false)
+          window.location.reload()
+        }}
         open={successVote} 
       />
     </section>

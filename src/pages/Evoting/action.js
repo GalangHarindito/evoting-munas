@@ -121,6 +121,7 @@ export function fetchVote(payload) {
   return dispatch => {
     dispatch(loadingAction(true, 'Vote'));
     dispatch(successAction( '', 'Vote'));
+    dispatch(successAction( '', 'StatusVote'));
 
       const options = {
         method: 'GET',
@@ -146,10 +147,15 @@ export function fetchVote(payload) {
         const { status, data } = res.data;
         //const { hasVerified, hasVoted, biodata, address, occupancy } = data;
         const mesSuccess = 'Vote Berhasil'
+        const mesFailed = 'Anda Sudah Memilih'
         dispatch(loadingAction(false, 'Vote'));
         if ( status === 200 ) {
           dispatch(successAction( mesSuccess, 'Vote'));
-        } else {
+          dispatch(successAction( status, 'StatusVote'));
+        }if ( status === 401 ) {
+          dispatch(successAction( status, 'StatusVote'));
+        }
+         else {
           dispatch(failedAction('You are not allowed to access'));
         }
       })
@@ -173,7 +179,6 @@ export function fetchVote(payload) {
 }
 
 export function resetMessage(data, key) {
-  console.log(data, key)
   return successAction(data, key);
 }
 

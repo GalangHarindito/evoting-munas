@@ -25,7 +25,7 @@ const initialValues = {
   propinsiId: '',
   identityNumber:'',
   email:'',
-  linkedin:'',
+  linkedIn:'',
   facebook:'',
   instagram:''
 };

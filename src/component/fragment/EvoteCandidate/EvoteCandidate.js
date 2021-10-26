@@ -9,7 +9,7 @@ export default function EvoteCandidate(props) {
       <h4>Daftar Calon Ketua IKATA 2021 - 2025</h4>
       <p>Silahkan pilih salah satu dari calon Ketua IKATA </p>
       <section>
-        {data.length >=1 ?<Cards datas={data} openModal={openModal} isLoading={isLoading} /> : <h2>Belum ada data</h2>}
+        {data.length >=1  && <Cards datas={data} openModal={openModal} isLoading={isLoading} />}
       </section>
       
     </section>

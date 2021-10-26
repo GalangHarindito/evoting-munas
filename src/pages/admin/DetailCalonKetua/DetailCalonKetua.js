@@ -17,7 +17,6 @@ export default function DetailCalonKetua() {
     (s) => s.detailCalonKetua
   );
   const [size, setSize] = useState(true);
-    
   const { propinsiId, kabupatenId } = dataAddressCandidate;
   //const renderAddress = Object.keys(dataCandidate.address).map(el => el)
 
@@ -116,7 +115,7 @@ export default function DetailCalonKetua() {
         newData.append("visi", values.visi);
         newData.append("misi", values.misi);
         newData.append("linkVideo", values.linkVideo);
-        newData.append("linkedin", values.linkedin);
+        newData.append("linkedIn", values.linkedIn);
         newData.append("facebook", values.facebook);
         newData.append("instagram", values.instagram);
       //  for(var pair of newData.entries()) {
@@ -135,7 +134,7 @@ export default function DetailCalonKetua() {
           else{dispatch(fetchEditCandidate(id, newData))}
         }
       }
-        dispatch(fetchPostCandidate(newData));
+        //dispatch(fetchPostCandidate(newData));
       }}
       />
  

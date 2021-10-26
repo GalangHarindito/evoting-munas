@@ -87,7 +87,12 @@ export default function DPT() {
     req.download = download
   }
 
-
+  const d = Date.now();
+  const today =  moment(d).unix();
+  const date = new Date('Dec 17 2021 00:00:00 UTC+0700')
+  const newDate = moment.utc(date).format("DD MMM YYYY HH:mm:ss")
+  const newToday = moment(today).format("DD MMM YYYY HH:mm:ss")
+  console.log(today, moment(date).unix(), 1639674000, 1639846799)
 
   useEffect(() => {
     dispatch(getAllDPT(req));
@@ -285,12 +290,9 @@ export default function DPT() {
     dispatch(fetchDeleteDpt(id, name));
   };
 
-  const date = Date.now();
-  const today = new Date(date);
-
   const downloadDPT = () => {
       dispatch(getDownload(req))
-      fileDownload(dataDownload, `DPT-${moment(today).format("DD MMM YYYY HH:mm:ss")}.xlsx`)
+      //fileDownload(dataDownload, `DPT-${moment(today).format("DD MMM YYYY HH:mm:ss")}.xlsx`)
   }
 
   const optionGender = [
