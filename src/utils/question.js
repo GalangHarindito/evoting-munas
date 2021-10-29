@@ -25,10 +25,10 @@ export const question = [
     question: 'Apakah terdapat pilihan ABSTAIN pada saat E-VOTING ?',
     answer: 'Tidak, semua pilihan yang akan ditampilkan adalah calon ketua IKATA yang telah lolos uji verifikasi panitia MUNAS IV IKATA 2021. Jadi, mari gunakan pilihan anda dengan sebaik - baiknya.'
   },
-  {
-    question: 'Apakah DPT dapat melihat sesi perhitungan suara secara langsung?',
-    answer: `Ya, platform ini akan dilengkapi dengan fitur yang bernama LIVE COUNT yang akan terletak di halaman DASHBOARD.`
-  },
+  //{
+  //  question: 'Apakah DPT dapat melihat sesi perhitungan suara secara langsung?',
+  //  answer: `Ya, platform ini akan dilengkapi dengan fitur yang bernama LIVE COUNT yang akan terletak di halaman DASHBOARD.`
+  //},
   {
     question: 'Bagaimana dengan data yang saya input pada platform ini?',
     answer: `Data anda akan menjadi DATABASE pengurus IKATA, yang kemudian akan dikelola dengan sangat baik dan terjaga kerahasiaannya.`

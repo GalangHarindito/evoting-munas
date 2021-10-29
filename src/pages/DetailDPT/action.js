@@ -64,6 +64,7 @@ export function fetchEditDPT(id,payload) {
   return dispatch => {
     dispatch(loadingAction(true, 'EditDPT'));
     dispatch(failedAction(''));
+    dispatch(successAction('', 'EditDPT'));
 
       const options = {
         method: 'PUT',

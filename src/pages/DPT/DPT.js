@@ -46,6 +46,8 @@ export default function DPT() {
     isLoadingRegister,
     isLoadingDelete,
   } = useSelector((s) => s.dpt);
+  const { dataEditDPT } = useSelector(s => s.detailDPT)
+
   const [confirmation, setConfirmation] = useState(false);
   const [idDPT, setidDPT] = useState("");
   const [namaDPT, setnamaDPT] = useState("");
@@ -104,7 +106,7 @@ export default function DPT() {
   }, [page, angkatan, fullName, verify, vote, download]);
 
   useEffect(() => {
-    if (dataMesDelete === "Berhasil Hapus DPT" || dataMesVerified === 'Berhasil Verifikasi DPT' || dataMesRegister === 'Pendaftaran DPT Berhasil' || dataMesUnVerified === 'Berhasil unveriifed') {
+    if (dataEditDPT || dataMesDelete === "Berhasil Hapus DPT" || dataMesVerified === 'Berhasil Verifikasi DPT' || dataMesRegister === 'Pendaftaran DPT Berhasil' || dataMesUnVerified === 'Berhasil unveriifed') {
       setConfirmation(false)
       dispatch(getAllDPT(req))
     }

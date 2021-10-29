@@ -118,6 +118,8 @@ export default function DetailCalonKetua() {
         newData.append("linkedIn", values.linkedIn);
         newData.append("facebook", values.facebook);
         newData.append("instagram", values.instagram);
+        newData.append("description", values.description);
+        newData.append("organizationExperience", values.organizationExperience);
       //  for(var pair of newData.entries()) {
       //    console.log(pair[0]+ ', ' + pair[1]); 
       // }

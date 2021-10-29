@@ -64,6 +64,8 @@ export default function CalonKetuaForm(props) {
       let linkedIn = biodata? biodata.linkedIn:null;
       let facebook = biodata? biodata.facebook:null;
       let instagram = biodata? biodata.instagram:null;
+      let description = biodata? biodata.description:null;
+      let organizationExperience = biodata? biodata.organizationExperience:null;
 
     //const { email } = dataAccount
     initialize({
@@ -91,7 +93,9 @@ export default function CalonKetuaForm(props) {
       email: email,
       linkedIn: linkedIn,
       facebook: facebook,
-      instagram: instagram
+      instagram: instagram,
+      description: description,
+      organizationExperience: organizationExperience
     });
   }, [biodata, occupancy, dataAddressCandidate]);
 
@@ -172,6 +176,7 @@ export default function CalonKetuaForm(props) {
                 options={optionGender}
               />
             </section>
+            
             <section>
             <Field
               component={Text}
@@ -226,6 +231,22 @@ export default function CalonKetuaForm(props) {
               inputProps={{ placeholder: "", rows: "5" }}
               label='Misi'
               name='misi'
+            />
+          </section>
+          <section>
+            <Field
+              component={TextArea}
+              inputProps={{ placeholder: "", rows: "5" }}
+              label='Deskripsi Diri'
+              name='description'
+            />
+          </section>
+          <section>
+            <Field
+              component={TextArea}
+              inputProps={{ placeholder: "", rows: "5" }}
+              label='Pengalaman Organisasi'
+              name='organizationExperience'
             />
           </section>
 

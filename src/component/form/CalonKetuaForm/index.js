@@ -27,7 +27,9 @@ const initialValues = {
   email:'',
   linkedIn:'',
   facebook:'',
-  instagram:''
+  instagram:'',
+  description: '',
+  organizationExperience: ''
 };
 
 export default reduxForm({
