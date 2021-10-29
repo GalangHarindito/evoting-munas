@@ -4,6 +4,7 @@ import './style.css';
 import { fetchSummaryAll, fetchSummaryAngkatan } from './action';
 import { useSelector } from 'react-redux';
 import Chart from '../../component/elements/Chart';
+import InformationVote from '../../component/fragment/InformationDPT';
 
 export default function Summary() {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ export default function Summary() {
       <h5>Total DPT Belum Terverifikasi  : <b>{dataAll.countAllDptUnverified || '-'} </b>orang</h5>
       <h5>Total DPT Voting  : <b>{dataAll.countAllDptVoted || '-'} </b>orang</h5>
       <h5>Total DPT Belum Voting  : <b>{dataAll.countAllDptUnvoted || '-'} </b>orang</h5>*/}
-      <Chart data={summaryChart} height={500} width={500} layout='vertical' />
+      <InformationVote data={dataAll} />
     </section>
       <br />
       <br />

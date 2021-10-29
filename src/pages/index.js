@@ -17,6 +17,7 @@ export default {
   Evoting: Suspensed(React.lazy(() => import('./Evoting'))),
   DPT: Suspensed(React.lazy(() => import('./DPT'))),
   SUMMARY: Suspensed(React.lazy(() => import('./Summary'))),
+  SummaryVote: Suspensed(React.lazy(() => import('./SummaryVote'))),
   CalonKetua:Suspensed(React.lazy(() => import('./admin/CalonKetua'))),
   Events:Suspensed(React.lazy(() => import('./admin/Events'))),
   Bantuan:Suspensed(React.lazy(() => import('./Bantuan')))

@@ -105,3 +105,14 @@ export const angkatanKuliah = [
   { text: 2017, value:2017 },
   { text: 2018, value:2018 },
 ]
+
+export const titleSummary  = title => {
+  switch(title) {
+    case 'countAllDpt' : return 'Total DPT';
+    case 'countAllDptVerified' : return 'Total DPT Terverifikasi';
+    case 'countAllDptUnverified' : return 'Total DPT Belum Terverifikasi';
+    case 'countAllDptVoted' : return 'Total DPT Voting';
+    case 'countAllDptUnvoted' : return 'Total DPT Belum Voting';
+    default : return '';
+  }
+}

@@ -1,0 +1,76 @@
+.summary-vote > h3{
+  font-weight: normal;
+  margin-bottom: 2rem;
+}
+
+.summary-vote > h3:nth-child(3){
+  font-weight: normal;
+  text-align: center;
+  margin: 4rem 0 2rem 0;
+}
+
+.summary-vote > section{
+  margin-bottom: 2rem;
+}
+
+.summary-vote > section:nth-child(5) > h5{
+  margin: 4rem 0 2rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+.result-number{
+  display: flex;
+  justify-content: center;
+}
+
+.result-number > section{
+  width: 20rem;
+  background-color: #F4F4F4;
+  padding: 0.7rem 1rem;
+}
+
+.result-number > section{
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+}
+
+.result-number > section:not(section:last-child){
+  margin-right: 2rem;
+}
+
+.result-number > section > h5{
+  text-align: center;
+  font-weight: 600;
+}
+
+.result-number > section > h6{
+  text-align: center;
+  font-weight: 500;
+  padding: 0.3rem 0;
+  height: 2.5rem;
+  margin-top: 1rem;
+
+}
+
+.result-number > section > label{
+  font-size: 1.5rem;
+  position: absolute;
+}
+
+.image-candidate{
+  width: 5rem;
+  height: 5rem;
+  background-size: cover;
+  margin: auto;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+

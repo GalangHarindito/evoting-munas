@@ -15,6 +15,7 @@ import events from '../pages/admin/Events/reducer';
 import detailCalonKetua from '../pages/admin/DetailCalonKetua/reducer';
 import detailDPT from '../pages/DetailDPT/reducer';
 import summary from '../pages/Summary/reducer';
+import summaryVote from '../pages/SummaryVote/reducer';
 
 const rootReducer = combineReducers({
   login,
@@ -31,6 +32,7 @@ const rootReducer = combineReducers({
   detailCalonKetua,
   detailDPT,
   summary,
+  summaryVote,
   form: formReducer,
   routing: routerReducer
 });

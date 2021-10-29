@@ -10,7 +10,6 @@ import useOutsideClick from './useOutsideClick';
 import Button from '../elements/button/Button';
 
 export default function PageBase({ children }) {
-
   useEffect(() => {
    
     const app = document.getElementById('root');
@@ -74,6 +73,7 @@ let navsVerifier = [
 let navsAdmin= [
   { name: 'Calon Ketua', image: svgDashboard, link: `/caketum`, linkTo: `/caketum`},
   { name: 'Events', image: svgProfile, link: '/events', linkTo: `/events`},
+  { name: 'Voting Result', image: svgProfile, link: '/summary-vote', linkTo: `/summary-vote`},
   { name: 'Keluar', image: svgLogOut, func:logOut }
 ];
 
@@ -103,7 +103,7 @@ useOutsideClick(ref, () => {
 
   return (
     <>
-      <Headers />
+      {pathname !== '/summary-vote'? <Headers /> : ''}
       <aside className={'aside'}>
         <div>
             

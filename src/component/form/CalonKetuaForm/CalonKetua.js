@@ -36,7 +36,6 @@ export default function CalonKetuaForm(props) {
   const { biodata, occupancy } = data;
   const  photo = biodata? biodata.photo: null;
   const [selectedImage, setSelectedImage] = useState(null);
-  console.log(data)
 
   useEffect(() => {
 

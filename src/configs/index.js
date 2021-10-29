@@ -8,6 +8,7 @@ export const routes = {
   EVOTING: () => { return `/e-voting` },
   DPT: () => { return `/dpt` },
   SUMMARY: () => { return `/summary-dpt` },
+  SUMMARYVOTE: () => { return `/summary-vote` },
   CALONKETUA: () => { return `/caketum` },
   EVENTS: () => { return `/events` },
   BANTUAN: () => { return `/bantuan`}

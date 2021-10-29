@@ -1,0 +1,33 @@
+.information-vote{
+  display: flex;
+  justify-content: center;
+}
+
+.information-vote > section {
+  padding: 1rem;
+  border-radius: 0.2rem;
+  -webkit-border-radius: 0.2rem;
+  -moz-border-radius: 0.2rem;
+  -ms-border-radius: 0.2rem;
+  -o-border-radius: 0.2rem;
+  background-color:#F2F6EE;
+  /*width: 20rem;*/
+}
+
+.information-vote > section:not(section:last-child) {
+  margin-right: 2rem;
+}
+
+.information-vote > section > h5:first-child {
+  font-weight: normal;
+  margin-bottom: 1rem;
+}
+
+.information-vote > section > h5 {
+  color: var(--primary-color);
+}
+
+.information-vote > section > h5,
+.information-vote > section > h4 {
+  text-align: center;
+}
