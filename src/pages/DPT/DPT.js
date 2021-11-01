@@ -39,8 +39,6 @@ export default function DPT() {
     dataMesVerified,
     dataMesRegister,
     dataMesUnVerified,
-    dataDownload,
-    message,
     messageVerified,
     isLoading,
     isLoadingRegister,

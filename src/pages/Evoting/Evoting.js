@@ -55,7 +55,7 @@ export default function Evoting() {
   const onTime = () => {
     const d = Date.now();
     const today = new Date(d);
-    const date = new Date('Oct 17 2021 02:35 GMT')
+    const date = new Date('Dec 17 2021 02:35 GMT')
     
     if(today.toISOString() > date.toISOString() && datahasVerified ){
       return <EvoteCandidate data={data} openModal={(value, id, photo, number) => {

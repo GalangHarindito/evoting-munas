@@ -49,10 +49,10 @@ export default function SummaryVote() {
         <InformationVote data={dataAll} />
       </section>
       <h3>RESULT</h3>
-      <section>
+     {dataResult.length >= 1 ? <section>
         <ResultNumber data={dataResult} />
-      </section>
-      <section>
+      </section> : ''}
+      {dataResult.length >= 1 ? <section>
         <h5>Grafik E-VOTE</h5>
         <ResultChart
           data={dataResult}
@@ -60,7 +60,7 @@ export default function SummaryVote() {
           width={500}
           layout='vertical'
         />
-      </section>
+      </section> : '' }
     </section>
   );
 }

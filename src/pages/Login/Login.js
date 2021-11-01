@@ -10,7 +10,7 @@ import { ToastContainer } from "react-toastify";
 export default function Login() {
   const dispatch = useDispatch();
   const { isLoading, message } = useSelector((s) => s.login);
-  console.log(navigator, navigator.onLine)
+
 
   return (
     <section className='wrapper-login'>
