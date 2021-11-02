@@ -27,11 +27,11 @@ export default function Occupancy(props) {
         </div>
         <div className='occupation-1'>
            <div>
-            <p>Nama Instansi</p>
+            <p>Nama Perusahaan/Instansi</p>
             <p>{data.officeName || '-'}</p>
           </div>
           <div>
-            <p>Alamat Kantor/Instansi</p>
+            <p>Alamat Perusahaan/Instansi</p>
             <p>{data.officeAddress || '-'}</p>
           </div>
         </div>

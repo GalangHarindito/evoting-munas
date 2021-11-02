@@ -9,6 +9,7 @@ import { fetchAllCandidate, fetchVote, resetMessage } from './action';
 import ModalConfirmation from "../../component/elements/ModalConfirmation";
 import ModalResponse from "../../component/elements/ModalResponse";
 import { useHistory } from "react-router";
+import moment from "moment";
 
 export default function Evoting() {
   const dispatch = useDispatch();
@@ -53,11 +54,11 @@ export default function Evoting() {
   }
  
   const onTime = () => {
-    const d = Date.now();
-    const today = new Date(d);
-    const date = new Date('Dec 17 2021 02:35 GMT')
+    const today = Math.floor(Date.now() / 1000);
+    const date = new Date('Dec 17 2021 00:00 GMT+0700');
+    const onVote = Math.floor(date / 1000);
     
-    if(today.toISOString() > date.toISOString() && datahasVerified ){
+    if(today > onVote && datahasVerified ){
       return <EvoteCandidate data={data} openModal={(value, id, photo, number) => {
         if(datahasVerified && !datahasVoted){
           setConfirmation(true)
@@ -71,7 +72,7 @@ export default function Evoting() {
       }}
       />
     }
-    if(today.toISOString() > date.toISOString() && !datahasVerified){
+    if(today > onVote && !datahasVerified){
       return <EvoteNotVerified />
     }
     else{
@@ -107,10 +108,10 @@ export default function Evoting() {
         error={dataStatusVote === 200? true : false }
         message= {dataStatusVote === 200? [
           <b>E-VOTE BERHASIL</b>, 
-          'Terimakasih telah berpartisipasi pada E-voting Pemilihan ketua IKATA UPN periode 2021 - 2025. Berjumpa kembali di MUNAS IKATA periode berikutnya.', 
+          'Terimakasih telah berpartisipasi pada E-voting Pemilihan KETUA IKATA UPN periode 2021 - 2025. Berjumpa kembali di MUNAS IKATA periode berikutnya.', 
         ] : [
           <b>E-VOTE GAGAL</b>, 
-          'Mohon maaf anda telah menggunakan Hak Pilih Anda dalam Pemilihan Ketua Ikata Periode 2021 - 2025', 
+          'Mohon maaf anda telah menggunakan Hak Pilih Anda dalam Pemilihan KETUA Ikata Periode 2021 - 2025', 
         ]}
         onClose={() => {
           setsuccessVote(false)
@@ -130,7 +131,7 @@ function EvoteBefore() {
     </section>
     <section>
       <h4>Sesi E-Voting belum tersedia untuk saat ini </h4>
-      <h4>E- Voting Ketua IKATA Periode 2021 - 2025 akan dilaksanakan pada</h4>
+      <h4>E- Voting KETUA IKATA Periode 2021 - 2025 akan dilaksanakan pada</h4>
       <h4>Hari Jumat 17 Desember 2021 Pukul 00.00 - 23.59 WIB</h4>
     </section>
     </section>
@@ -144,7 +145,7 @@ function EvoteBefore() {
       </section>
       <section>
         <h4>Anda telah melakukan E-Voting</h4>
-        <h4>Terima kasih atas pertisipasi anda menjadi DPT dan Memilih Ketua IKATA Periode 2021 -2025</h4>
+        <h4>Terima kasih atas pertisipasi anda menjadi DPT dan Memilih KETUA IKATA Periode 2021 -2025</h4>
         <h4>Berjumpa kembali di MUNAS IKATA selanjutnya</h4>
       </section>
       </section>
