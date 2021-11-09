@@ -16,7 +16,7 @@ export default function CalonKetua() {
   const history = useHistory();
   const { search } = useLocation();
   const { id } = queryString.parse(search.replace("?", ""));
-  const { data, dataMesDelete, isLoading, isLoadingDelete } = useSelector(
+  const { data, dataMesDelete, isLoadingDelete } = useSelector(
     (s) => s.calonKetua
   );
   const { dataEditCandidate, dataPostCandidate } = useSelector(s => s.detailCalonKetua)

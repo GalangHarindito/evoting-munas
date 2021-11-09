@@ -10,7 +10,7 @@ export default function Bantuan() {
       <section>
         <Accordions data={question} />
       </section>
-      <p>Butuh bantuan atau pertanyaan lain silahkan <a href="https://docs.google.com/forms/d/e/1FAIpQLScGpbYVzPZZNzj9orZHE9uOBzaw2OqW0j1-oG_oWmbHzB2u1A/viewform" target="_blank">Disini</a>.</p>
+      <p>Butuh bantuan atau pertanyaan lain silahkan <a href="https://docs.google.com/forms/d/e/1FAIpQLScGpbYVzPZZNzj9orZHE9uOBzaw2OqW0j1-oG_oWmbHzB2u1A/viewform" target="_blank" rel="noreferrer">Disini</a>.</p>
     </section>
   )
 }

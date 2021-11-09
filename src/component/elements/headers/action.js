@@ -32,12 +32,13 @@ export function getStatusVote() {
       axios(options)
       .then((res) => {
         const { status, data } = res.data;
-        const { hasVerified, hasVoted } = data;
+        const { hasVerified, hasVoted, voteToken } = data;
 
         dispatch(loadingAction(false));
         if ( status === 200 ) {
           dispatch(successAction(hasVerified, 'hasVerified'));
           dispatch(successAction(hasVoted, 'hasVoted'));
+          dispatch(successAction(voteToken, 'hasToken'));
         } else {
           dispatch(failedAction('You are not allowed to access'));
         }

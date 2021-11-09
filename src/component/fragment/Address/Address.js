@@ -4,11 +4,6 @@ import './style.css'
 export default function Address(props) {
 
   const { data } = props;
-  const render_noData = (
-    <div className='addressDpt'>
-      <h4>Belum Ada Data Alamat</h4>
-    </div>
-  )
 
   return(
     <>

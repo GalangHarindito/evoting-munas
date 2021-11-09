@@ -4,12 +4,6 @@ import './style.css'
 export default function Occupancy(props) {
 
   const { data } = props;
-  
-  const render_noData = (
-    <div className='occupationDpt'>
-      <h4>Belum Ada Data Pekerjaan</h4>
-    </div>
-  )
 
   return(
     <>

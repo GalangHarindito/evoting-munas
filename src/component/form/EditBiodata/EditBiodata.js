@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { Field, FieldArray } from "redux-form";
+import { Field } from "redux-form";
 import "./style.css";
 import Button from "../../elements/button/Button";
 import Text from "../../field/text/Text";

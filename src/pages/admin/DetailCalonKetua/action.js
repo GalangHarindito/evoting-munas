@@ -105,7 +105,7 @@ export function fetchEditCandidate(id,payload) {
       axios(options)
       .then((res) => {
         const messageSuccess = 'Data Calon Ketua Ikata Berhasil Diubah';
-        const { status, message } = res.data;
+        const { status } = res.data;
         dispatch(loadingAction(false, 'EditKetua'));
         if ( status === 200 ) {
           dispatch(successAction(messageSuccess, 'EditCandidate'));
@@ -175,7 +175,7 @@ export function fetchPostCandidate(payload) {
       axios(options)
       .then((res) => {
         const messageSuccess = 'Data Calon Ketua Ikata Berhasil Disimpan';
-        const { status, message } = res.data;
+        const { status } = res.data;
         dispatch(loadingAction(false, 'postKetua'));
         if ( status === 200 ) {
           dispatch(successAction(messageSuccess, 'PostCandidate'));

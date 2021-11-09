@@ -3,7 +3,7 @@ import "./style.css";
 
 export default function TextArea(props) {
   const { className, input, inputProps, label, lined,
-    meta, rules, type, disabled, rows, cols  } = props;
+    meta, rules, disabled  } = props;
   let { active, dirty, error, touched } = meta;
 
   error = error || rules;

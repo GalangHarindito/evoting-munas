@@ -144,10 +144,9 @@ export function fetchVote(payload) {
   
       axios(options)
       .then((res) => {
-        const { status, data } = res.data;
-        //const { hasVerified, hasVoted, biodata, address, occupancy } = data;
+        const { status } = res.data;
+        
         const mesSuccess = 'Vote Berhasil'
-        const mesFailed = 'Anda Sudah Memilih'
         dispatch(loadingAction(false, 'Vote'));
         if ( status === 200 ) {
           dispatch(successAction( mesSuccess, 'Vote'));

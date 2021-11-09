@@ -1,0 +1,11 @@
+.AddEventCategory {
+  display: flex;
+}
+
+.AddEventCategory > section:nth-child(1) {
+  width: 10rem;
+}
+
+.AddEventCategory > section:nth-child(2) {
+  margin-left: 0.3rem;
+}

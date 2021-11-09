@@ -1,3 +1,13 @@
 .recharts-legend-wrapper {
   right: -10em!important;
 }
+
+
+.custom-tooltip {
+  background-color: #fff;
+  padding: 0.3rem;
+}
+
+.custom-tooltip > .label {
+  font-weight: 600;
+}

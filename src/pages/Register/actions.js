@@ -53,48 +53,9 @@ export function register(data) {
 }
 }
 
-//export function phoneCode() {
-//  return dispatch => {
-
-//      const options = {
-//        method: 'GET',
-//        url: `https://restcountries.eu/rest/v2/all`,
-//        headers: {  
-//        }
-//      };
-  
-//      axios(options)
-//      .then((res) => {
-//        const { data, status } = res
-     
-//        if ( status === 200 ) {
-//          dispatch(dataAction(data, 'Phone'));
-//        } else {
-//          dispatch(failedAction('You are not allowed to access'));
-//        }
-//      })
-//      //.catch(err => {
-//      //  console.log(err.response.data)
-//      //  const { status, message } = err.response.data
-//      //  const messageStatus = status >= 400 && status < 500 ? err.message[0].msg : message;
-//      //  for(let i in messageStatus){
-//      //    toasterError(messageStatus[i].msg)
-//      //  }
-//      //  dispatch(failedAction(messageStatus));
-        
-//      //  dispatch(loadingAction(false));
-//      //});
-
-//}
-//}
-
 function loadingAction(isLoading) {
   return { type: LOADING, isLoading };
 }
-
-//function dataAction(data, key) {
-//  return { type: DATA, data, key };
-//}
 
 function failedAction(message) {
   return { type: FAILED, message };

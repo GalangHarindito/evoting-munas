@@ -8,25 +8,20 @@ import EvoteCandidate from "../../component/fragment/EvoteCandidate";
 import { fetchAllCandidate, fetchVote, resetMessage } from './action';
 import ModalConfirmation from "../../component/elements/ModalConfirmation";
 import ModalResponse from "../../component/elements/ModalResponse";
-import { useHistory } from "react-router";
-import moment from "moment";
+import CountDown from "../../component/fragment/CountDown";
+import { Link } from "react-router-dom";
 
 export default function Evoting() {
   const dispatch = useDispatch();
-  const history = useHistory()
-  const { datahasVoted, datahasVerified } = useSelector(s => s.header);
-  const { data, isLoadingVote, dataVote, dataStatusVote } = useSelector(s => s.evoting);
+  const { datahasVoted, datahasVerified, datahasToken } = useSelector(s => s.header);
+  const { data, isLoadingVote, dataStatusVote } = useSelector(s => s.evoting);
   const [confirmation, setConfirmation] = useState(false);
   const [info, setInfo] = useState(false);
   const [successVote, setsuccessVote] = useState(false);
   const [candidateName, setCandidateName] = useState('');
   const [idCandidate, setCandidateId] = useState('');
   const [photo, setPhoto] = useState('');
-  const [number, setNumber] = useState('')
-  //const closeModal = () => {
-    
-  //  //history.push('/bantuan'); 
-  //};
+  const [number, setNumber] = useState('');
   
   useEffect(() => {
     dispatch(getStatusVote())
@@ -55,7 +50,7 @@ export default function Evoting() {
  
   const onTime = () => {
     const today = Math.floor(Date.now() / 1000);
-    const date = new Date('Dec 17 2021 00:00 GMT+0700');
+    const date = new Date('Oct 17 2021 00:00 GMT+0700');
     const onVote = Math.floor(date / 1000);
     
     if(today > onVote && datahasVerified ){
@@ -82,7 +77,7 @@ export default function Evoting() {
 
   return(
     <section className='evoting'>
-      {datahasVoted ? <EvoteAfter /> : onTime()}
+      {datahasVoted ? <EvoteAfter token={datahasToken} /> : onTime()}
       <ModalConfirmation
         photo={photo}
         number={number}
@@ -133,18 +128,21 @@ function EvoteBefore() {
       <h4>Sesi E-Voting belum tersedia untuk saat ini </h4>
       <h4>E- Voting KETUA IKATA Periode 2021 - 2025 akan dilaksanakan pada</h4>
       <h4>Hari Jumat 17 Desember 2021 Pukul 00.00 - 23.59 WIB</h4>
+      <CountDown />
     </section>
     </section>
   )
 }
-  function EvoteAfter() {
+  function EvoteAfter(props) {
     return(
       <section className='evoteAfter'>
       <section >
         <img src={imgVote} alt="" />
       </section>
       <section>
-        <h4>Anda telah melakukan E-Voting</h4>
+        <h4>E-Voting Anda Berhasil</h4>
+        <h5>Kode Pemilihan : <b style={{color:'var(--primary-color)'}}>{props.token}</b> </h5>
+        <h5>Pengecekan Kode Pemilihan dapat dilakukan di <Link to='/vote-check'>sini</Link></h5>
         <h4>Terima kasih atas pertisipasi anda menjadi DPT dan Memilih KETUA IKATA Periode 2021 -2025</h4>
         <h4>Berjumpa kembali di MUNAS IKATA selanjutnya</h4>
       </section>

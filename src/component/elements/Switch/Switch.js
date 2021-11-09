@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Switch from "@mui/material/Switch";
 
 export default function SwitchCheck(props) {
-  const { nameSwitch, checked, verified, message} = props;
+  const { nameSwitch, checked, verified } = props;
 
   const [toggle, setToggle] = useState(checked);
   useEffect(() => {

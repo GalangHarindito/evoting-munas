@@ -30,7 +30,6 @@ export default function CalonKetuaForm(props) {
     dataKecamatan,
     optionGender,
     isLoadingpostKetua,
-    isLoading,
   } = props;
 
   const { biodata, occupancy } = data;

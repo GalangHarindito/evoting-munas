@@ -15,7 +15,7 @@ export default function DetailDPT() {
   const dispatch = useDispatch();
   const { search } = useLocation();
   const { id } = queryString.parse(search.replace("?", ""));
-  const { dataDPT, isLoading, message, isLoadingEditDPT } = useSelector(s => s.detailDPT)
+  const { dataDPT, isLoadingEditDPT } = useSelector(s => s.detailDPT)
   const { biodata, account, address, occupancy } = dataDPT;
   useEffect(() => {
     dispatch(fetchDPTId(id))

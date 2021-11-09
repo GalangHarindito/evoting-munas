@@ -30,6 +30,8 @@
   line-height: 3rem;
 }
 
+
+
 .evoteBefore > section > h4:last-child {
   font-weight: bold;
   font-size: 2rem;
@@ -54,6 +56,17 @@
   text-align: center;
   line-height: 3rem;
 }
+.evoteAfter > section > h5 {
+  font-weight: normal;
+  text-align: center;
+  line-height: 3rem;
+}
+
+.evoteAfter > section > h5 > a {
+  color: blue;
+  font-weight: 500;
+  text-decoration: underline;
+}
 
 .evoteAfter > section > h4:first-child {
   font-weight: bold;
@@ -73,5 +86,18 @@
 .evoteBefore > section > h4:last-child {
   font-weight: bold;
   font-size: 1.2rem;
+}
+.evoteAfter > section > h5 {
+  font-size: 0.865rem;
+  line-height: 1.2rem;
+  
+}
+
+.evoteAfter > section > h4 {
+  line-height: 2rem;
+}
+
+.evoteAfter > section > h5 > a {
+  font-size: 0.865rem;
 }
 }

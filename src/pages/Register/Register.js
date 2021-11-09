@@ -32,48 +32,13 @@ export default function Register() {
     (messageSuccess) ? setOpenResponse(true):closeModal();
   }, [messageSuccess]);
 
-  //useEffect(() => {
-  //  angkatan()
-  //})
-
   useEffect(() => {
     dispatch(resetMessageSuccess())
   },[])
 
-  const optionAngkatan = []
-
-  //const angkatan = () => {
-  //  let start = 1961
-  //  let finish = 2019
-    
-
-  //  for(let i = start;i<finish;i++){
-  //    const objAngkatan = {}
-  //    objAngkatan.value = i
-  //    objAngkatan.text = `${i}`
-  //    optionAngkatan.push(objAngkatan)
-  //  }
-  //}
-
-  //const optionCode = []
-
-  //const phoneData = () => {
-  //  for (let i in dataPhone) {
-  //    const objCountry = {}
-  //    objCountry.value = `+${dataPhone[i].callingCodes[0]}`
-  //    objCountry.text = `${dataPhone[i].name} +${dataPhone[i].callingCodes[0]}`
-  //    optionCode.push(objCountry)
-  //  }
-  //}
-
   const optionGender = [
     { label: 'Laki-laki', value: 'Male'},
     { label: 'Perempuan', value: 'Female'},
-  ]
-
-  const optionNationality = [
-    { text: 'WNI', value: 'WNI'},
-    { text: 'WNA', value: 'WNA'},
   ]
 
   if(search === '?embed=caradaftar'){

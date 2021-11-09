@@ -13,7 +13,7 @@ export default function DetailCalonKetua() {
   const dispatch = useDispatch();
   const { search } = useLocation();
   const { id } = queryString.parse(search.replace("?", ""));
-  const { dataCandidate, dataAddressCandidate, dataPropinsi, dataKabupaten, dataKecamatan, message, isLoadingpostKetua, isLoadingEditKetua, isLoading } = useSelector(
+  const { dataCandidate, dataAddressCandidate, dataPropinsi, dataKabupaten, dataKecamatan, message, isLoadingpostKetua, isLoadingEditKetua } = useSelector(
     (s) => s.detailCalonKetua
   );
   const [size, setSize] = useState(true);
@@ -54,9 +54,6 @@ export default function DetailCalonKetua() {
     { text: "Pensiun", value: "Pensiun" },
     { text: "Tidak Bekerja", value: "Tidak Bekerja" },
   ];
-
-   const render = Object.keys(dataCandidate).map(el => el)
-   const renderAddress = Object.keys(dataAddressCandidate).map(el => el)
 
    const toasterError = (text) => {
     toast.error(`${text}`, {

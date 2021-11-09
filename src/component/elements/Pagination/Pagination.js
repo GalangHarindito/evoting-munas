@@ -40,7 +40,7 @@ export default function Pagination(props) {
 export function IconArrow({ disabled, title, icon, to, location }) {
   return (
     <Link className='icon' disabled={disabled} to={getLink(to, location)}>
-      <img src={icon} title={title} />
+      <img src={icon} title={title} alt='img' />
     </Link>
   );
 }

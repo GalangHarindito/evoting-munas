@@ -16,8 +16,6 @@ import { capitalizedArray } from "../../utils/format";
 import { ToastContainer } from "react-toastify";
 import DetailDPT from "../DetailDPT";
 import RegisterForm from "../../component/form/registerForm";
-import fileDownload from 'js-file-download'
-//import 'moment/locale/id';
 
 export default function DPT() {
   const dispatch = useDispatch();
@@ -49,10 +47,6 @@ export default function DPT() {
   const [confirmation, setConfirmation] = useState(false);
   const [idDPT, setidDPT] = useState("");
   const [namaDPT, setnamaDPT] = useState("");
-  const [downloadAll, setDownloadAll] = useState(false)
-  //useEffect(() => {
-  //  dispatch(getAllDPT(page));
-  //}, []);
   
   let req = {
     page: parseInt(page) || 1,
@@ -109,12 +103,6 @@ export default function DPT() {
       dispatch(getAllDPT(req))
     }
   }, [dataMesDelete, dataMesVerified, dataMesUnVerified, dataMesRegister, page, angkatan, fullName, verify, vote])
-
-  //useEffect(() => {
-  //  if (dataMetaDpt.totalPage <= 1) {
-  //    history.push('?page=1')
-  //  }
-  //}, [dataMetaDpt])
 
   const statusVerified = [
     { text: 'Terverifikasi', value: true},

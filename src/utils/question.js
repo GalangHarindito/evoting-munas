@@ -1,5 +1,3 @@
-const dashboard = <a href='/dashboard'>Dashboard</a>
-
 export const question = [
   {
     question: 'Kapan platform E-VOTING ini dipergunakan ?',

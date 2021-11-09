@@ -73,4 +73,9 @@
   -o-border-radius: 50%;
 }
 
+.custom-tooltip {
+  background-color: #fff;
+  padding: 0.3rem;
+}
+
 

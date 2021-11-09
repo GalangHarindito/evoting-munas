@@ -1,5 +1,4 @@
 import React from 'react';
-import caraDaftar from '../../../assets/cara-daftar-dpt.pdf';
 import './style.css';
 
 export default function CaraMendaftar({data}) {

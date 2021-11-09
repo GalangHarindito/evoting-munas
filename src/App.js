@@ -67,6 +67,7 @@ function App({ history, store }) {
         <Route exact path={routes.EVENTS()} component={pages.Events} />
         <Route exact path={routes.BANTUAN()} component={pages.Bantuan} />
         <Route exact path={routes.SUMMARYVOTE()} component={pages.SummaryVote} />
+        
       </Switch>
     </PageBase>
   );
@@ -79,6 +80,7 @@ function App({ history, store }) {
         <Route exact path={ routes.LOGIN() } component={pages.Login} />
         <Route exact path={ routes.REGISTER() } component={pages.Register} />
         <Route exact path={ routes.FORGOTPASSWORD() } component={pages.ForgotPassword} />
+        <Route exact path={ routes.VOTECHECK() } component={pages.VoteCheck} />
         <Route component={MainPages} />
       </Switch>
       </AppContextProvider>

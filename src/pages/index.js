@@ -20,5 +20,6 @@ export default {
   SummaryVote: Suspensed(React.lazy(() => import('./SummaryVote'))),
   CalonKetua:Suspensed(React.lazy(() => import('./admin/CalonKetua'))),
   Events:Suspensed(React.lazy(() => import('./admin/Events'))),
-  Bantuan:Suspensed(React.lazy(() => import('./Bantuan')))
+  Bantuan:Suspensed(React.lazy(() => import('./Bantuan'))),
+  VoteCheck:Suspensed(React.lazy(() => import('./VoteCheck')))
 };

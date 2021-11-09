@@ -2,20 +2,15 @@ import { FAILED, LOADING, LASTPAGE, SUCCESS } from './constants';
 
 const initialState = {
   isLoading: false,
-  isLoadingBiodata: false,
-  isLoadingAddress: false,
-  isLoadingOccupation: false,
+  isLoadingEventCategory: false,
+  isLoadingPostCategory: false,
+  isLoadingDeleteCategory: false,
+  isLoadingEvent: false,
   message:'',
-  dataProfile:{},
-  dataAccount:{},
-  dataBiodata:{},
-  dataAddress:{},
-  dataOccupation:{},
-  dataPropinsi:[],  
-  dataKabupaten:[], 
-  dataKecamatan:[],
-  datahasVerifiedProfile:'',
-  datahasVotedProfile:''
+  dataMesDeleteCategory:'',
+  dataMesPostCategory:'',
+  dataCategory:[],
+  dataEvent:[]
 };
 
 export default function reducer(state = initialState, action = {}) {

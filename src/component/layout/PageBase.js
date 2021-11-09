@@ -7,7 +7,6 @@ import './style.css';
 import logo from '../../assets/img-munas-1.png';
 import { getUserData } from '../../utils/storage';
 import useOutsideClick from './useOutsideClick';
-import Button from '../elements/button/Button';
 
 export default function PageBase({ children }) {
   useEffect(() => {

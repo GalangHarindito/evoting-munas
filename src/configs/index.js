@@ -11,5 +11,6 @@ export const routes = {
   SUMMARYVOTE: () => { return `/summary-vote` },
   CALONKETUA: () => { return `/caketum` },
   EVENTS: () => { return `/events` },
-  BANTUAN: () => { return `/bantuan`}
+  BANTUAN: () => { return `/bantuan`},
+  VOTECHECK: () => { return `/vote-check`}
 }; 

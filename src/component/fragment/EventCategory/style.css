@@ -1,0 +1,9 @@
+.create-event {
+  width: 10rem;
+  float: right;
+}
+
+.event-category > section {
+  display: flex;
+  justify-content: space-between;
+}

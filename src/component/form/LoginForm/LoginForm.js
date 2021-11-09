@@ -37,7 +37,7 @@ export default function LoginForm(props) {
         
       <section className='form-button'>
         <Button label={'Login'} onSubmit={handleSubmit} isLoading={isLoading} />
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScGpbYVzPZZNzj9orZHE9uOBzaw2OqW0j1-oG_oWmbHzB2u1A/viewform?usp=sf_link" target='_blank'>Butuh bantuan?</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScGpbYVzPZZNzj9orZHE9uOBzaw2OqW0j1-oG_oWmbHzB2u1A/viewform?usp=sf_link" target='_blank' rel="noreferrer">Butuh bantuan?</a>
       </section>
     </form>
     </>
