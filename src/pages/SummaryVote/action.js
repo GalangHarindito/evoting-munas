@@ -3,6 +3,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { clearStorages } from "../../utils/storage";
 import { BASIC_URL } from "../../utils/fetch";
+import { getToken } from '../../utils/storage';
 
 export function fetchResultVote() {
   return (dispatch) => {
@@ -11,7 +12,9 @@ export function fetchResultVote() {
     const options = {
       method: "GET",
       url: `${BASIC_URL}vote`,
-      headers: {},
+      headers: {  
+        Authorization : getToken()
+      },
     };
     const toasterError = (text) => {
       toast.error(`${text}`, {

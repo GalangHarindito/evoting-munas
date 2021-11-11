@@ -85,10 +85,10 @@ export default function EditBiodataForm (props) {
         <Field component={Text} label='Nama Lengkap' name='fullName'  />
       </section>
       <section>
-        <Field component={Text} label='Nomer Handphone' name='phoneNumber' disabled={search ? false : true} />
+        <Field component={Text} label='Nomer Handphone' name='phoneNumber' disabled={search !== '?edit=biodata' ? false : true} />
       </section>
       <section>
-        <Field component={Text} label='Email' name='email' disabled={search ? false : true} />
+        <Field component={Text} label='Email' name='email' disabled={search !== '?edit=biodata' ? false : true} />
       </section>
       <section>
         <Field component={Text} label='Nomer Induk Mahasiswa (Opsional)' name='nim' />
