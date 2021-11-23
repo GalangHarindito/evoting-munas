@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../../elements/button/Button";
 import "./style.css";
+import { MUNAS_URL } from '../../../utils/fetch';
 
 export default function EvoteCandidate(props) {
   const { data, openModal, isLoading } = props;
@@ -36,7 +37,7 @@ function Cards(props) {
             <blockquote>"{el.biodata.jargon || '-'}"</blockquote>
           </section>
           <section>
-            <a href={`https://munasikataupn.com/tentangMunas?tab=${el.biodata.fullName.toLowerCase().split(' ').join('')}`} target='_blank'>Tentang Calon Ketua</a>
+            <a href={`${MUNAS_URL}${el.biodata.fullName.toLowerCase().split(' ').join('')}#candidate`} target='_blank'>Tentang Calon Ketua</a>
           </section>
           <section className='buttonVote'>
             <Button label='Pilih' isLoading={isLoading} onClick={() => openModal(el.biodata.fullName, el.id, el.biodata.photo, el.biodata.number)} />

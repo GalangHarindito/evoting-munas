@@ -1,0 +1,68 @@
+.countdown {
+  margin-top: 1rem;
+  
+}
+
+.countdown > div {
+  display: flex;
+
+}
+
+.countdown > div > p {
+  padding: 0 0.5rem 0 0;
+}
+
+.countdown > div > p > span {
+  font-size: 0.865rem;
+}
+
+.countdown > div > p:first-child {
+  padding: 0.3rem;
+}
+
+.countdown > div > p:last-child {
+  background-color: var(--primary-color);
+  padding: 0.3rem;
+  color: #fff;
+  border-radius: 0.2rem;
+  -webkit-border-radius: 0.2rem;
+  -moz-border-radius: 0.2rem;
+  -ms-border-radius: 0.2rem;
+  -o-border-radius: 0.2rem;
+}
+
+.countdown > div > p:last-child > span {
+  color: #fff;
+}
+
+@media screen and (max-width: 700px) {
+  .countdown > div > p > span {
+    font-size: 0.665rem;
+  }
+  .countdown > div > p {
+    font-size: 0.665rem!important;
+  }
+  .countdown > div {
+    display: block;
+  
+  }
+
+  .countdown > div > p:last-child {
+    width: fit-content;
+  }
+
+  .countdown {
+    margin-top: 0rem;
+    
+  }
+
+  .countdown > div > p:first-child {
+    padding: 0rem;
+  }
+
+  /*.countdown > div > p:last-child {
+    pa
+  }*/
+
+  
+}

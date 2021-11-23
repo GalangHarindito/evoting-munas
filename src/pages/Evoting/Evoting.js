@@ -50,7 +50,7 @@ export default function Evoting() {
  
   const onTime = () => {
     const today = Math.floor(Date.now() / 1000);
-    const date = new Date('Oct 17 2021 00:00 GMT+0700');
+    const date = new Date('Nov 17 2021 00:00 GMT+0700');
     const onVote = Math.floor(date / 1000);
     
     if(today > onVote && datahasVerified ){
@@ -128,7 +128,7 @@ function EvoteBefore() {
       <h4>Sesi E-Voting belum tersedia untuk saat ini </h4>
       <h4>E- Voting KETUA IKATA Periode 2021 - 2025 akan dilaksanakan pada</h4>
       <h4>Hari Jumat 17 Desember 2021 Pukul 00.00 - 23.59 WIB</h4>
-      <CountDown />
+      {/*<CountDown />*/}
     </section>
     </section>
   )
