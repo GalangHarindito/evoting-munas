@@ -1,5 +1,30 @@
 .dashboard{
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.dashboard > section > a > img {
+  width: 50rem;
+  margin-bottom: 1rem;
+}
+
+.dashboard > section > a {
+  text-align: center;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 700px) {
+  .dashboard > section > a > img {
+    width: 18rem;
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (max-width: 354px) {
+  .dashboard > section > a > img {
+    width: 14rem;
+    margin-bottom: 1rem;
+  }
 }

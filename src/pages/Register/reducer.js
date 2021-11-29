@@ -4,7 +4,7 @@ const initialState = {
   isLoading: false,
   message: [],
   messageSuccess: '',
-  dataPhone: []
+  dataButtonDisabled: false,
 };
 
 export default function reducer(state = initialState, action = {}) {

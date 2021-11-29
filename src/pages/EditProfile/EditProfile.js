@@ -27,7 +27,7 @@ export default function EditProfile() {
   const { dataAddress, message } = useSelector((s) => s.editProfile);
   const { propinsiId, kabupatenId } = dataAddress;
   const { lastPage } = useSelector((s) => s.profile);
-  const [size, setSize] = useState(true);
+  const [size] = useState(true);
 
   useEffect(() => {
     dispatch(getProfile());
@@ -148,7 +148,6 @@ function Content() {
     dataPropinsi,
     dataKabupaten,
     dataKecamatan,
-    message,
     isLoadingBiodata,
     isLoadingAddress,
     isLoadingOccupation,

@@ -3,12 +3,12 @@
 .evoteBefore{
   display: flex;
   flex-direction: column;
-  padding: 5rem;
+  padding: 0rem;
 }
 
-.evoteBefore > section:first-child {
+/*.evoteBefore > section:first-child {
   margin: 0 auto;
-}
+}*/
 
 .evoteBefore > section > img {
   width: 20rem;

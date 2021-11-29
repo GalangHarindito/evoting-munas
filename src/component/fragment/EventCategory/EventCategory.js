@@ -7,7 +7,6 @@ import AddEventCategory from "../../form/AddEventCategory";
 
 export default function EventCategory(props) {
   const { data, submit } = props;
-  const [category, setCategory] = useState("");
   const [add, setAdd] = useState(false);
   const col = [
     { id: "nameCategory", label: "Nama Category", minWidth: 170 },

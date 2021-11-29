@@ -13,7 +13,7 @@ export default function RegisterForm(props) {
   const {
     handleSubmit,
     optionGender,
-    isLoading,
+    isLoading
   } = props;
   const [disabled, setDisabled] = useState(true);
   const [openResponse, setOpenResponse] = useState(false);

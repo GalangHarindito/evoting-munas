@@ -1,83 +1,134 @@
 import React, { useEffect, useState } from "react";
-import './style.css';
-import imgVote from '../../assets/img-Evote.svg';
+import "./style.css";
+import imgVote from "../../assets/img-Evote.svg";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { getStatusVote } from "../../component/elements/headers/action";
 import EvoteCandidate from "../../component/fragment/EvoteCandidate";
-import { fetchAllCandidate, fetchVote, resetMessage } from './action';
+import { fetchAllCandidate, fetchVote, resetMessage } from "./action";
 import ModalConfirmation from "../../component/elements/ModalConfirmation";
 import ModalResponse from "../../component/elements/ModalResponse";
-import CountDown from "../../component/fragment/CountDown";
+import { time, afterTime } from '../../utils/format';
 import { Link } from "react-router-dom";
 
 export default function Evoting() {
   const dispatch = useDispatch();
-  const { datahasVoted, datahasVerified, datahasToken } = useSelector(s => s.header);
-  const { data, isLoadingVote, dataStatusVote } = useSelector(s => s.evoting);
+  const { datahasVoted, datahasVerified, datahasToken } = useSelector(
+    (s) => s.header
+  );
+  const { data, isLoadingVote, dataStatusVote } = useSelector((s) => s.evoting);
   const [confirmation, setConfirmation] = useState(false);
   const [info, setInfo] = useState(false);
   const [successVote, setsuccessVote] = useState(false);
-  const [candidateName, setCandidateName] = useState('');
-  const [idCandidate, setCandidateId] = useState('');
-  const [photo, setPhoto] = useState('');
-  const [number, setNumber] = useState('');
-  
-  useEffect(() => {
-    dispatch(getStatusVote())
-    dispatch(fetchAllCandidate())
-  },[]);
-  
+  const [candidateName, setCandidateName] = useState("");
+  const [idCandidate, setCandidateId] = useState("");
+  const [photo, setPhoto] = useState("");
+  const [number, setNumber] = useState("");
+  const [disabled, setDisabled] = useState(true);
 
   useEffect(() => {
-    if(dataStatusVote){
-      setConfirmation(false)
-      setsuccessVote(true)
-      
+    const timer = setTimeout(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+    // Clear timeout if the component is unmounted
+    return () => {
+      clearTimeout(timer);
+    };
+  });
+
+  const calculateTimeLeft = () => {
+    //let year = new Date().getFullYear();
+    let difference = +`${Number(time)}` - +new Date();
+    let timeLeft = {};
+
+    if (difference > 0) {
+      timeLeft = {
+        Hari: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        Jam: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        Menit: Math.floor((difference / 1000 / 60) % 60),
+        Detik: Math.floor((difference / 1000) % 60) || 0,
+      };
     }
-  },[dataStatusVote])
+    return timeLeft;
+  };
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+
+  useEffect(() => {
+    if (Object.keys(timeLeft).length <= 0) {
+      setDisabled(false);
+    }else{
+      setDisabled(true);
+    }
+  }, [timeLeft]);
+
+  useEffect(() => {
+    dispatch(getStatusVote());
+    dispatch(fetchAllCandidate());
+  }, []);
+
+  useEffect(() => {
+    if (dataStatusVote) {
+      setConfirmation(false);
+      setsuccessVote(true);
+    }
+  }, [dataStatusVote]);
 
   useEffect(() => {
     if (!successVote) {
-      dispatch(resetMessage('', 'StatusVote'));
+      dispatch(resetMessage("", "StatusVote"));
     }
   }, [successVote]);
 
-
   const vote = () => {
-    dispatch(fetchVote(idCandidate))
-  }
- 
+    dispatch(fetchVote(idCandidate));
+  };
+
+  const today = Math.floor(Date.now() / 1000);
+    const afterDate = new Date(`${afterTime}`)
+    const onClose = Math.floor(afterDate / 1000);
+
+
   const onTime = () => {
     const today = Math.floor(Date.now() / 1000);
-    const date = new Date('Nov 17 2021 00:00 GMT+0700');
+    const date = new Date(`${time}`);
+    const afterDate = new Date(`${afterTime}`)
     const onVote = Math.floor(date / 1000);
-    
-    if(today > onVote && datahasVerified ){
-      return <EvoteCandidate data={data} openModal={(value, id, photo, number) => {
-        if(datahasVerified && !datahasVoted){
-          setConfirmation(true)
-        }else if(!datahasVerified || datahasVoted){
-          setInfo(true)
-        }
-        setCandidateName(value)
-        setCandidateId(id)
-        setPhoto(photo)
-        setNumber(number)
-      }}
-      />
-    }
-    if(today > onVote && !datahasVerified){
-      return <EvoteNotVerified />
-    }
-    else{
-      return <EvoteBefore />
-    }
-  }
+    const onClose = Math.floor(afterDate / 1000);
 
-  return(
+    if (today > onVote && datahasVerified) {
+      return (
+        <EvoteCandidate
+          data={data}
+          disabled={disabled}
+          openModal={(value, id, photo, number) => {
+            if (datahasVerified && !datahasVoted) {
+              setConfirmation(true);
+            } else if (!datahasVerified || datahasVoted) {
+              setInfo(true);
+            }
+            setCandidateName(value);
+            setCandidateId(id);
+            setPhoto(photo);
+            setNumber(number);
+          }}
+        />
+      );
+    }
+    if(today > onClose && !datahasVoted ){
+      console.log('yes')
+      return <EvoteClose />
+    }
+    if (today > onVote && !datahasVerified) {
+      return <EvoteNotVerified />;
+    } else {
+      return <EvoteBefore data={data} disabled={true} />;
+    }
+    
+  };
+
+  return (
     <section className='evoting'>
-      {datahasVoted ? <EvoteAfter token={datahasToken} /> : onTime()}
+      {today > onClose && !datahasVoted ? <EvoteClose /> : datahasVoted ?  <EvoteAfter token={datahasToken} /> : onTime()}
       <ModalConfirmation
         photo={photo}
         number={number}
@@ -89,77 +140,124 @@ export default function Evoting() {
       />
       <ModalResponse
         error={false}
-        message= {!datahasVerified ? [
-          <b>AKUN DPT ANDA BELUM TERVERIFIKASI</b>, 
-          'Silahkan Menuju Halaman Bantuan Untuk konfirmasi ke panitia', 
-        ] : datahasVoted ? [
-          <b>ANDA TELAH MELAKUKAN VOTING</b>, 
-          'Mohon maaf Hak voting tiap DPT hanya satu kali',
-        ] : []}
+        message={
+          !datahasVerified
+            ? [
+                <b>AKUN DPT ANDA BELUM TERVERIFIKASI</b>,
+                "Silahkan Menuju Halaman Bantuan Untuk konfirmasi ke panitia",
+              ]
+            : datahasVoted
+            ? [
+                <b>ANDA TELAH MELAKUKAN VOTING</b>,
+                "Mohon maaf Hak voting tiap DPT hanya satu kali",
+              ]
+            : []
+        }
         onClose={() => setInfo(false)}
-        open={info} 
+        open={info}
       />
       <ModalResponse
-        error={dataStatusVote === 200? true : false }
-        message= {dataStatusVote === 200? [
-          <b>E-VOTE BERHASIL</b>, 
-          'Terimakasih telah berpartisipasi pada E-voting Pemilihan KETUA IKATA UPN periode 2021 - 2025. Berjumpa kembali di MUNAS IKATA periode berikutnya.', 
-        ] : [
-          <b>E-VOTE GAGAL</b>, 
-          'Mohon maaf anda telah menggunakan Hak Pilih Anda dalam Pemilihan KETUA Ikata Periode 2021 - 2025', 
-        ]}
+        error={dataStatusVote === 200 ? true : false}
+        message={
+          dataStatusVote === 200
+            ? [
+                <b>E-VOTE BERHASIL</b>,
+                "Terimakasih telah berpartisipasi pada E-voting Pemilihan KETUA IKATA UPN periode 2021 - 2025. Berjumpa kembali di MUNAS IKATA periode berikutnya.",
+              ]
+            : [
+                <b>E-VOTE GAGAL</b>,
+                "Mohon maaf anda telah menggunakan Hak Pilih Anda dalam Pemilihan KETUA Ikata Periode 2021 - 2025",
+              ]
+        }
         onClose={() => {
-          setsuccessVote(false)
-          window.location.reload()
+          setsuccessVote(false);
+          window.location.reload();
         }}
-        open={successVote} 
+        open={successVote}
       />
     </section>
-  )
+  );
 }
 
-function EvoteBefore() {
-  return(
+function EvoteBefore(props) {
+  const { data, disabled } = props;
+  return (
     <section className='evoteBefore'>
-    <section >
-      <img src={imgVote} alt="" />
+      {data.length >= 1 ? (
+        <section>
+          <EvoteCandidate data={data} disabled={disabled} />
+        </section>
+      ) : (
+        <section style={{textAlign:'center'}}>
+          <img src={imgVote} alt='img' />
+        </section>
+      )}
+      <br />
+      <section>
+        <h4>Sesi E-Voting belum tersedia untuk saat ini </h4>
+        <h4>
+          E- Voting KETUA IKATA Periode 2021 - 2025 akan dilaksanakan pada
+        </h4>
+        <h4>Hari Jumat 17 Desember 2021 Pukul 00.00 - 23.59 WIB</h4>
+      </section>
     </section>
-    <section>
-      <h4>Sesi E-Voting belum tersedia untuk saat ini </h4>
-      <h4>E- Voting KETUA IKATA Periode 2021 - 2025 akan dilaksanakan pada</h4>
-      <h4>Hari Jumat 17 Desember 2021 Pukul 00.00 - 23.59 WIB</h4>
-      {/*<CountDown />*/}
-    </section>
-    </section>
-  )
+  );
 }
-  function EvoteAfter(props) {
-    return(
-      <section className='evoteAfter'>
-      <section >
-        <img src={imgVote} alt="" />
+function EvoteAfter(props) {
+  return (
+    <section className='evoteAfter'>
+      <section>
+        <img src={imgVote} alt='' />
       </section>
       <section>
         <h4>E-Voting Anda Berhasil</h4>
-        <h5>Kode Pemilihan : <b style={{color:'var(--primary-color)'}}>{props.token}</b> </h5>
-        <h5>Pengecekan Kode Pemilihan dapat dilakukan di <Link to='/vote-check'>sini</Link></h5>
-        <h4>Terima kasih atas pertisipasi anda menjadi DPT dan Memilih KETUA IKATA Periode 2021 -2025</h4>
+        <h5>
+          Kode Pemilihan :{" "}
+          <b style={{ color: "var(--primary-color)" }}>{props.token}</b>{" "}
+        </h5>
+        <h5>
+          Pengecekan Kode Pemilihan dapat dilakukan di{" "}
+          <Link to='/vote-check'>sini</Link>
+        </h5>
+        <h4>
+          Terima kasih atas partisipasi anda menjadi DPT dan Memilih KETUA IKATA
+          Periode 2021 -2025
+        </h4>
         <h4>Berjumpa kembali di MUNAS IKATA selanjutnya</h4>
       </section>
-      </section>
-    )
-} 
+    </section>
+  );
+}
 
 function EvoteNotVerified() {
-  return(
+  return (
     <section className='evoteAfter'>
-    <section >
-      <img src={imgVote} alt="" />
+      <section>
+        <img src={imgVote} alt='' />
+      </section>
+      <section>
+        <h4>Akun Anda Belum Terverifikasi</h4>
+        <h4>Untuk melakukan E-Voting Silahkan Masuk Halaman Bantuan</h4>
+      </section>
     </section>
-    <section>
-      <h4>Akun Anda Belum Terverifikasi</h4>
-      <h4>Untuk melakukan E-Voting Silahkan Masuk Halaman Bantuan</h4>
+  );
+}
+
+function EvoteClose() {
+  return (
+    <section className='evoteAfter'>
+      <section>
+        <img src={imgVote} alt='' />
+      </section>
+      <section>
+      <h4>
+          E-Voting Telah Berakhir
+        </h4>
+      <h4>
+          Terima kasih atas partisipasi anda dalam MUNAS IKATA 2021
+        </h4>
+        <h4>Berjumpa kembali di MUNAS IKATA selanjutnya</h4>
+      </section>
     </section>
-    </section>
-  )
-} 
+  );
+}

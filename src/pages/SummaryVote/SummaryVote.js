@@ -51,7 +51,7 @@ export default function SummaryVote() {
           <ResultChart
             data={dataResult}
             height={500}
-            width={500}
+            width={800}
             layout='vertical'
           />
         </section>
@@ -84,7 +84,7 @@ function ResultChart(props) {
 
   return (
     <BarChart
-      width={1000}
+      width={1200}
       height={300}
       data={data}
       margin={{

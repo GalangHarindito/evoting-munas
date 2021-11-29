@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
 
-export default function CountDown() {
- 
+export default function CountDown(props) {
+  const {time, use} = props;
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -13,25 +13,28 @@ export default function CountDown() {
       clearTimeout(timer)
     };
   });
-  const onReload = () => {
-    window.location.reload()
-  }
+
   const calculateTimeLeft = () => {
     //let year = new Date().getFullYear();
-    let difference = +new Date(`11/11/2021 13:33:00 GMT+0700`) - +new Date();
+    let difference = +`${Number(time)}` - +new Date();
+
     let timeLeft = {};
 
     if (difference > 0) {
       timeLeft = {
-        Hari: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        Jam: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        Menit: Math.floor((difference / 1000 / 60) % 60),
-        Detik: Math.floor((difference / 1000) % 60),
-      };
+        Hari: Math.floor(difference / (1000 * 60 * 60 * 24)) || '0',
+        Jam: Math.floor((difference / (1000 * 60 * 60)) % 24) || '0',
+        Menit: Math.floor((difference / 1000 / 60) % 60) || '0',
+        Detik: Math.floor((difference / 1000) % 60) || '0',
+      }
     }else{
-      //onReload()
+      timeLeft = {
+        Hari: '0',
+        Jam: '0',
+        Menit: '0',
+        Detik: '0',
+      }
     }
-
     return timeLeft;
   };
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
@@ -52,9 +55,11 @@ export default function CountDown() {
 
   return (
     <section className='countdown'>
-    {timerComponents.length ? <div>
+    {timerComponents.length && use === 'time' ? <div>
       <p>Hitung mundur E-Voting</p> <p>{timerComponents}</p>
-    </div> : ''}
+    </div> : <div>
+      <p>Sisa Waktu E-Voting</p> <p>{timerComponents}</p>
+    </div>}
     </section>
   );
 }
