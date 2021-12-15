@@ -115,7 +115,6 @@ export default function Evoting() {
       );
     }
     if(today > onClose && !datahasVoted ){
-      console.log('yes')
       return <EvoteClose />
     }
     if (today > onVote && !datahasVerified) {
@@ -219,11 +218,13 @@ function EvoteAfter(props) {
           Pengecekan Kode Pemilihan dapat dilakukan di{" "}
           <Link to='/vote-check'>sini</Link>
         </h5>
+        
         <h4>
           Terima kasih atas partisipasi anda menjadi DPT dan Memilih KETUA IKATA
           Periode 2021 -2025
         </h4>
         <h4>Berjumpa kembali di MUNAS IKATA selanjutnya</h4>
+        <h6>Bila berkenan untuk mengisi <a href="https://bit.ly/3oS28MU" target='_blank' rel="noreferrer">user feedback</a> mengenai aplikasi evoting ini</h6>
       </section>
     </section>
   );

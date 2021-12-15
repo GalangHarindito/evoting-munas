@@ -130,8 +130,8 @@ function ResultNumber(props) {
               style={{ backgroundImage: `url(${el.photo})` }}
             ></div>
             <h6>{el.fullName}</h6>
-            {/*<h5>{el.jumlahSuara}</h5>*/}
-            <h5>{el.persetaseSuara}%</h5>
+            <h5>{el.jumlahSuara}</h5>
+            {/*<h5>{el.persetaseSuara}%</h5>*/}
           </section>
         );
       })}

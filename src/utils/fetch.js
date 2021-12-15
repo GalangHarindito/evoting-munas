@@ -1,7 +1,7 @@
-//export const BASIC_URL = 'https://ikata.semoga.online/api/';
-//export const MUNAS_URL = 'https://munasikataupn.com/tentangMunas?tab=';
-export const BASIC_URL = 'https://stage-ikata.semoga.online/api/';
-export const MUNAS_URL = 'https://munas-test2.munasikataupn.com/tentangMunas?tab=';
+export const BASIC_URL = 'https://ikata.semoga.online/api/';
+export const MUNAS_URL = 'https://munasikataupn.com/tentangMunas?tab=';
+//export const BASIC_URL = 'https://stage-ikata.semoga.online/api/';
+//export const MUNAS_URL = 'https://munas-test2.munasikataupn.com/tentangMunas?tab=';
 //export const BASIC_URL = (mode => {
 //  console.log(mode)
   

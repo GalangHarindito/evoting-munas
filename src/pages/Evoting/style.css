@@ -58,6 +58,19 @@
   text-decoration: underline;
 }
 
+.evoteAfter > section > h6 {
+  font-weight: normal;
+  text-align: center;
+  line-height: 2rem;
+}
+
+.evoteAfter > section > h6 > a {
+  color: blue;
+  font-weight: 500;
+  text-decoration: underline;
+  font-size: 0.775rem;
+}
+
 .evoteAfter > section > h4:first-child {
   font-weight: bold;
   font-size: 2rem;
@@ -83,11 +96,21 @@
   
 }
 
+.evoteAfter > section > h6 {
+  font-size: 0.665rem;
+  line-height: 1.2rem;
+  
+}
+
 .evoteAfter > section > h4 {
   line-height: 2rem;
 }
 
 .evoteAfter > section > h5 > a {
   font-size: 0.865rem;
+}
+
+.evoteAfter > section > h6 > a {
+  font-size: 0.665rem;
 }
 }

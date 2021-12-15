@@ -62,7 +62,7 @@ h5 {
 }
 
 h6 {
-  font-size: 0.875rem;
+  font-size: 0.775rem;
   font-weight: bold;
   line-height: 0.875rem;
 }
@@ -156,6 +156,7 @@ p {
 .Toastify__toast-body > div:last-child{
   color: #fff;
   font-weight: 500;
+  font-size: 0.765rem;
 }
 
 .Toastify__toast-theme--colored.Toastify__toast--success {
