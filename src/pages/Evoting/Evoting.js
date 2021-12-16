@@ -97,6 +97,7 @@ export default function Evoting() {
 
     if (today > onVote && datahasVerified) {
       return (
+        <>
         <EvoteCandidate
           data={data}
           disabled={disabled}
@@ -112,6 +113,7 @@ export default function Evoting() {
             setNumber(number);
           }}
         />
+        </>
       );
     }
     if(today > onClose && !datahasVoted ){
@@ -197,7 +199,7 @@ function EvoteBefore(props) {
         <h4>
           E- Voting KETUA IKATA Periode 2021 - 2025 akan dilaksanakan pada
         </h4>
-        <h4>Hari Jumat 17 Desember 2021 Pukul 00.00 - 23.59 WIB</h4>
+        <h4>Hari Jumat 17 Desember 2021 Pukul 00.00 - 16.00 WIB</h4>
       </section>
     </section>
   );
@@ -218,13 +220,13 @@ function EvoteAfter(props) {
           Pengecekan Kode Pemilihan dapat dilakukan di{" "}
           <Link to='/vote-check'>sini</Link>
         </h5>
-        
+        <h6>Yuk, tujukkan kalau anda sudah evote <a href="https://www.twibbonize.com/munasikatake6" target='_blank' rel="noreferrer">https://www.twibbonize.com/munasikatake6</a></h6>
         <h4>
           Terima kasih atas partisipasi anda menjadi DPT dan Memilih KETUA IKATA
           Periode 2021 -2025
         </h4>
         <h4>Berjumpa kembali di MUNAS IKATA selanjutnya</h4>
-        <h6>Bila berkenan untuk mengisi <a href="https://bit.ly/3oS28MU" target='_blank' rel="noreferrer">user feedback</a> mengenai aplikasi evoting ini</h6>
+        <h6>Bila berkenan untuk mengisi user feedback mengenai aplikasi evoting ini. Link <a href="https://bit.ly/3oS28MU" target='_blank' rel="noreferrer">bit.ly/3oS28MU</a></h6>
       </section>
     </section>
   );

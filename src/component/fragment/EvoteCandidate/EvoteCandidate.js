@@ -2,17 +2,23 @@ import React from "react";
 import Button from "../../elements/button/Button";
 import "./style.css";
 import { MUNAS_URL } from '../../../utils/fetch';
+import { Link } from "react-router-dom";
 
 export default function EvoteCandidate(props) {
   const { data, openModal, isLoading, disabled } = props;
   return (
     <section className='evote-candidate'>
       <h4>Daftar Calon Ketua IKATA 2021 - 2025</h4>
+      <div>
       <p>Silahkan pilih salah satu dari calon Ketua IKATA </p>
+      <small>Anda merasa kesulitan? silahkan klik <Link to='./bantuan'>Bantuan</Link></small>
+      </div>
+     
+      <br />
       <section>
         {data.length >=1  && <Cards datas={data} openModal={openModal} isLoading={isLoading} disabled={disabled} />}
       </section>
-      
+      <br />
     </section>
   );
 }

@@ -4,7 +4,7 @@ export const thousand = val => (
 
 export const rupiah = val => (`Rp. ${thousand(val)}`);
 export const time = new Date(`12/17/2021 00:00:00 GMT+0700`);
-export const afterTime = new Date(`12/18/2021 00:00:00 GMT+0700`);
+export const afterTime = new Date(`12/17/2021 16:00:00 GMT+0700`);
 export const registerTime = new Date(`12/15/2021 12:00:00 GMT+0700`);
 
 export const fileAccept = arr => {

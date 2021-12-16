@@ -3,8 +3,16 @@
   margin-bottom: 1rem;
 }
 
-.evote-candidate > p {
-  margin-bottom: 1rem;
+.evote-candidate > div > small {
+  font-size: 0.7rem;
+ }
+
+.evote-candidate > div > small > a {
+ text-decoration: underline;
+ font-size: 0.7rem;
+ color: blue;
+ font-weight: 500;
+
 }
 
 .evote-candidate > section {
